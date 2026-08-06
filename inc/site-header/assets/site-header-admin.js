@@ -71,14 +71,10 @@
 	 */
 	function replacePlaceholders(root, pos, idx) {
 		var fields = root.querySelectorAll('input, select, textarea');
-		console.log('[replace] found ' + fields.length + ' fields in root, pos=' + pos + ' idx=' + idx);
 		for (var f = 0; f < fields.length; f++) {
 			var name = fields[f].getAttribute('name');
-			var match = name && name.slice(pos, pos + 4) === '__i__';
-			console.log('[replace] field[' + f + '] name=' + name + ' sliceAt' + pos + '="' + (name ? name.slice(pos, pos + 4) : '') + '" match=' + match);
-			if (name && match) {
-				fields[f].setAttribute('name', name.slice(0, pos) + String(idx) + name.slice(pos + 4));
-				console.log('[replace] field[' + f + '] -> ' + fields[f].getAttribute('name'));
+			if (name && name.slice(pos, pos + 5) === '__i__') {
+				fields[f].setAttribute('name', name.slice(0, pos) + String(idx) + name.slice(pos + 5));
 			}
 		}
 		var templates = root.querySelectorAll('template[data-rd-template]');
@@ -182,10 +178,6 @@
 			replacePlaceholders(frag, pos, idx);
 		}
 		rowsEl.appendChild(frag);
-
-		// 验证：输出克隆行的第一个字段名
-		var firstInput = rowsEl && rowsEl.lastElementChild ? rowsEl.lastElementChild.querySelector('input, select, textarea') : null;
-		console.log('[card-add] idx=' + idx + ' pos=' + pos + ' replaced=' + (pos >= 0) + ' firstField=' + (firstInput ? firstInput.getAttribute('name') : 'null'));
 
 		var node = rowsEl.lastElementChild;
 		if (node) {
