@@ -39,7 +39,7 @@
 	 * @return {number}
 	 */
 	function nextIndex(rowsEl, template) {
-		var tplField = template.querySelector('input, select, textarea');
+		var tplField = template.content.querySelector('input, select, textarea');
 		var tplName = tplField ? tplField.name : '';
 		var max = -1;
 		var rows = rowsEl.children;
@@ -171,23 +171,11 @@
 		// 嵌套 repeater（sections→tabs→cards…）更深层的 __i__ 保留不动。
 		// 注意：必须递归进入卡片内部的 <template> content，否则内层字段名
 		// 残留当前层 __i__，保存后 PHP 解析出的数组层级错位（cards 丢失）。
-		var tplField = template.querySelector('input, select, textarea');
+		var tplField = template.content.querySelector('input, select, textarea');
 		var pos = tplField && tplField.name ? tplField.name.indexOf('__i__') : -1;
 		var frag = document.importNode(template.content, true);
-		console.log('[DEBUG handleAdd] tplName=' + (tplField ? tplField.name : 'null') + ' pos=' + pos + ' idx=' + idx + ' rowsInRepeater=' + rowsEl.children.length);
 		if (pos >= 0) {
-			var before = [];
-			var fragFields = frag.querySelectorAll('input, select, textarea');
-			for (var fi = 0; fi < fragFields.length; fi++) {
-				before.push(fragFields[fi].getAttribute('name'));
-			}
-			console.log('[DEBUG handleAdd] BEFORE replace:', before);
 			replacePlaceholders(frag, pos, idx);
-			var after = [];
-			for (var fi = 0; fi < fragFields.length; fi++) {
-				after.push(fragFields[fi].getAttribute('name'));
-			}
-			console.log('[DEBUG handleAdd] AFTER  replace:', after);
 		}
 		rowsEl.appendChild(frag);
 
