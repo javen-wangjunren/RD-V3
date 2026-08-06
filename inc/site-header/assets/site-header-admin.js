@@ -174,8 +174,20 @@
 		var tplField = template.querySelector('input, select, textarea');
 		var pos = tplField && tplField.name ? tplField.name.indexOf('__i__') : -1;
 		var frag = document.importNode(template.content, true);
+		console.log('[DEBUG handleAdd] tplName=' + (tplField ? tplField.name : 'null') + ' pos=' + pos + ' idx=' + idx + ' rowsInRepeater=' + rowsEl.children.length);
 		if (pos >= 0) {
+			var before = [];
+			var fragFields = frag.querySelectorAll('input, select, textarea');
+			for (var fi = 0; fi < fragFields.length; fi++) {
+				before.push(fragFields[fi].getAttribute('name'));
+			}
+			console.log('[DEBUG handleAdd] BEFORE replace:', before);
 			replacePlaceholders(frag, pos, idx);
+			var after = [];
+			for (var fi = 0; fi < fragFields.length; fi++) {
+				after.push(fragFields[fi].getAttribute('name'));
+			}
+			console.log('[DEBUG handleAdd] AFTER  replace:', after);
 		}
 		rowsEl.appendChild(frag);
 
