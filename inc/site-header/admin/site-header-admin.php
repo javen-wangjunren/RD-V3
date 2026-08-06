@@ -61,6 +61,7 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 				$digest = function ( $data ) {
 					$leaves = 0;
 					$per    = [];
+					$cards_detail = [];
 					if ( isset( $data['nav_items'] ) && is_array( $data['nav_items'] ) ) {
 						foreach ( $data['nav_items'] as $ni ) {
 							$sub  = 0;
@@ -75,19 +76,33 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 							};
 							$walk( $ni );
 							$leaves += $sub;
-							$per[]   = ( isset( $ni['label'] ) ? $ni['label'] : '?' ) . '|' . ( isset( $ni['mega_type'] ) ? $ni['mega_type'] : '?' ) . '=' . $sub;
+							$per[]   = 'nav=' . $sub;
+
+							// 按 section → tab 统计 cards 条数
+							if ( isset( $ni['sections'] ) && is_array( $ni['sections'] ) ) {
+								foreach ( $ni['sections'] as $si => $sec ) {
+									$slabel = isset( $sec['section_label'] ) ? substr( $sec['section_label'], 0, 12 ) : 'sec' . $si;
+									if ( isset( $sec['tabs'] ) && is_array( $sec['tabs'] ) ) {
+										foreach ( $sec['tabs'] as $ti => $tab ) {
+											$tlabel = isset( $tab['tab_label'] ) ? substr( $tab['tab_label'], 0, 10 ) : 'tab' . $ti;
+											$c = isset( $tab['cards'] ) && is_array( $tab['cards'] ) ? count( $tab['cards'] ) : 0;
+											$cards_detail[] = $slabel . '/' . $tlabel . ':' . $c;
+										}
+									}
+								}
+							}
 						}
 					}
 
-					return [ 'leaves' => $leaves, 'per' => $per ];
+					return [ 'leaves' => $leaves, 'per' => $per, 'cards' => $cards_detail ];
 				};
 				$d_raw  = $digest( $raw );
 				$d_norm = $digest( $normalized );
 				$d_back = $digest( $readback );
 				$diag   = 'RAW leaves=' . $d_raw['leaves'] . ' | NORM leaves=' . $d_norm['leaves'] . ' | READBACK leaves=' . $d_back['leaves']
-					. "\nRAW per: " . implode( ', ', $d_raw['per'] )
-					. "\nNORM per: " . implode( ', ', $d_norm['per'] )
-					. "\nREADBACK per: " . implode( ', ', $d_back['per'] );
+					. "\nRAW cards: " . implode( ', ', $d_raw['cards'] )
+					. "\nNORM cards: " . implode( ', ', $d_norm['cards'] )
+					. "\nREADBACK cards: " . implode( ', ', $d_back['cards'] );
 				error_log( '[DEBUG header-save-card-loss] ' . str_replace( "\n", ' | ', $diag ) );
 				// #endregion
 				$saved = true;
