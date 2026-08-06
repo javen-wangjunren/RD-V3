@@ -179,6 +179,10 @@
 		}
 		rowsEl.appendChild(frag);
 
+		// 验证：输出克隆行的第一个字段名
+		var firstInput = rowsEl && rowsEl.lastElementChild ? rowsEl.lastElementChild.querySelector('input, select, textarea') : null;
+		console.log('[card-add] idx=' + idx + ' pos=' + pos + ' replaced=' + (pos >= 0) + ' firstField=' + (firstInput ? firstInput.getAttribute('name') : 'null'));
+
 		var node = rowsEl.lastElementChild;
 		if (node) {
 			syncRowBranch(node);
