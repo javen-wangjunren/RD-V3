@@ -1,0 +1,108 @@
+.v2_footer_001{
+    position: relative;
+    &::before{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 50%;
+        height: 100%;
+        display: block;
+        content: '';
+        z-index: -1;
+    }
+    &::after{
+        position: absolute;
+        top:0;
+        right:0;
+        width: 50%;
+        height: 100%;
+        display: block;
+        content: '';
+        z-index: -1;
+    }
+
+    >.container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: left;
+    }
+    .f-left{
+        width: 50%;
+        padding-right: 90px;
+        box-sizing: border-box;
+        img{
+            margin:0 0 70px;
+        }
+    }
+    .footer-item{
+        &:not(:last-child){
+            margin-bottom: 70px;
+        }
+    }
+    .footer-link{
+        display: flex;
+        flex-wrap: wrap;
+        li{
+            margin: 10px 20px 10px 0;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    }
+    .footer-contact{
+        li{
+            position: relative;
+            padding-left: 28px;
+            margin: 15px 0 30px;
+        }
+        i{
+            position: absolute;
+            left: 0;
+            top: 4px;
+            min-width: 16px;
+            text-align: center;
+        }
+    }
+    .cpr{
+        margin:0;
+    }
+    .f-right{
+        width: 50%;
+        padding-left: 90px;
+        box-sizing: border-box;
+        .footer-item{
+            margin-bottom: 60px;
+        }
+    }
+
+    @media screen and (max-width:1024px){
+        .f-left{
+            padding-right: 3%;
+        }
+        .f-right{
+            padding-left: 3%;
+        }
+    }
+    @media screen and (max-width:767px){
+        &::before{
+            width: 100%;
+        }
+        &::after{
+            width: 0;
+        }
+        .f-left{
+            width: 100%;
+            padding-right: 0;
+            img{
+                margin: 0 0 30px;
+            }
+        }
+        .f-right{
+            display: none;
+        }
+        .footer-item:not(:last-child){
+            margin-bottom: 30px;
+        }
+    }
+}

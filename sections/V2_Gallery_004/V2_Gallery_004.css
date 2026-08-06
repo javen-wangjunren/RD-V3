@@ -1,0 +1,119 @@
+.v2_gallery_004 h2 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.v2_gallery_004 h4 {
+  font-size: 22px;
+  color: #444444;
+  margin-top: 25px;
+}
+
+.v2_gallery_004 .sec-title {
+  margin-bottom: 50px;
+}
+
+.v2_gallery_004 section {
+  width: 90%;
+  max-width: 1000px;
+}
+
+.v2_gallery_004 .mml-row {
+  position: relative;
+}
+
+.v2_gallery_004 .slick-dots {
+  position: absolute;
+  right: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.v2_gallery_004 .slick-dots button {
+  width: 12px;
+  height: 12px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background-color: #999;
+  margin: 0px;
+}
+
+.v2_gallery_004 .slick-dots li {
+  margin: 8px 0px;
+}
+
+.v2_gallery_004 .slick-dots li.slick-active {
+  -webkit-border-radius: 50px;
+          border-radius: 50px;
+  border: 9px solid #999;
+  margin-left: -8px;
+}
+
+.v2_gallery_004 .slick-dots li.slick-active button {
+  width: 12px;
+  background-color: #fff;
+}
+
+.v2_gallery_004 .slick-slider {
+  position: unset;
+}
+
+.v2_gallery_004 .btn-wrap {
+  text-align: right;
+}
+
+.v2_gallery_004 a.btn {
+  background-color: #333;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  color: #fff;
+  margin: 0px;
+  margin-top: 40px;
+  border: unset;
+  padding: 13px 28px;
+  -webkit-box-shadow: 0px 15px 30px 0px  #dce0e9;
+          box-shadow: 0px 15px 30px 0px  #dce0e9;
+}
+
+.v2_gallery_004 a.btn:hover {
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+}
+
+@media (max-width: 768px) {
+  .v2_gallery_004 .slick-dots li {
+    margin: 3px 0px;
+  }
+}
+
+@media (max-width: 540px) {
+  .v2_gallery_004 .slick-dots {
+    margin-top: 0px;
+    -webkit-transform: translateY(-40px);
+        -ms-transform: translateY(-40px);
+            transform: translateY(-40px);
+  }
+  .v2_gallery_004 .slick-dots li {
+    margin: 3px 0px;
+  }
+  .v2_gallery_004 .slick-dots button {
+    width: 6px;
+    height: 6px;
+  }
+  .v2_gallery_004 .slick-dots li.slick-active {
+    border: unset;
+    margin-left: -5px;
+    border: 5px solid #999;
+  }
+  .v2_gallery_004 .slick-dots li.slick-active button {
+    width: 6px;
+    height: 6px;
+  }
+}

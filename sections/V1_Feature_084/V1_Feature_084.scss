@@ -1,0 +1,126 @@
+.v1_feature_084 {
+    .container {
+        display: flex;
+    }
+
+    .left-wrap {
+        max-width: 440px;
+        width: 38%;
+        text-align: left;
+        margin-right: 30px;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        span {
+            color: #03a67b;
+            font-size: 20px;
+            display: block;
+        }
+
+        h2 {
+            color: #000000;
+        }
+
+        p {
+            color: #808080;
+            margin-top: 10px;
+
+            &:nth-of-type(1) {
+                margin-top: 30px;
+            }
+        }
+
+        .btns {
+            display: flex;
+            margin-top: 50px;
+
+            a {
+                width: 190px;
+                height: 50px;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:nth-of-type(1) {
+                    background-color: #00a978;
+                    color: #FFF;
+                    margin-right: 20px;
+                }
+
+                &:nth-of-type(2) {
+                    border: solid 1px #00a978;
+                    color: #00a978;
+                }
+            }
+        }
+
+    }
+    .right-wrap {
+        margin-left: auto;
+        width: 50%;
+        max-width:580px;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        li {
+            width: calc(50% - 20px);
+            max-width: 280px;
+            margin: 0 10px 50px;
+            &:nth-of-type(3),
+            &:nth-of-type(4) {
+                margin-bottom: 0;
+            }
+        }
+        h5 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0 8px;
+            color: #333333;
+            margin-top: 10px;
+        }
+    }
+   
+}
+
+@media (max-width:1024px) {
+    .v1_feature_084 .left-wrap {
+        width: 45%;
+    }
+}
+
+@media (max-width:768px) {
+    .v1_feature_084 {
+        .container {
+            display: block;
+        }
+        .left-wrap {
+            width: 100% !important;
+            max-width: 100%;
+        }
+        .right-wrap {
+            width: 100%;
+            max-width: 580px;
+            margin: 20px auto 0;
+        }
+        
+    }
+}
+
+@media (max-width:430px) {
+    .v1_feature_084 {
+        .left-wrap .btns {
+            justify-content: center;
+            a {
+                &:nth-of-type(1) {
+                    margin: 0 auto;
+                }
+            }
+        }
+        
+    }
+}

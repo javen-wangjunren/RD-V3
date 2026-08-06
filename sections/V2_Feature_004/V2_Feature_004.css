@@ -1,0 +1,201 @@
+.v2_feature_004 > .container {
+  max-width: 1760px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.v2_feature_004 .left-nav {
+  max-width: 290px;
+  width: 20%;
+  margin-right: 20px;
+}
+
+.v2_feature_004 .left-nav h4 {
+  position: relative;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 25px 70px 25px 20px;
+  text-align: left;
+}
+
+.v2_feature_004 .left-nav h4 i {
+  position: absolute;
+  right: 20px;
+  top: 28px;
+  font-size: 12px;
+}
+
+.v2_feature_004 .left-nav ul {
+  padding: 0 70px 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: left;
+}
+
+.v2_feature_004 .left-nav ul li {
+  border-bottom: 2px solid transparent;
+  padding: 15px 0;
+  font-size: 16px;
+  line-height: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+}
+
+.v2_feature_004 .right-opt {
+  max-width: 1370px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0 0 0 auto;
+}
+
+.v2_feature_004 .select {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #03a679;
+  border-width: 1px;
+  border-style: solid;
+  padding: 15px 40px 15px 85px;
+  margin-bottom: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v2_feature_004 .select h4 {
+  color: #ffffff;
+  font-size: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v2_feature_004 .select h4.tit {
+  padding: 7px 30px 7px 0;
+  border-right: 1px solid #ffffff;
+}
+
+.v2_feature_004 .select h4.res {
+  padding: 7px 0 7px 30px;
+  border-left: 1px solid #ffffff;
+}
+
+.v2_feature_004 .select ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding: 0 30px;
+  width: 90%;
+  max-width: 980px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v2_feature_004 .select ul li {
+  color: #ffffff;
+  margin-right: 30px;
+  padding: 7px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+}
+
+.v2_feature_004 .select ul li i {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.v2_feature_004 .list > li {
+  max-width: 100%;
+  margin: 0 10px 40px;
+}
+
+.v2_feature_004 .list h4 {
+  font-size: 18px;
+  padding-top: 10px;
+}
+
+@media screen and (max-width: 1080px) {
+  .v2_feature_004 .left-nav ul {
+    padding: 0 30px 0 20px;
+  }
+  .v2_feature_004 .select {
+    padding: 15px 30px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .v2_feature_004 .left-nav {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 30px;
+  }
+  .v2_feature_004 .left-nav ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .v2_feature_004 .left-nav ul li {
+    width: calc(50% - 20px);
+    margin-right: 20px;
+  }
+  .v2_feature_004 .list.mml-cols-3 {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .v2_feature_004 .left-nav ul li {
+    width: 100%;
+    margin-right: 0;
+  }
+  .v2_feature_004 .select {
+    padding: 15px;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .v2_feature_004 .select h4 {
+    width: 100%;
+    text-align: left;
+  }
+  .v2_feature_004 .select h4.tit {
+    border-bottom: 1px solid #ffffff;
+    border-right: none;
+    padding: 10px;
+  }
+  .v2_feature_004 .select h4.res {
+    border-top: 1px solid #ffffff;
+    border-left: none;
+    padding: 10px;
+  }
+  .v2_feature_004 .select ul {
+    width: 100%;
+    padding: 15px 0;
+  }
+}

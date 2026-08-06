@@ -1,0 +1,64 @@
+#Top_bar .menu.gtranslate>li>a {
+    font-size: 12px;
+}
+
+#Top_bar .menu.gtranslate>li>a span {
+    padding: 0 5px !important;
+}
+
+#Top_bar .menu>li.menu-item-gtranslate {
+    margin-left: 20px;
+}
+
+#Top_bar .menu>li.menu-item-gtranslate #gtranslate_wrapper {
+    position: relative !important;
+    top: 30px;
+}
+
+#Top_bar .menu>li.menu-item-gtranslate .switcher {
+    width: 28px;
+}
+
+#Top_bar .menu>li.menu-item-gtranslate .switcher a {
+    width: 16px;
+    height: 18px;
+    padding: 2px 5px 0;
+    color: rgba(0,0,0,0);
+    font-size: 0;
+}
+
+#Top_bar.is-sticky .menu>li.menu-item-gtranslate #gtranslate_wrapper {
+    top: 14px;
+}
+
+
+
+#Top_bar .ubermenu-nav.gtranslate>li>a {
+    font-size: 12px;
+}
+
+#Top_bar .ubermenu-nav.gtranslate>li>a span {
+    padding: 0 5px !important;
+}
+
+#Top_bar .ubermenu-nav>li.menu-item-gtranslate {
+    display: inline-block;
+    /* padding: 46px 14px; */
+}
+
+#Top_bar .ubermenu-nav>li.menu-item-gtranslate #gtranslate_wrapper {
+    left: 0px;
+    top: 34%;
+}
+
+#Top_bar .ubermenu-nav>li.menu-item-gtranslate .switcher {
+    width: 28px;
+}
+
+#Top_bar .ubermenu-nav>li.menu-item-gtranslate .switcher a {
+    width: 16px;
+    height: 18px;
+    padding: 2px 5px 0;
+    color: rgba(0,0,0,0);
+    font-size: 0;
+}

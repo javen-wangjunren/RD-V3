@@ -1,0 +1,133 @@
+.v1_feature_005 .container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.v1_feature_005 .left-wrap {
+  max-width: 670px;
+  width: 57%;
+  text-align: left;
+  margin-right: 30px;
+  padding: 20px 0;
+}
+
+.v1_feature_005 .left-wrap span {
+  color: #000000;
+  font-size: 20px;
+  display: block;
+}
+
+.v1_feature_005 .left-wrap h2 {
+  color: #000000;
+}
+
+.v1_feature_005 .left-wrap p {
+  color: #000000;
+  margin-top: 30px;
+}
+
+.v1_feature_005 .left-wrap .btns {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+}
+
+.v1_feature_005 .left-wrap .btns a {
+  width: 190px;
+  height: 50px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.v1_feature_005 .left-wrap .btns a:nth-of-type(1) {
+  background-color: #00a978;
+  color: #FFF;
+  margin-right: 20px;
+}
+
+.v1_feature_005 .left-wrap .btns a:nth-of-type(2) {
+  border: solid 1px #00a978;
+  color: #00a978;
+}
+
+.v1_feature_005 .right-wrap {
+  max-width: 480px;
+  margin-left: auto;
+  width: 41%;
+}
+
+.v1_feature_005 .right-wrap li {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.v1_feature_005 .right-wrap a {
+  position: absolute;
+}
+
+.v1_feature_005 .right-wrap i {
+  font-size: 63px;
+  color: white;
+}
+
+.v1_feature_005 .slick-active button {
+  background-color: #00a978;
+}
+
+@media (max-width: 768px) {
+  .v1_feature_005 .container {
+    display: block;
+  }
+  .v1_feature_005 .left-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+  .v1_feature_005 .right-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin: 40px auto 0;
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .v1_feature_005 .left-wrap .btns {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .v1_feature_005 .left-wrap .btns a:nth-of-type(1) {
+    margin: 0 auto;
+  }
+  .v1_feature_005 .right-wrap {
+    margin-top: 0;
+  }
+}

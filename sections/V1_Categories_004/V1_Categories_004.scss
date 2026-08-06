@@ -1,0 +1,110 @@
+.v1_categories_004{
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .cat-sidebar{
+        box-sizing: border-box;
+        margin-right: 20px;
+        width: 280px;
+        height: fit-content;
+        text-align: left;
+        h4{
+            padding: 15px 10px;
+            text-align: center;
+        }
+    }
+    .cat-menus{
+        border: 1px solid #d6d6d6;
+        border-top: none;
+        li{
+            position: relative;
+        }
+        > .mml-active {
+            > .cat-item{
+                color: #03a57b;
+                background-color: #f5f5f5;
+            }
+           
+        }
+        
+    }
+    .mml-active {
+        > .cat-submenu{
+            height: unset;
+            padding: 10px 0 0 20px;
+        }
+        .fa-chevron-right{
+            transform: rotate(90deg);
+            color: #03a57b;
+
+        }
+    }
+    .cat-item{
+        position: relative;
+        padding: 15px 40px 15px 20px;
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    i{
+        position: absolute;
+        right:10px;
+        top:18px;
+        z-index: 2;
+        cursor: pointer;
+    }
+    .fa-chevron-right{
+        
+    }
+    .cat-submenu{
+        padding: 0 0 0 20px;
+        height: 0;
+        transition: all .24s;
+        overflow: hidden;
+        .cat-item{
+            position: relative;
+            padding: 10px 27px;
+            &::before{
+                position: absolute;
+                left:0;
+                top:12px;
+                display: inline-block;
+                content: '';
+                width: 16px;
+                height: 16px;
+                border: solid 2px #b5b5b5;
+                background-color: transparent;
+                transition: all .24s;
+
+            }
+        }
+    }
+
+    .cat-main{
+        max-width: 840px;
+        width: 75%;
+        margin:0 0 0 auto;
+        flex:1;
+        text-align: left;
+        b{
+            display: block;
+            margin:10px 0;
+        }
+        li{
+            margin:0 10px 40px;
+        }
+    }
+    @media (max-width: 880px){
+        .cat-sidebar{
+            width: 100%;
+            margin: 0 auto 30px;
+        }
+        .cat-main{
+            width: 100%;
+            margin: 0 auto ;
+            flex:auto;
+        }
+    }
+    
+}

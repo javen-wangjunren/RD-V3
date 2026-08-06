@@ -1,0 +1,189 @@
+.v1_inquiry_cart_001{
+    .tit{
+        max-width: 900px;
+        margin-bottom: 40px;
+        text-align: left;
+    }
+    .mml-box{
+
+    }
+    .item{
+        padding: 30px;
+        background-color: #ffffff;
+        margin-bottom: 30px;
+        text-align: left;
+        transition: all .24s;
+        &:hover{
+            box-shadow: 0px 4px 43px 0px rgba(0, 0, 0, 0.13);
+            
+        }
+        h4{
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .detail{
+            display: flex;
+            justify-content: space-between;
+            // align-items: center;
+            // flex-wrap: wrap;
+        }
+        .img{
+            max-width: 220px;
+            width: 50%;
+            max-height: 165px;
+            overflow: hidden;
+        }
+        .del{
+            max-width: 80px;
+            width: 50%;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e8e8e8;
+            color:#000000;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all .24s;
+
+        }
+        .form-row{
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 780px;
+            margin: 0 10px;
+            width: 100%;
+            label{
+                position: relative;
+                margin: 0;
+
+                .triangle{
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    -webkit-transform: translateY(-50%);
+                    -ms-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    width: 0;
+                    height: 0;
+                    line-height: 0;
+                    overflow: hidden;
+                    display: inline-block;
+                    *display: inline;
+                    *zoom: 1;
+                    border-color: #333 transparent transparent transparent;
+                    border-style: solid dashed dashed dashed;
+                    border-width: 7px 6px 0 6px;
+                    display: block;
+                    content: '';
+                }
+                &.pname{
+                    max-width: 380px;
+                    width: 49%;
+                    margin: 0 auto 0 0;
+                    select{
+                        width: 100%;
+                        height: 48px;
+                        border: solid 1px #939393;
+                        padding: 10px 15px;
+                    }
+                    option{
+                        padding: 10px 15px;
+                    }
+                }
+                 &.pnum{
+                    max-width: 380px;
+                    width: 49%;
+                    margin: 0 0 0 auto;
+                 }
+                 &.msg{
+                     width: 100%;
+                     margin-top: 20px;
+                 }
+            }
+            input:not([type=submit]){
+                display: block;
+                height: 48px;
+                width: 100%;
+                border: solid 1px #939393;
+                border-radius: 0;
+                margin: 0;
+                padding:10px 15px;
+                box-sizing: border-box;
+                background-color: #fff;
+                outline: none;
+                color: #a4a4a4;
+
+
+                &:focus,&:active{
+                    background-color: #fff;
+                }
+                &::placeholder{
+                    color: #a4a4a4;
+                }
+
+            }
+            textarea{
+                display: block;
+                height: 97px;
+                width: 100%;
+                border: solid 1px #939393;
+                border-radius: 0;
+                margin: 0;
+                padding:10px 15px;
+                box-sizing: border-box;
+                background-color: #fff;
+                outline: none;
+                color: #a4a4a4;
+
+                &:focus,&:active{
+                    background-color: #fff;
+                }
+                &::placeholder{
+                    color: #a4a4a4;
+                }
+            }
+        }
+        
+    }
+
+    @media screen and (max-width: 767px){
+        .item {
+            padding: 30px 15px;
+            .detail{
+                flex-wrap: wrap;
+            }
+            .img{
+                // order:1;
+                width: 100%;
+
+            }
+            .form-row{
+                // order:3;
+                width: 100%;
+                margin: 20px 0 0;
+            }
+            .del{
+                // order:2;
+                width: 100%;
+                max-width: 100%;
+                height: 50px;
+                line-height: 50px;
+                margin: 20px 0 0;
+            }
+        }
+    }
+    @media screen and (max-width: 400px){
+        .item .form-row label{
+            &.pname{
+                width: 100%;
+                margin: 0 auto 20px;
+            }
+            &.pnum{
+                width: 100%;
+                margin: 0 auto ;
+
+            }
+        }
+    }
+}

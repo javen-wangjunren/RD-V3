@@ -1,0 +1,33 @@
+.mml-mask{
+    position: fixed; z-index: 1000;
+    left: 0; top: 0; bottom: 0; right: 0;
+    padding: 20px;
+    background: rgba(0,0,0,.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    &.mml-show{ display: flex !important; }
+}
+.mml-modal{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-height: 100%; max-width: 1000px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 34px 0px rgba(33, 33, 33, 0.15);
+}
+.mml-modal-header{
+    padding: 5px 20px;
+    text-align: right;
+}
+.mml-modal-close{
+    font-size: 26px;
+    cursor: pointer;
+}
+.mml-modal-content{
+    padding: 10px 20px 20px;
+    overflow: auto;
+    flex: 1 1 auto;
+}

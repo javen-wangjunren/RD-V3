@@ -1,0 +1,94 @@
+.v2_feature_014{
+    .mml-text{
+        margin-bottom: 50px;
+        h2{
+            font-size: 36px;
+            color: #202020;
+        }
+    }
+    .mml-nav{
+        margin-bottom: 50px;
+        .slick-dots{
+            margin: 0 auto;
+            justify-content: space-between;
+            align-items: center;
+            li{
+                position: relative;
+                flex: 1;
+                button{
+                    cursor: pointer;
+                    width: 40px;
+                    height: 40px;
+                    background-color: #ffffff;
+                    border: solid 2px #dddddd;
+                    border-radius: 100%;
+                    font-size: 14px;
+                    color: #202020;
+                    background: none;
+                }
+                &::before{
+                    content: "";
+                    display: block;
+                    width: 70%;
+                    height: 11px;
+                    background-color: #f4f6f8;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                }
+                &:first-child::before{
+                    display: none;
+                }
+            }
+            .slick-active{
+                button{
+                    border-color: #03a679;
+                    background-color: #03a679;
+                    color: #fff;
+                }
+                &::before{
+                    background-color: #03a679;
+                }
+            }
+        }
+    }
+    .slicker-list{
+        background-color: #ffffff;
+	    box-shadow: 38px 50px 120px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        padding: 50px 0 75px 0;
+        h3{
+            color: #202020;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        p{
+            margin: 0 auto;
+            max-width: 446px;
+            color: #aaaaaa;
+        }
+    }
+    @media screen and(max-width:960px){
+        .mml-nav{
+            .slick-dots{
+                li{
+                    &::before{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and(max-width:540px){
+        .mml-nav{
+            .slick-dots{
+                li{
+                    &::before{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

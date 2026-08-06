@@ -1,0 +1,130 @@
+.v1_contact_007 .mml-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin: 40px -10px 0;
+}
+
+.v1_contact_007 .mml-form {
+  max-width: 580px;
+  width: calc(50% - 20px);
+  margin: 0 10px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  padding: 50px 60px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v1_contact_007 .mml-form label {
+  text-align: left;
+  -webkit-transition: color .24s;
+  -o-transition: color .24s;
+  transition: color .24s;
+}
+
+.v1_contact_007 .mml-form label.focus {
+  color: #05f0b1;
+}
+
+.v1_contact_007 .mml-form input:not([type="submit"]), .v1_contact_007 .mml-form textarea {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  outline: 1px solid transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.v1_contact_007 .mml-form input:not([type="submit"]):focus, .v1_contact_007 .mml-form input:not([type="submit"]):active, .v1_contact_007 .mml-form textarea:focus, .v1_contact_007 .mml-form textarea:active {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.v1_contact_007 .mml-form input[type="submit"] {
+  width: 100%;
+  -webkit-border-radius: 29px;
+          border-radius: 29px;
+}
+
+.v1_contact_007 .mml-form div.wpcf7 .ajax-loader {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.v1_contact_007 .faq-wrap {
+  max-width: 580px;
+  width: calc(50% - 20px);
+  margin: 0 10px;
+  text-align: left;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq {
+  margin-top: 40px;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item {
+  -webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.09);
+          box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.09);
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border: solid 1px #e5e5e5;
+  background-color: #ffffff;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item::before, .v1_contact_007 .faq-wrap .mml-faq-item::after {
+  display: none;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item.active .mml-faq-item-hd i {
+  color: #ffffff;
+  background-color: #b0b0b0;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item .mml-faq-item-hd {
+  padding: 30px 0 30px 30px;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item .mml-faq-item-hd .number {
+  display: none;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item .mml-faq-item-hd .title {
+  padding: 0 90px 0 0;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item .mml-faq-item-hd i {
+  top: 30px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+.v1_contact_007 .faq-wrap .mml-faq-item .mml-faq-item-bd {
+  padding: 0 90px 30px 30px;
+}
+
+@media screen and (max-width: 880px) {
+  .v1_contact_007 .mml-box {
+    margin: 40px 0 0;
+  }
+  .v1_contact_007 .mml-form {
+    width: 100%;
+    margin: 10px auto;
+  }
+  .v1_contact_007 .faq-wrap {
+    width: 100%;
+    margin: 10px auto;
+  }
+}

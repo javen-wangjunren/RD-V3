@@ -1,0 +1,73 @@
+.v1_clients_004 .container {
+  width: 1200px;
+}
+
+.v1_clients_004 .sliders {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 40px;
+}
+
+.v1_clients_004 .slicker-for {
+  max-width: 580px;
+  max-height: 410px;
+  width: 49%;
+  margin-right: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: solid 1px #5d6777;
+  overflow: hidden;
+}
+
+.v1_clients_004 .s-right {
+  max-width: 600px;
+  width: 51%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.v1_clients_004 .slicker-nav li {
+  max-width: 180px;
+  width: calc(33.3333% - 20px) !important;
+  border: solid 1px #5d6777;
+  margin: 0 10px 20px;
+}
+
+.v1_clients_004 .arrs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.v1_clients_004 .slick-arrow {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.v1_clients_004 .slick-arrow.btn-l {
+  margin-right: 35px;
+}
+
+.v1_clients_004 .btns {
+  margin: 15px -10px 0;
+}
+
+.v1_clients_004 .btn {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border: solid 1px #5d6777;
+}

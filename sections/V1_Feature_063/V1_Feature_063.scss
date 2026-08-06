@@ -1,0 +1,66 @@
+.v1_feature_063{
+    .slick-arrow{
+        top: unset;
+        bottom: -90px;
+        width: 50px;
+        height: 50px;
+        background-color: #000;
+        opacity: .2;
+        border-radius: 5px;
+        line-height: 50px;
+        text-align: center;
+        transition: all .3s;
+        cursor: pointer;
+        i{
+            color: #fff;
+        }
+        &.arrow-prev{
+            left: 45%;
+        }
+        &.arrow-next{
+            right:45%;
+        }
+        &:hover{
+            opacity: 1;
+        }
+
+        
+    }
+    @media(max-width:1000px){
+          .slick-arrow {
+            &.arrow-prev{
+                left: 42%;
+            }
+            &.arrow-next{
+                right:42%;
+            }
+          }  
+    }
+    @media(max-width:680px){
+        .slick-arrow {
+          &.arrow-prev{
+              left: 40%;
+          }
+          &.arrow-next{
+              right:40%;
+          }
+        }  
+  }
+
+  @media(max-width:540px){
+      ul.list{
+          max-width: 380px;
+          margin: 0 auto;
+      }
+    .slick-arrow {
+      &.arrow-prev{
+          left: 30%;
+      }
+      &.arrow-next{
+          right:30%;
+      }
+    }  
+}
+
+  
+}

@@ -1,0 +1,110 @@
+@charset "UTF-8";
+.mml-footer {
+  padding: 80px 0;
+  /* 变量 */
+  background-color: #fff;
+  /* 变量 */
+  color: #262626;
+}
+
+.mml-footer .container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.mml-footer .footer-item {
+  text-align: left;
+  margin-right: 20px;
+}
+
+.mml-footer .footer-item:first-child {
+  max-width: 200px;
+}
+
+.mml-footer .footer-item:first-child img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.mml-footer .footer-item:last-child {
+  margin-right: 0;
+  max-width: 250px;
+}
+
+.mml-footer .footer-item .footer-item-tit {
+  margin-bottom: 5px;
+  color: #262626;
+}
+
+.mml-footer .footer-item a, .mml-footer .footer-item .menu-item a {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #808080;
+}
+
+.mml-footer .footer-item a:hover, .mml-footer .footer-item .menu-item a:hover {
+  color: #03a67b;
+}
+
+.mml-footer .footer-item .widget_nav_menu .sub-menu {
+  margin-left: 20px;
+}
+
+.mml-footer .footer-item-icons li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.mml-footer .footer-item-icons li i {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.mml-footer-copyright {
+  padding: 20px 0;
+  /* 变量 */
+  background-color: #e9e9e9;
+  /* 变量 */
+  text-align: center;
+  /* 变量 */
+  color: #b3b3b3;
+}
+
+@media only screen and (max-width: 680px) {
+  .mml-footer .container {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .mml-footer .container .footer-item {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+  .mml-footer .container .footer-item:first-child, .mml-footer .container .footer-item:last-child {
+    max-width: none;
+  }
+  .mml-footer .container .footer-item:nth-child(odd) {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 680px) and (max-width: 414px) {
+  .mml-footer .container .footer-item {
+    width: 100%;
+    margin-right: 0;
+  }
+  .mml-footer .container .footer-item:nth-child(odd) {
+    margin-right: 0;
+  }
+}

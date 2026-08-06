@@ -1,0 +1,50 @@
+.v1_clients_006 .slicker {
+  max-width: 1010px;
+  margin: 40px auto;
+  padding: 0 100px;
+}
+
+.v1_clients_006 .slicker .icon {
+  max-width: 138px;
+  max-height: 138px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  border: solid 1px #5d6777;
+  overflow: hidden;
+  margin: 0 auto 15px;
+}
+
+.v1_clients_006 .slicker .slick-arrow {
+  position: absolute;
+  top: 57%;
+  z-index: 2;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.v1_clients_006 .slicker .slick-arrow.btn-l {
+  left: 0;
+}
+
+.v1_clients_006 .slicker .slick-arrow.btn-r {
+  right: 0;
+}
+
+.v1_clients_006 .list {
+  margin: 0 -10px;
+}
+
+.v1_clients_006 .list .slick-slide {
+  max-width: 180px;
+  margin: 0 10px;
+}
+
+.v1_clients_006 .list li {
+  border: solid 1px #5d6777;
+}
+
+@media screen and (max-width: 880px) {
+  .v1_clients_006 .slicker {
+    padding: 0 40px;
+  }
+}

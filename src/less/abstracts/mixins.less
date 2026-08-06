@@ -1,0 +1,81 @@
+//文本溢出隐藏并显示省略号
+.elps() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+//文本溢出隐藏并显示省略号多行
+.elps-wrap() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; //-webkit-box为旧的属性值，2012年最新的标准草案为flex，如果把值该为flex，将不支持多行省略号。
+  -webkit-line-clamp: 2; //webkit支持此属性，并且是一个不规范的属性，没有出现在css规范的草案中。必须结合display: -webkit-box和-webkit-box-orient: vertical;属性一起使用
+  -webkit-box-orient: vertical;
+}
+
+//让文本换行
+.bw() {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+//三角形-上 demo: @include triangle-top(10px,10px,#000)
+.triangle-top(@width,@height,@bgColor) {
+  @_w: @width / 2;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  border-color: transparent transparent @bgColor transparent;
+  border-style: dashed dashed solid dashed;
+  border-width: 0 @_w @height @_w;
+}
+
+//三角形-下
+.triangle-bottom(@width,@height,@bgColor) {
+  @_w: @width / 2;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  border-color: @bgColor transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+  border-width: @height @_w 0 @_w;
+}
+
+//三角形-左
+.triangle-left(@width,@height,@bgColor) {
+  @_h: @height / 2;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  border-color: transparent @bgColor transparent transparent;
+  border-style: dashed solid dashed dashed;
+  border-width: @_h @width @_h 0;
+}
+
+//三角形-右
+.triangle-right(@width,@height,@bgColor) {
+  @_h: @height / 2;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  border-color: transparent transparent transparent @bgColor;
+  border-style: dashed dashed dashed solid;
+  border-width: @_h 0 @_h @width;
+}

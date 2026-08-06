@@ -1,0 +1,382 @@
+article,aside,dialog,footer,header,section,footer,nav,figure,menu,img,video,audio{ display: block; }
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dialog,dl,dt,dd,ul,ol,li,iframe,pre,form,figure,fieldset,legend,button,input,textarea,th,td{ margin: 0; padding: 0; border: 0; }
+a{ color: inherit; text-decoration: none; cursor: pointer; transition: all .24s; }
+html,body{ position: relative; font: normal 400 14px Consolas, 'Microsoft Yahei'; line-height: 1.425; overflow: hidden; height: 100%; scroll-behavior: smooth; color: #212121; }
+.brk-sidebar input,
+.brk-sidebar textarea,
+.brk-editor input,
+.brk-editor textarea{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    resize: none;
+    outline: none;
+    background-color: #fff;
+    font: inherit;
+}
+input:-webkit-autofill{ background-color: initial; }
+ul,li,ol{ list-style: none; }
+img,video,audio,iframe{ margin: auto; max-height: 100%; max-width: 100%; }
+::selection{ background-color: #cee3f8 !important; }
+::-webkit-scrollbar{ width: 6px; height: 6px; }
+::-webkit-scrollbar-button,::-webkit-scrollbar-corner{ display: none; }
+::-webkit-scrollbar-track{ background-color: inherit; }
+::-webkit-scrollbar-thumb{ background-color: #808080; border: 1px solid #fff; border-radius: 6px; }
+/* reset css */
+
+.brk-container{
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    transition: width .24s;
+}
+.brk-container.brk-off-sidebar{
+    width: calc(100% + 240px);
+}
+
+.brk-sidebar{
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
+    width: 240px;
+    background-color: #212121;
+    color: #b2b2b2;
+    overflow: auto;
+    user-select: none;
+    font: normal 14px Consolas, 'Microsoft Yahei';
+}
+.brk-sidebar:hover{ box-shadow: 0 0 4px rgba(0, 0, 0, .25); }
+.brk-sidebar::-webkit-scrollbar-thumb{ background-color: #6a6a6a; border: 1px solid #212121; }
+.brk-sidebar h3{
+    padding: 4px 8px;
+    color: #fff;
+    font-family: 'Microsoft Yahei';
+    font-size: 1.17em;
+}
+
+.brk-sidebar > header{
+    position: sticky;
+    top: 0;
+    margin: 40px 0 20px;
+    padding: 8px;
+    background-color: inherit;
+}
+.brk-save{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    color: #212121;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    border-radius: 3px;
+    text-align: center;
+    font-weight: 600;
+}
+.brk-save:hover{
+    filter: brightness(1.1);
+}
+.brk-pages{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    background-color: #fff;
+    color: #212121;
+    border-radius: 3px;
+}
+.brk-sidebar input{
+    flex: 1 1 auto;
+    background: transparent;
+}
+.brk-dropdown.brk-active{
+    padding: 4px 0 0;
+    height: unset;
+    overflow: auto;
+}
+.brk-active + .brk-caret{
+    transform: rotate(180deg) translate(0, 2.5px);
+}
+.brk-caret{
+    margin: 0 10px;
+    border: 5px solid transparent;
+    border-radius: 3px;
+    border-top-color: #212121;
+    transform: translate(0, 2.5px);
+}
+.brk-dropdown{
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    margin-top: -4px;
+    padding: 0;
+    height: 0;
+    max-height: 200px;
+    background-color: rgba(255,255,255,.8);
+    backdrop-filter: blur(2px);
+    border-radius: inherit;
+    transition: all .24s;
+    overflow: hidden;
+}
+.brk-dropdown > .brk-li:hover{
+    background-color: #212121;
+    color: #fff;
+}
+.brk-search{
+    margin: 4px 8px 24px;
+    display: flex;
+    align-items: baseline;
+    white-space: nowrap;
+    border-radius: 3px;
+    background-color: #fff;
+}
+.brk-search a{
+    margin-right: 8px;
+    color: #212121;
+    font-weight: 600;
+    border-radius: 3px;
+}
+.brk-search a:hover{
+    background: #88ecc9;
+}
+.brk-li{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 4px;
+    padding: 6px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    user-select: none;
+    transition: all .24s;
+}
+.brk-li:after{
+    margin-right: auto;
+    content: attr(data-name);
+    font-weight: 700;
+}
+.brk-404{
+    padding: 8px;
+    margin: 4px;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: line-through;
+}
+.brk-list{
+    margin: 0 4px;
+}
+.brk-list > .brk-li:hover{
+    background-color: #fff;
+    color: #212121;
+}
+.brk-sidebar > footer{
+    position: sticky; bottom: 0;
+    display: flex;
+    min-height: 16px;
+    padding: 8px 12px;
+    background-color: inherit;
+}
+.brk-tgl-sidebar{
+    position: absolute; z-index: 200;
+    left: 198px;
+    bottom: 0;
+    width: 32px;
+    line-height: 32px;
+    border-radius: 0 2px 0 0;
+    background-color: rgba(33,33,33,.4);
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+.brk-tgl-sidebar:hover{
+    background-color: rgba(33,33,33,1);
+}
+.brk-off-sidebar .brk-tgl-sidebar{
+    transform: translate(42px, 0);
+}
+
+.brk-sketch{
+    position: relative;
+    flex: 1 1 0;
+    overflow: auto;
+    outline: none;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+.brk-loading{
+    overflow: hidden;
+}
+.brk-loading:after{
+    content: '模板读取中...';
+    position: absolute; z-index: 100;
+    left: 0; top: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,.5);
+    backdrop-filter: blur(12px);
+    font-style: italic;
+    color: #808080;
+    font-weight: 600;
+}
+.brk-section{
+    position: relative;
+}
+.brk-section:after,
+.brk-sketch:before{
+    content: 'DROP HERE';
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 0;
+    padding: 0 12px;
+    background-color: #3a3a3a;
+    color: #fff;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, .5);
+    font-weight: 600;
+    font-size: 24px;
+    transition: all .24s;
+    overflow: hidden;
+    font-style: italic;
+}
+.brk-section:after{
+    position: absolute; z-index: 10;
+    left: 0; bottom: 0; right: 0;
+}
+.brk-sketch.wait4-drop:before,
+.brk-sketch.wait4-drop .brk-section:hover:after{
+    height: unset;
+    padding: 12px;
+}
+.brk-sketch.wait4-exchange .brk-section:hover{
+    position: relative; z-index: 1;
+    opacity: 0.6;
+}
+.brk-section{
+    transition: all .24s;
+}
+.brk-sketch img{
+    user-select: none;
+    pointer-events: none;
+}
+
+.brk-brick{
+    position: absolute; z-index: 50;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 38px; min-width: 100px;
+    line-height: 38px;
+    border-radius: 2px;
+    color: #212121;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    box-shadow: 0 0 12px rgba(0,0,0,.15);
+    pointer-events: none;
+    text-align: center;
+    font-family: Consolas;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.brk-contextmenu{
+    position: fixed; z-index: 100;
+    box-sizing: border-box;
+    min-width: 100px;
+    height: 0;
+    padding: 0 4px;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    backdrop-filter: blur(12px);
+    border-radius: 2px;
+    box-shadow: 0 0 3px rgba(0,0,0,.15);
+    overflow: hidden;
+    user-select: none;
+    transition: padding .24s;
+    font: normal 14px Consolas, 'Microsoft Yahei';
+}
+.brk-contextmenu.brk-active{
+    height: unset;
+    padding: 4px;
+}
+.brk-contextmenu > li {
+    padding: 6px 12px;
+    border-radius: inherit;
+    cursor: pointer;
+    transition: all .24s;
+}
+.brk-contextmenu > li:hover{
+    background-color: #000;
+}
+.brk-contextmenu > li:last-child{ color: #eb5050; }
+
+.brk-editor{
+    position: absolute;
+    z-index: 5;
+    left: 240px; top: 50%; right: 0;
+    margin: auto 0;
+    width: 400px;
+    max-width: calc(100% - 240px);
+    max-height: 100%;
+    overflow: auto;
+    background-color: rgba(187,202,212,.5);
+    backdrop-filter: blur(12px);
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .1);
+    transition: all .24s;
+    transform: translate(-100%, -50%);
+    font: normal 14px Consolas, 'Microsoft Yahei';
+}
+.brk-editor.brk-active{
+    transform: translate(0, -50%);
+}
+.brk-editor > header {
+    position: sticky;
+    top: 0;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(18px);
+    font-weight: 600;
+}
+.brk-saving > header > a:last-child:after{
+    content: '中...';
+}
+.brk-editor-form{
+    padding: 8px 0;
+}
+.brk-editor-form > label {
+    display: block;
+    padding: 8px 12px;
+}
+.brk-editor-form > label > span {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 3px 3px 0 0;
+    background: #fff;
+}
+.brk-editor-form input,
+.brk-editor-form textarea {
+    border-radius: 0 3px 3px 3px;
+}
+
+.brk-message{
+    position: absolute;
+    z-index: 100;
+    left: 240px; bottom: 0; right: 0;
+    padding: 8px 32px;
+    background: rgba(255, 66, 66, 0.86);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    font: normal 400 14px Consolas, 'Microsoft Yahei';
+    transition: transform .24s ease;
+    transform: translate(0, 100%);
+    text-align: center;
+}
+.brk-message.brk-active{
+    transform: translate(0, 0);
+}

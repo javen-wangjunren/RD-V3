@@ -1,0 +1,174 @@
+.v2_banner_001 .content {
+  height: 755px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-position: center center !important;
+}
+
+.v2_banner_001 .mml-text {
+  max-width: 975px;
+  margin-bottom: 50px;
+}
+
+.v2_banner_001 .mml-text .pre-heading {
+  font-size: 24px;
+  color: #03a57b;
+  margin-bottom: 5px;
+}
+
+.v2_banner_001 .mml-text h1 {
+  color: #262626;
+  font-size: 48px;
+  max-width: 495px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.v2_banner_001 .mml-text p {
+  max-width: 975px;
+}
+
+.v2_banner_001 .mml-btn a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 201px;
+  height: 52px;
+  background-color: #03a67b;
+  -webkit-border-radius: 26px;
+          border-radius: 26px;
+  color: #ffffff;
+}
+
+.v2_banner_001 .list {
+  width: 100%;
+  height: 270px;
+  margin-top: -20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.v2_banner_001 .list li {
+  -webkit-box-sizing: unset !important;
+          box-sizing: unset !important;
+  height: 250px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #222628;
+  color: #fff;
+}
+
+.v2_banner_001 .list li i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #03a67b;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.v2_banner_001 .list li h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.v2_banner_001 .list li p {
+  max-width: 275px;
+}
+
+.v2_banner_001 .list li:hover {
+  height: 270px;
+  background-color: #03a67b;
+  -webkit-transition: all .7s;
+  -o-transition: all .7s;
+  transition: all .7s;
+}
+
+@media screen and (max-width: 960px) {
+  .v2_banner_001 .list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: auto;
+  }
+  .v2_banner_001 .list li {
+    width: 100%;
+    height: auto;
+    padding: 60px 0;
+  }
+}

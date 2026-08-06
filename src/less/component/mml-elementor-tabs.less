@@ -1,0 +1,26 @@
+.mml-ele-tab {
+	.mml-ele-tab-title-ul{
+		&.horizon {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+	.mml-ele-tab-title-li {
+		cursor: pointer;
+	}
+	.mml-ele-tab-content {
+		display: none;
+	}
+	.mml-ele-tab-content {
+		&.active {
+			display: block;
+		}
+	}
+}
+.elementor-editor-active {
+	.mml-ele-tab {
+		.mml-ele-tab-content {
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,85 @@
+.v2_blog_002{
+    .blog-wrap{
+        display: flex;
+        // flex-wrap: wrap;
+    }
+    h2{
+        text-align: left;
+    }
+    .main{
+        max-width: 580px;
+        width: 50%;
+        height:fit-content;
+        margin-right: 20px;
+        .info{
+            text-align: left;
+        }
+        h4{
+            margin:20px 0 10px;
+        }
+        .time{
+            margin-left: 30px;
+        }
+        .link{
+            margin-top: 20px;
+        }
+    }
+
+    .list{
+        max-width: 500px;
+        width: 43%;
+        height:fit-content;
+        flex:1 1 auto;
+        margin: 0 0 0 auto;
+        > li{
+            display:flex;
+            align-items: center;
+            &:not(:last-child){
+                margin-bottom: 35px;
+            }
+        }
+        .thumb{
+            max-width: 200px;
+            width: 40%;
+            margin-right: 20px;
+        }
+        .desc{
+            flex:1;
+            text-align: left;
+        }
+        p{
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;//-webkit-box为旧的属性值，2012年最新的标准草案为flex，如果把值该为flex，将不支持多行省略号。
+            -webkit-line-clamp: 2;//webkit支持此属性，并且是一个不规范的属性，没有出现在css规范的草案中。必须结合display: -webkit-box和-webkit-box-orient: vertical;属性一起使用
+            -webkit-box-orient: vertical;
+        }
+        .link{
+            margin-top: 10px;
+        }
+    }
+    .link{
+        display: inline-block;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    @media screen and (max-width:880px){
+        h2{
+            text-align: center;
+
+        }
+        .blog-wrap{
+            flex-wrap: wrap;
+        }
+        .main{
+            width: 100%;
+            margin:0 auto 30px;
+        }
+        .list{
+            width: 100%;
+            margin:0 auto ;
+        }
+    }
+}

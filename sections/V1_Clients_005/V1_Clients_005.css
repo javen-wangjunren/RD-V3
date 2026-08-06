@@ -1,0 +1,105 @@
+.v1_clients_005 {
+  max-width: 1920px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.v1_clients_005 .box {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+}
+
+.v1_clients_005 .slicker {
+  max-width: 580px;
+  width: 49%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-right: 20px;
+  background-color: #ffffff;
+  padding: 110px 80px 90px;
+  -webkit-box-shadow: 0px 4px 21px 0px rgba(0, 0, 0, 0.07);
+          box-shadow: 0px 4px 21px 0px rgba(0, 0, 0, 0.07);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v1_clients_005 .slick-arrow {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.v1_clients_005 .slick-arrow.btn-l {
+  left: 18px;
+}
+
+.v1_clients_005 .slick-arrow.btn-r {
+  right: 18px;
+}
+
+.v1_clients_005 .list {
+  position: relative;
+  width: 51%;
+  max-width: 600px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.v1_clients_005 .list:before {
+  position: absolute;
+  left: -300px;
+  top: 0;
+  width: 300%;
+  height: 100%;
+  background-color: #f7fafe;
+  content: '';
+  display: block;
+  z-index: -1;
+}
+
+.v1_clients_005 .list li {
+  width: calc(33.333% - 20px);
+  border-width: 1px;
+  border-style: solid;
+  border-color: #5d6777;
+}
+
+@media screen and (max-width: 1024px) {
+  .v1_clients_005 .slicker {
+    padding: 80px 50px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .v1_clients_005 .box {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .v1_clients_005 .slicker {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .v1_clients_005 .list {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

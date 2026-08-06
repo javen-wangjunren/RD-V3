@@ -1,0 +1,425 @@
+@textColor: #666; // 导航文字颜色
+@navBgColor: #e2e2e2; // 导航背景色
+@subMenuBgColor: #fff; // 子导航背景色
+@stickyMenuBgColor: #fff; // sticky 导航背景色
+@currentMenuColor: #333; // 导航文字高亮颜色
+
+.m-header {
+  position: relative;
+  z-index: 50;
+  background-color: @navBgColor;
+
+  &.sticky-header {
+    .m-header-bd {
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      width: 100%;
+      background-color: @stickyMenuBgColor;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .m-logo {
+    box-sizing: border-box;
+    max-height: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .m-nav {
+    margin: 0 0 0 auto;
+    white-space: nowrap;
+    text-align: center;
+
+    .responsive-menu-toggle {
+      display: none;
+      padding: 10px;
+      color: @textColor;
+    }
+
+    .menu {
+      display: flex;
+
+      > li.menu-item {
+        position: relative;
+        flex: 1;
+      }
+
+      .current-menu-parent > a,
+      .current-menu-item > a {
+        color: @currentMenuColor;
+      }
+
+      a {
+        position: relative;
+        display: block;
+        padding: 10px;
+      }
+
+      .menu-arrow {
+        margin-left: 0.2em;
+        padding: 0 0 0 5px;
+        vertical-align: middle;
+        font-size: 0.6em;
+      }
+
+      a,
+      span {
+        color: @textColor;
+      }
+    }
+
+    .sub-menu {
+      position: absolute;
+      z-index: 100;
+      display: none;
+      min-width: 100%;
+      background-color: @subMenuBgColor;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+
+      &.active {
+        display: block;
+      }
+
+      a {
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.06);
+        }
+      }
+
+      .menu-arrow {
+        transform: rotate(-90deg);
+      }
+
+      > li.menu-item {
+        position: relative;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+        &:nth-last-child {
+          border: none;
+        }
+
+        > .sub-menu {
+          position: absolute;
+          top: 0;
+          left: 100%;
+        }
+      }
+    }
+  }
+}
+
+.stack {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .m-logo {
+    width: 100%;
+    text-align: center;
+
+    &:after {
+      position: absolute;
+      left: 50%;
+      content: "";
+      display: block;
+      width: 50%;
+      margin-top: 5px;
+      border-bottom: 1px solid #fff;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+// 双导航
+.split-menu {
+  .container {
+    position: relative;
+    display: inherit;
+  }
+
+  .m-logo {
+    position: absolute;
+    width: calc(24% - 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .m-nav {
+    width: 100%;
+
+    .menu-container {
+      float: left;
+      width: 38%;
+
+      &:nth-last-child(1) {
+        float: right;
+      }
+    }
+  }
+}
+
+// 自定义导航
+.responsive-menu-bd {
+  position: relative;
+  height: 0px;
+
+  .responsive-menu-toggle {
+    position: absolute;
+    right: 20px;
+    top: -41px;
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .m-header {
+    .container {
+      flex-wrap: wrap;
+    }
+
+    .m-logo {
+      width: 100%;
+    }
+
+    .m-nav {
+      flex: auto;
+      width: 100%;
+
+      // max-width: 60px;
+      .responsive-menu-toggle {
+        display: block;
+      }
+
+      .menu-container {
+        display: none;
+      }
+
+      .menu-container.has-template {
+        .menu {
+          flex-wrap: wrap;
+
+          > li.menu-item {
+            width: 100%;
+            flex: auto;
+          }
+
+          .sub-menu {
+            .menu-arrow {
+              transform: translateY(-50%) rotate(0deg);
+            }
+
+            > li.menu-item {
+              > .sub-menu {
+                top: 100%;
+                left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .stack {
+    .m-logo {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .split-menu {
+    .container {
+      display: flex;
+    }
+
+    .m-logo {
+      position: relative;
+      left: 0;
+      width: 100%;
+      transform: translateX(0);
+    }
+
+    .m-nav {
+      .menu-container {
+        width: 100%;
+        float: none;
+      }
+    }
+  }
+
+  .custom-menu {
+    .container {
+      flex-wrap: wrap;
+    }
+
+    .m-logo {
+      width: 100%;
+    }
+
+    .m-nav {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}
+
+// ==================== silde Menu ===================
+.slide-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9002;
+  display: none;
+  width: 100%;
+  height: 120%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.slide-close {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  line-height: 60px;
+  text-align: right;
+  font-size: 20px;
+
+  i {
+    display: inline-block;
+    cursor: pointer;
+    padding: 20px;
+  }
+}
+
+.slide-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  z-index: 100000;
+  width: 250px;
+  height: 100%;
+  overflow-y: auto;
+  border-bottom-width: 60px;
+  border-bottom-style: solid;
+  border-color: #191919;
+  color: #a6a6a6;
+  font-size: 15px;
+  background-color: #191919;
+
+  .menu-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+
+    ul li {
+      width: 100%;
+      position: relative;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      box-sizing: border-box;
+      color: #a6a6a6;
+
+      &.active {
+        color: #fff;
+
+        & > a .menu-arrow {
+          transform: rotate(180deg);
+        }
+      }
+
+      a {
+        position: relative;
+        display: block;
+        padding: 11px 5px 10px 20px;
+        margin-right: 50px;
+        text-decoration: none;
+        line-height: 19px;
+        color: inherit;
+      }
+
+      .menu-arrow {
+        position: absolute;
+        right: -40px;
+        top: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 10px;
+        color: #999;
+        transition: all 0.2s;
+      }
+
+      .sub-menu {
+        display: none;
+      }
+    }
+  }
+}
+
+.slide-menu .menu-container > ul li .sub-menu li {
+  > a {
+    padding-left: 30px;
+  }
+
+  .sub-menu li {
+    > a {
+      padding-left: 45px;
+    }
+
+    .sub-menu li a {
+      padding-left: 60px;
+    }
+  }
+}
+
+// ========
+
+.mml-ele-custom-menu {
+  display: none;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 1440px;
+  &.active {
+    display: block;
+  }
+}
+
+.elementor-editor-active.postid-153 {
+  .mml-ele-custom-menu {
+    display: block;
+    position: relative;
+    left: unset;
+    transform: none;
+    z-index: unset;
+  }
+}
+
+// mml-ele-custom-menu-1-header
+@media screen and (min-width: 1025px) {
+  .menu-item-113 > ul {
+    opacity: 0.01;
+  }
+
+  .menu-item-132 > ul {
+    opacity: 0.01;
+  }
+
+  .menu-item-126 > ul {
+    opacity: 0.01;
+  }
+
+  .menu-item-143 > ul {
+    opacity: 0.01;
+  }
+}

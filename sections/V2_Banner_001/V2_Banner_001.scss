@@ -1,0 +1,99 @@
+.v2_banner_001{
+    .content {
+        height: 755px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center center !important;
+    }
+    .mml-text{
+        max-width: 975px;
+        margin-bottom: 50px;
+        .pre-heading{
+            font-size: 24px;
+            color: #03a57b;
+            margin-bottom: 5px;
+        }
+        h1{
+            color: #262626;
+            font-size: 48px;
+            max-width: 495px;
+            margin: 0 auto;
+            margin-bottom: 15px;
+        }
+        p{
+            max-width: 975px;
+        }
+    }
+    .mml-btn{
+        a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 201px;
+            height: 52px;
+            background-color: #03a67b;
+            border-radius: 26px;
+            color: #ffffff;
+        }
+    }
+    .list{
+        width: 100%;
+        height: 270px;
+        margin-top: -20px;
+        display: flex;
+        align-items: flex-end;
+        justify-content:space-between;
+        li{
+            box-sizing: unset !important;
+            height: 250px;
+            position: relative;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #222628;
+            color: #fff;
+            i{
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #03a67b;
+                border-radius: 100%;
+                transform: translateY(-50%);
+            }
+            h3{
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            p{
+                max-width: 275px;
+            }
+            &:hover{
+               height: 270px;
+                background-color: #03a67b;
+                transition: all .7s;
+            }
+        }
+    }
+    @media screen and (max-width:960px) {
+        .list{
+            flex-direction: column;
+            height: auto;
+            li{
+                width: 100%;
+                height: auto;
+                padding: 60px 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+
+接口
+
+所有接口使用同一个链接
+/wp-admin/admin-ajax.php
+统一请求方法
+POST
+
+================================ ================================
+
+获取所有可用的 Section 列表
+参数:
+    action: 'mml_section_list'
+返回值:
+	对象
+	success: true
+	data: [ // Section 数组
+		{
+			name: Section 名称,
+			style: [ // 样式参数数组
+				{
+					key: 参数名
+					type: 类型，目前只考虑了 text ，单行文本。数组的，后面会加上。
+					desc: 参数描述，不重要，可以忽略。可能为空。
+				}
+			],
+			content: [ // 内容参数数组
+				{
+					key: 参数名
+					type: 类型，目前只考虑了 text ，单行文本
+					desc: 参数描述，不重要，可以忽略。可能为空。
+				}
+			]
+		}
+	 ]
+示例:
+	{
+		"success": true,
+		"data": [{
+			"name": "MML_Section_01",
+			"style": [{
+				"key": "class",
+				"type": "text",
+				"desc": "\u8fd9\u662f\u5565\uff1f"
+			}],
+			"content": [{
+				"key": "title",
+				"type": "text",
+				"desc": ""
+			}, {
+				"key": "img_feature",
+				"type": "text",
+				"desc": ""
+			}, {
+				"key": "alt",
+				"type": "text",
+				"desc": ""
+			}]
+		}, {
+			"name": "MML_Section_02",
+			"style": [{
+				"key": "class",
+				"type": "text",
+				"desc": "\u8fd9\u662f\u5565\uff1f"
+			}],
+			"content": [{
+				"key": "title",
+				"type": "text",
+				"desc": ""
+			}, {
+				"key": "img_feature",
+				"type": "text",
+				"desc": ""
+			}, {
+				"key": "alt",
+				"type": "text",
+				"desc": ""
+			}]
+		}]
+	}
+
+================================ ================================
+
+获取一个 Section 生成的代码（style, html, script）
+
+参数:
+	name: 必填，字符串。Section 的名字。
+	id: 必填，字符串。HTML中最外层容器的 ID ，同时也是容器的 class
+	style: 必填，字符串。 JSON 格式。
+		示例: {"color":"#037aff"}
+	content: 必填，字符串。 JSON 格式。
+		示例: {"title":"What is the best ?"}
+返回:
+	success: true/false ，如果失败，返回 false，并且在 data 中返回错误信息。
+	data: 字符串。可以直接注入的代码。
+示例:
+	{
+		"success": true,
+		"data": "<style>\n.p01-s02 {\n\tpadding: 10px;\n}\n\n.p01-s02 h2 {\n\tcolor: red;\n}\n<\/style>\n\t\t\t<div id=\"p01-s02\" class=\"p01-s02  mml-section-01\">\n\t\t\t\t<h2>What's the best ?<\/h2>\n\t\t\t\t<img class=\"lazyload \" src=\"data:image\/gif;base64,R0lGODdhAQABAPAAAP\/\/\/wAAACwAAAAAAQABAEACAkQBADs=\" alt=\"\" data-src=\"\" \/>\t\t\t<\/div>\n\t\t<script>\n\t\t\t(function ($) {\n\t\t\t\tvar id = 'p01-s02';\n\t\t\t\t$(document).ready(function () {\n\t\t\t\t\tconsole.log(id)\n\t\t\t\t})\n\t\t\t})(jQuery);\n\t\t<\/script>\n"
+	}
+
+================================ ================================
+
+================================ ================================
+
+================================ ================================

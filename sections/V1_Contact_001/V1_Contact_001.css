@@ -1,0 +1,283 @@
+.v1_contact_001 {
+  margin-top: 80px;
+  padding: 0 10px;
+  padding-bottom: 30px;
+}
+
+.v1_contact_001 .container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+}
+
+.v1_contact_001 .left-wrap {
+  max-width: 500px;
+  width: 43%;
+}
+
+.v1_contact_001 .left-wrap h2 {
+  color: #1a1a1a;
+}
+
+.v1_contact_001 .left-wrap .desc {
+  margin-top: 20px;
+  margin-bottom: 48px;
+  max-width: 465px;
+}
+
+.v1_contact_001 .left-wrap li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.v1_contact_001 .left-wrap li p {
+  color: #808080;
+}
+
+.v1_contact_001 .left-wrap .icon-wrap {
+  position: absolute;
+  left: 0;
+  max-width: 100px;
+  max-height: 100px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background-color: #ffffff;
+  -webkit-box-shadow: -1px 10px 27px 0px rgba(55, 32, 114, 0.07);
+          box-shadow: -1px 10px 27px 0px rgba(55, 32, 114, 0.07);
+}
+
+.v1_contact_001 .left-wrap img {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.v1_contact_001 .left-wrap .text-wrap {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px 20px 20px 70px;
+  margin-left: auto;
+  max-width: 450px;
+  width: 90%;
+  background-color: #ffffff;
+  -webkit-box-shadow: -1px 10px 27px 0px rgba(55, 32, 114, 0.07);
+          box-shadow: -1px 10px 27px 0px rgba(55, 32, 114, 0.07);
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.v1_contact_001 .left-wrap h5 {
+  color: #1a1a1a;
+}
+
+.v1_contact_001 .right-wrap .input-submit input:hover {
+  background: #acfcb2;
+}
+
+.v1_contact_001 .my-form-wrap {
+  max-width: 580px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 50%;
+  background-color: #03a67b;
+  -webkit-box-shadow: 0 30px 40px 0 rgba(104, 90, 86, 0.1);
+          box-shadow: 0 30px 40px 0 rgba(104, 90, 86, 0.1);
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  padding: 44px 0 24px 0;
+  margin-left: auto;
+}
+
+.v1_contact_001 .my-form-wrap .mml-form {
+  max-width: 460px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.v1_contact_001 .my-form-wrap .mml-form label {
+  margin: 0;
+}
+
+.v1_contact_001 .my-form-wrap h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.v1_contact_001 .my-form-wrap .desc {
+  font-size: 16px;
+  color: #746992;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.v1_contact_001 .my-form-wrap h5 {
+  font-size: 16px;
+  color: #ada6bf;
+}
+
+.v1_contact_001 .my-form-wrap label input, .v1_contact_001 .my-form-wrap label textarea {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  outline: none;
+  min-height: 50px;
+  padding-left: 20px;
+  padding-top: 14px;
+  outline: none;
+  background-color: #03a67b;
+  color: #FFF;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v1_contact_001 .my-form-wrap .input-row {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.v1_contact_001 .my-form-wrap .input-row:nth-of-type(4) label .codedropz-upload-handler {
+  display: none;
+}
+
+.v1_contact_001 .my-form-wrap .new-upload-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 6px;
+}
+
+.v1_contact_001 .my-form-wrap .new-upload-box p {
+  color: #ada6bf;
+}
+
+.v1_contact_001 .my-form-wrap .upload-btn {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 125px;
+  height: 50px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border: solid 2px #ffffff;
+  cursor: pointer;
+  margin-right: 23px;
+  margin-bottom: 10px;
+}
+
+.v1_contact_001 .my-form-wrap .upload-btn span {
+  display: inline-block;
+  width: 2px;
+  height: 24px;
+  background-color: #ffffff;
+  -webkit-border-radius: 1px;
+          border-radius: 1px;
+}
+
+.v1_contact_001 .my-form-wrap .upload-btn span:nth-of-type(2) {
+  -webkit-transform: translateX(-50%) rotate(90deg);
+      -ms-transform: translateX(-50%) rotate(90deg);
+          transform: translateX(-50%) rotate(90deg);
+  color: red;
+}
+
+.v1_contact_001 .my-form-wrap .tip {
+  margin-bottom: 33px;
+  color: #746992;
+}
+
+.v1_contact_001 .my-form-wrap .wpcf7-submit {
+  width: 100%;
+  outline: none;
+  border: none !important;
+  background-color: #ffffff;
+  -webkit-border-radius: 29px;
+          border-radius: 29px;
+  color: #03a67b;
+  max-height: 50px;
+  padding: 14px 0;
+  line-height: unset;
+  margin: 0;
+}
+
+.v1_contact_001 .my-form-wrap .dnd-upload-status .dnd-upload-details .name {
+  color: #746992;
+}
+
+.v1_contact_001 .my-form-wrap .dnd-upload-status .dnd-upload-image {
+  border: 1px solid #FFF;
+}
+
+.v1_contact_001 .my-form-wrap .dnd-upload-status .dnd-upload-image span {
+  color: #FFF;
+}
+
+.v1_contact_001 .my-form-wrap .dnd-upload-status .dnd-upload-details .name em {
+  color: #FFF;
+}
+
+.v1_contact_001 .my-form-wrap .dnd-upload-status .dnd-icon-remove.deleting {
+  color: #ff3232;
+}
+
+.v1_contact_001 .my-form-wrap br {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .v1_contact_001 .container {
+    display: block;
+  }
+  .v1_contact_001 .left-wrap {
+    width: 100%;
+    margin: 0 auto 40px;
+  }
+  .v1_contact_001 h2 {
+    text-align: center;
+  }
+  .v1_contact_001 .desc {
+    text-align: center;
+  }
+  .v1_contact_001 .right-wrap {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .v1_contact_001 h3 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .v1_contact_001 .left-wrap .icon-wrap {
+    max-width: 80px;
+    max-height: 80px;
+  }
+}

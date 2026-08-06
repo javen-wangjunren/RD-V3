@@ -1,0 +1,151 @@
+/*===reset===*/
+html {
+	-webkit-tap-highlight-color: transparent;
+	//解决点击后出现阴影问题
+	height: 100%;
+	min-width: 320px;
+	text-size-adjust: none;
+	//禁止横屏时，放大字体
+	overflow-scrolling: touch;/*快速滚动和回弹，模拟原生app效果*/
+}
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, iframe {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: @fontDefault;
+	line-height: 1.5;
+	font-size: 16px;
+	font-weight: 400;
+	height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: 700;
+}
+
+h1 {
+	padding-bottom: 10px;
+	font-size: 48px;
+	line-height: 1.2;
+}
+
+h2 {
+	padding-bottom: 10px;
+	font-size: 36px;
+	line-height: 1.2;
+}
+
+h3 {
+	font-size: 24px;
+	line-height: 1.5;
+}
+
+h4 {
+	font-size: 20px;
+	line-height: 1.5;
+}
+
+h5 {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+fieldset, img {
+	border: 0;
+}
+
+address, caption, cite, dfn, em, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+a {
+	color: inherit;
+	transition: @transition;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+sup {
+	vertical-align: text-top;
+}
+
+sub {
+	vertical-align: text-bottom;
+}
+
+input, select, button {
+	font: 100% @fontDefault;
+	vertical-align: baseline;
+	*vertical-align: middle;
+	outline: none;
+}
+
+input[type=checkbox], input[type=radio] {
+	vertical-align: middle;
+}
+
+textarea {
+	overflow: auto;
+	font: 100% @fontDefault;
+	resize:none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*HTML5*/
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+audio, canvas, video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+time, mark {
+	display: inline;
+}
+
+mark {
+	background-color: #ff0;
+	color: #000;
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+//去掉ios系统内阴影
+input[type=text], input[type=reset], input[type=submit], select, button, textarea {
+	-webkit-appearance: none;
+}
+
+input::-ms-clear {
+	display: none !important;
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  transition: all .24s ease;
+}

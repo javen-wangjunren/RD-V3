@@ -1,0 +1,133 @@
+.v2_footer_001 {
+  position: relative;
+}
+
+.v2_footer_001::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  display: block;
+  content: '';
+  z-index: -1;
+}
+
+.v2_footer_001::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  display: block;
+  content: '';
+  z-index: -1;
+}
+
+.v2_footer_001 > .container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: left;
+}
+
+.v2_footer_001 .f-left {
+  width: 50%;
+  padding-right: 90px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v2_footer_001 .f-left img {
+  margin: 0 0 70px;
+}
+
+.v2_footer_001 .footer-item:not(:last-child) {
+  margin-bottom: 70px;
+}
+
+.v2_footer_001 .footer-link {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.v2_footer_001 .footer-link li {
+  margin: 10px 20px 10px 0;
+}
+
+.v2_footer_001 .footer-link a:hover {
+  text-decoration: underline;
+}
+
+.v2_footer_001 .footer-contact li {
+  position: relative;
+  padding-left: 28px;
+  margin: 15px 0 30px;
+}
+
+.v2_footer_001 .footer-contact i {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.v2_footer_001 .cpr {
+  margin: 0;
+}
+
+.v2_footer_001 .f-right {
+  width: 50%;
+  padding-left: 90px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v2_footer_001 .f-right .footer-item {
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 1024px) {
+  .v2_footer_001 .f-left {
+    padding-right: 3%;
+  }
+  .v2_footer_001 .f-right {
+    padding-left: 3%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .v2_footer_001::before {
+    width: 100%;
+  }
+  .v2_footer_001::after {
+    width: 0;
+  }
+  .v2_footer_001 .f-left {
+    width: 100%;
+    padding-right: 0;
+  }
+  .v2_footer_001 .f-left img {
+    margin: 0 0 30px;
+  }
+  .v2_footer_001 .f-right {
+    display: none;
+  }
+  .v2_footer_001 .footer-item:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}

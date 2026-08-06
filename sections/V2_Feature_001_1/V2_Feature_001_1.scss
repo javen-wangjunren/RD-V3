@@ -1,0 +1,200 @@
+.v2_feature_001_1 {
+    position: relative;
+    .container {
+        text-align: left;
+    }
+    .tab-content {
+        li {
+            display: none;
+        }
+        li.active {
+            display: block;
+        }
+        i {
+            font-size: 20px;
+            color: #FFFF;
+            transform: rotate(45deg);
+        }
+    }
+    .wrapper1 {
+        display: flex;
+    }
+    h2 {
+        font-size: 40px;
+        color: #303030;
+        max-width: 260px;
+        width: 23%;
+    }
+    .img-wrap {
+        margin-left: auto;
+        max-width: 780px;
+        width: 67%;
+        position: relative;
+    }
+    .icon-wrap {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #03a679;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+   
+    .wrapper2 {
+        display: flex;
+        margin-top: 30px;
+    }
+    span {
+        display: block;
+        color: #03a679;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .text-wrap {
+        margin-left: auto;
+        max-width: 780px;
+        width: 67%;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+    h4 {
+        color: #303030;
+    }
+    p {
+        margin-top: 10px;
+        color: #777777;
+    }
+    a {
+        color: #2476ed;
+        text-decoration: underline;
+    }
+    .fixed-wrap {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        color: #03996f;
+    }
+    .tab-controller {
+        
+        display: flex;
+        flex-direction: column;
+        li {
+            margin-left: auto;
+            width: 80px;
+            height: 85px;
+            box-sizing: border-box;
+            background-color: #03996f;
+            display: flex;
+            position: relative;
+            cursor: pointer;
+            img {
+                width: 30px;
+                height: 23px;
+            }
+            span {
+                display: none;
+                color: #ffffff;
+                font-size: 14px;
+            }
+        }
+        li:hover,
+        li.active {
+            width: 167px;
+            height: 85px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+            }
+        }
+    }
+}
+
+@media (max-width:1530px) {
+    .v2_feature_001_1 {
+        .fixed-wrap {
+            position: relative;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .tab-controller {
+            flex-direction: row;
+        }
+    }
+}
+
+@media (max-width:890px) {
+    .v2_feature_001_1 {
+        .wrapper1 {
+            display: block;
+        }
+        h2 {
+            max-width: 100%;
+            text-align: center;
+            width: 100%;
+        }
+        .img-wrap {
+            width: 100%;
+            margin: 20px auto 0;
+        }
+        .wrapper2 {
+            display: block;
+        }
+        span {
+            text-align: center;
+            width: 100%;
+        }
+        .text-wrap {
+            width: 100%;
+            margin: 20px auto 0;
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .v2_feature_001_1 {
+        .tab-controller {
+            flex-wrap: wrap;
+            width: 100%;
+            li {
+                width: 25%;
+                margin-left: unset;
+            }
+            li:hover,li.active {
+                width: 25%;
+            }
+           
+        }
+    }
+}
+
+
+@media (max-width:420px) {
+    .v2_feature_001_1 {
+        .tab-controller {
+            li {
+                width: 50%;
+            }
+            li:hover,li.active {
+                width: 50%;
+            }
+           
+        }
+    }
+}

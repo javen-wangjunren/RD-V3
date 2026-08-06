@@ -1,0 +1,63 @@
+.v2_feature_016 .list > li {
+  position: relative;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  padding: 40px 20px 45px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all .24s;
+  -o-transition: all .24s;
+  transition: all .24s;
+  cursor: pointer;
+}
+
+.v2_feature_016 .list > li:hover p {
+  max-height: 1000px;
+}
+
+.v2_feature_016 .list p {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.v2_feature_016 .list .icon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+      -ms-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  overflow: hidden;
+}
+
+@media (max-width: 890px) {
+  .v2_feature_016 .list > li {
+    width: calc(50% - 20px);
+    margin: 0 auto 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .v2_feature_016 .list.mml-cols-4 {
+    max-width: 100%;
+    margin: 0;
+  }
+  .v2_feature_016 .list > li {
+    width: calc(50% - 20px);
+    margin: 0 auto 50px;
+  }
+  .v2_feature_016 .list p {
+    max-height: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .v2_feature_016 .list > li {
+    width: 100%;
+  }
+}

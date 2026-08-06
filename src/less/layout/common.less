@@ -1,0 +1,678 @@
+@import "../abstracts/variables";
+@import "./reset";
+
+@font-face {
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Slab Regular"), local("RobotoSlab-Regular"),
+    url("/wp-content/themes/mml-theme/dist/fonts/RobotoSlab-Regular.woff2")
+      format("woff2"),
+    url("/wp-content/themes/mml-theme/dist/fonts/RobotoSlab-Light.woff2")
+      format("woff2"),
+    url("/wp-content/themes/mml-theme/dist/fonts/RobotoSlab-Thin.woff2")
+      format("woff2"),
+    url("/wp-content/themes/mml-theme/dist/fonts/RobotoSlab-Bold.woff2")
+      format("woff2");
+  unicode-range: "U+0400-045F", "U+0490-0491", "U+04B0-04B1", "U+2116";
+  font-display: swap;
+}
+
+body {
+  position: relative;
+
+  // swiper
+  .swiper-pagination-bullet {
+    opacity: 1;
+    outline: none;
+  }
+}
+
+//mml-bread-crumbs(换行问题)
+.pp-breadcrumbs {
+  flex-wrap: wrap;
+}
+
+//elementor博客新闻初始化
+.single,
+.single-news,
+.single-post,
+.single-case {
+  // .elementor-widget-heading {
+  //   h1,
+  //   h2,
+  //   h3,
+  //   h4,
+  //   h5,
+  //   h6 {
+  //     line-height: 1.5em;
+  //     margin-bottom: 10px;
+  //   }
+  // }
+
+  .elementor-widget-theme-post-content {
+    ol,
+    li {
+      list-style: initial;
+      list-style-position: inside;
+    }
+
+    a {
+      font-weight: 600;
+      color: @red;
+      u {
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: underline;
+        u {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// other post type
+.single-post,
+.single-news,
+.single-knowledge_base,
+.single-cases_studies {
+  .elementor-widget-theme-post-content {
+    figure.wp-block-image,
+    figure.wp-block-embed {
+      img {
+        width: 100%;
+      }
+      .wp-block-embed__wrapper {
+        aspect-ratio: 950/535;
+      }
+    }
+    h1 {
+      padding: 0;
+    }
+    h2 {
+      padding: 0;
+    }
+  }
+}
+
+//解决设计师对一些板块需要做超出页面的设计
+.overflow-hd {
+  overflow: hidden;
+}
+
+//清除浮动
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+[class*="mml-cols"] {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+
+  > li {
+    box-sizing: border-box;
+    margin: 10px;
+  }
+}
+
+.mml-cols-2 > li {
+  width: calc(50% - 20px);
+  max-width: 600px;
+}
+
+.mml-cols-3 > li {
+  width: calc(33.3333% - 20px);
+  max-width: 400px;
+}
+
+.mml-cols-4 > li {
+  width: calc(25% - 20px);
+  max-width: 300px;
+}
+
+.mml-cols-5 > li {
+  width: calc(20% - 20px);
+  max-width: 240px;
+}
+
+.mml-cols-6 > li {
+  width: calc(16.6666% - 20px);
+  max-width: 200px;
+}
+
+.mml-cols-7 > li {
+  width: calc(14.2856% - 20px);
+  max-width: 172px;
+}
+
+.mml-cols-8 > li {
+  width: calc(12.5% - 20px);
+  max-width: 150px;
+}
+
+.mml-cols-9 > li {
+  width: calc(11.1111% - 20px);
+  max-width: 134px;
+}
+
+.mml-cols-10 > li {
+  width: calc(10% - 20px);
+  max-width: 120px;
+}
+
+@media (max-width: 1024px) {
+  .mml-cols-3 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+
+    > li {
+      width: calc(50% - 20px);
+    }
+  }
+
+  .mml-cols-5 > li {
+    width: calc(25% - 20px);
+  }
+
+  .mml-cols-6 > li {
+    width: calc(20% - 20px);
+  }
+
+  .mml-cols-7 > li {
+    width: calc(16.6666% - 20px);
+  }
+
+  .mml-cols-8 > li {
+    width: calc(14.2856% - 20px);
+  }
+
+  .mml-cols-9 > li,
+  .mml-cols-10 > li {
+    width: calc(12.5% - 20px);
+  }
+}
+
+@media (max-width: 890px) {
+  .mml-cols-3 > li {
+    width: calc(50% - 20px);
+  }
+
+  .mml-cols-4 > li,
+  .mml-cols-5 > li {
+    width: calc(33.3333% - 20px);
+  }
+
+  .mml-cols-5 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 780px;
+  }
+
+  .mml-cols-6 > li,
+  .mml-cols-7 > li {
+    width: calc(25% - 20px);
+  }
+
+  .mml-cols-7 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px;
+  }
+
+  .mml-cols-8 > li {
+    width: calc(16.6666% - 20px);
+  }
+
+  .mml-cols-9 > li,
+  .mml-cols-10 > li {
+    width: calc(14.2856% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .mml-cols-4 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 640px;
+
+    > li {
+      width: calc(50% - 20px);
+    }
+  }
+
+  .mml-cols-6 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 660px;
+
+    > li {
+      width: calc(33.3333% - 20px);
+    }
+  }
+
+  .mml-cols-8 > li {
+    width: calc(20% - 20px);
+  }
+
+  .mml-cols-9 > li,
+  .mml-cols-10 > li {
+    width: calc(16.6666% - 20px);
+  }
+}
+
+@media (max-width: 660px) {
+  .mml-cols-8 > li {
+    width: calc(25% - 20px);
+  }
+
+  .mml-cols-9 > li,
+  .mml-cols-10 > li {
+    width: calc(20% - 20px);
+  }
+}
+
+@media (max-width: 556px) {
+  .mml-cols-2 > li,
+  .mml-cols-3 > li {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .mml-cols-5 > li,
+  .mml-cols-6 {
+    max-width: 400px;
+
+    > li {
+      width: calc(50% - 20px);
+    }
+  }
+
+  .mml-cols-7 > li,
+  .mml-cols-8 > li {
+    width: calc(33.3333% - 20px);
+  }
+
+  .mml-cols-8 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 510px;
+  }
+
+  .mml-cols-9 > li,
+  .mml-cols-10 > li {
+    width: calc(25% - 20px);
+  }
+}
+
+@media (max-width: 400px) {
+  .mml-cols-4 > li,
+  .mml-cols-5 > li {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .mml-cols-7 > li,
+  .mml-cols-8 > li {
+    width: calc(50% - 20px);
+  }
+
+  .mml-cols-8 {
+    max-width: 340px;
+  }
+
+  .mml-cols-9 > li,
+  .mml-cols-10 > li {
+    width: calc(33.3333% - 20px);
+  }
+}
+
+.mml-section {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 80px 10px;
+
+  p {
+    margin: 10px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+// 或者使用自定义style设置
+.mml-backgrounded {
+  margin: 80px auto;
+  padding: 120px 10px;
+
+  & + .mml-backgrounded {
+    margin: -80px auto 80px;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.container,
+.mml-row {
+  box-sizing: border-box;
+  width: 1440px;
+  padding: 0 10px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.banner {
+  position: relative;
+  box-sizing: border-box;
+  background-size: cover;
+  max-height: 960px;
+}
+
+.ipage {
+  width: 1920px;
+  max-width: 100%;
+}
+
+.input-row {
+  display: flex;
+  align-items: baseline;
+  margin-top: 10px;
+  transition: all 0.24s;
+}
+
+.mml-form {
+  label {
+    display: block;
+    margin: 0 10px;
+    width: 100%;
+  }
+
+  input:not([type="submit"]),
+  textarea {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 10px 15px;
+    outline: none;
+    max-height: 120px;
+    transition: all 0.24s;
+    resize: none;
+  }
+
+  .mml-formrow {
+    margin: 20px -10px 0;
+    display: flex;
+  }
+
+  .mml-formtip {
+    margin: 10px 0 0;
+  }
+
+  .wpcf7-submit {
+    margin: 0 10px;
+    flex-shrink: 1;
+  }
+}
+
+.mml-article {
+  h3 {
+    margin: 30px 0 10px;
+    color: #000;
+  }
+
+  h4 {
+    margin: 10px 0;
+    color: #000;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+
+    &:before {
+      content: "\20";
+      margin: 0.5em 8px 0 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      background: @color;
+    }
+  }
+
+  img {
+    margin: 40px 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.customed-content a,
+.mml-link {
+  color: @color;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* mmlpage */
+.mml-page,
+.mml-ellipsis {
+  box-sizing: border-box;
+  display: inline-block;
+  line-height: 20px;
+  min-width: 20px;
+  user-select: none;
+  text-align: center;
+}
+
+.mml-page {
+  cursor: pointer;
+}
+
+/* 使用 slick 插件 */
+.slicker-arrow {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 20px;
+
+  &.arrow-prev {
+    left: 0;
+  }
+
+  &.arrow-next {
+    right: 0;
+  }
+}
+
+.slick-slide {
+  outline: none;
+
+  a {
+    outline: none;
+  }
+
+  .slick-item {
+    position: relative;
+    display: block !important;
+  }
+}
+
+.mml-video {
+  position: relative;
+}
+
+.vp-a {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+.slick-dots {
+  margin-top: 10px;
+  display: flex;
+  font-size: 0;
+
+  button {
+    margin: 5px;
+    height: 8px;
+    width: 8px;
+    border: none;
+    border-radius: 8px;
+    background: #c7c7c7;
+    color: transparent;
+    transition: @transition;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .slick-active {
+    button {
+      width: 30px;
+    }
+  }
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px -10px 0;
+}
+
+.btn,
+.wpcf7-submit {
+  display: inline-flex;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 12px 50px;
+  max-width: 100%;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mml-btn-box {
+  .mml-btn {
+    display: inline-block;
+    margin: 40px 0;
+    padding: 14px 50px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &:last-child {
+    .mml-btn {
+      margin-right: 0;
+    }
+  }
+}
+
+// ========> START 视频播放弹窗 - Step, 20201016
+
+.mml-vp {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  z-index: 60;
+
+  &.show {
+    display: block;
+  }
+
+  .mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 60;
+    background-color: black;
+    opacity: 0.5;
+  }
+
+  .wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    z-index: 70;
+    width: 50%;
+  }
+
+  .cont {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #999;
+
+    .hd {
+      padding: 10px;
+      border-bottom: #999 1px solid;
+      text-align: right;
+    }
+
+    .dashicons {
+      cursor: pointer;
+    }
+
+    .bd {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mml-vp {
+    .wrap {
+      width: 100%;
+    }
+  }
+}
+
+#arve .mml-vp .arve-wrapper {
+  margin: 0 auto;
+}
+
+// <======== END 视频播放弹窗 - Step, 20201016

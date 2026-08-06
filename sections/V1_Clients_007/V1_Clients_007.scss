@@ -1,0 +1,65 @@
+.v1_clients_007{
+    .list{
+        margin: 40px -10px 70px;
+
+        .slick-slide{
+            max-width: 180px;
+            margin: 0 10px;
+        }    
+        li{
+            border: solid 1px #5d6777;
+        }
+        .slick-arrow{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            font-size: 24px;
+            cursor: pointer;
+            &.btn-l{
+                left:-10px;
+            }
+            &.btn-r{
+                right:-10px;
+            }
+        }
+    }
+    .slicker{
+        margin: 0 -10px;
+         .slick-slide{
+            max-width: 580px;
+            margin: 0 10px;
+            li{
+                position: relative;
+                border: solid 1px #5d6777;
+            }
+            .vp-a{
+                position: relative;
+
+            }
+            i{
+                position: absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+                z-index: 2;
+            }
+        }  
+        
+    }
+    .slick-dots{
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    @media screen and (max-width:1200px){
+        .list .slick-arrow{
+            &.btn-l{
+                left:10px;
+            }
+            &.btn-r{
+                right:10px;
+            }
+        }
+    }
+}

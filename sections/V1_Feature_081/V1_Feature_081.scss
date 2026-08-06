@@ -1,0 +1,129 @@
+.v1_feature_081 {
+    .tit{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        text-align: left;
+        h2{
+            max-width: 580px;
+            width: 50%;
+            margin-right: 20px;
+
+        }
+        p{
+            max-width: 500px;
+            width: 45%;
+        }
+    }
+    .mml-box{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .mml-slider{
+        max-width: 580px;
+        width: 50%;
+        text-align: left;
+        margin-right: 20px;
+        >li{
+            border-bottom: 1px solid #eaeaea;
+
+        }
+        .mml-active{
+            .question{
+                i{
+                    &.fa-plus{
+                        display: none;
+                    }
+                    &.fa-minus{
+                        display: inline-block;
+                    }
+                }
+            }
+            .answer{
+                height: unset;
+                padding: 0 0 10px;
+            }
+        }
+    }
+    
+    .question{
+        position: relative;
+        padding: 10px 0;
+        color: #333;
+        cursor: pointer;
+        i{
+            position: absolute;
+            right:0;
+            top:10px;
+            font-size: 18px;
+            &.fa-minus{
+                display: none;
+            }
+        }
+    }
+    .answer{
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        transition: all .24s;
+        color: #666;
+    }
+    .slicker{
+        position: relative;
+        max-width: 500px;
+        width: 45%;
+        .slick-arrow{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            font-size: 20px;
+            cursor: pointer;
+            &.btn-l{
+                left:10px;
+            }
+            &.btn-r{
+                right:10px;
+            }
+        }
+    }
+
+    .btns{
+        justify-content: center;
+        margin-top: 100px;
+    }
+    .btn{
+        border-radius: 5px;
+        border-style: solid  ;
+        border-width: 1px;
+    }
+    @media screen and (max-width:800px){
+        .tit{
+            h2{
+                width: 100%;
+                max-width: 100%;
+                margin:0 0 10px;
+            }
+            p{
+                width: 100%;
+                max-width: 100%;
+            }
+
+        }
+        .mml-slider{
+            width: 100%;
+            margin:0 auto 30px;
+        }
+        .slicker{
+            width: 100%;
+            margin:0 auto ;
+
+        }
+        .btns{
+            margin-top: 40px;
+        }
+
+    }
+}

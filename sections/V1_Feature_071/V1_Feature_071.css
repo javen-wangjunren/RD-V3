@@ -1,0 +1,108 @@
+.v1_feature_071 {
+  position: relative;
+}
+
+.v1_feature_071::before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 61%;
+  height: 60%;
+  background-color: #eaeef3;
+}
+
+.v1_feature_071 .container {
+  max-width: 1400px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.v1_feature_071 .mml-img {
+  max-width: 492px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.v1_feature_071 .info {
+  max-width: 500px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0 20px;
+  text-align: left;
+}
+
+.v1_feature_071 .btns {
+  margin-top: 60px;
+}
+
+.v1_feature_071 .btn {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border: solid 1px #5f6776;
+}
+
+.v1_feature_071 .thumb {
+  max-width: 200px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+@media screen and (max-width: 880px) {
+  .v1_feature_071 .container {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .v1_feature_071 .mml-img {
+    width: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+        -ms-flex: auto;
+            flex: auto;
+    margin: 0 auto 30px;
+  }
+  .v1_feature_071 .info {
+    width: 70%;
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+        -ms-flex: auto;
+            flex: auto;
+    margin: 0 5%;
+  }
+  .v1_feature_071 .thumb {
+    width: 20%;
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+        -ms-flex: auto;
+            flex: auto;
+  }
+}

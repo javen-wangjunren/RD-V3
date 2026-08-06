@@ -1,0 +1,120 @@
+.v1_feature_082 .mml-box {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.v1_feature_082 .naver {
+  max-width: 280px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 30px;
+  margin-top: 30px;
+  margin-right: 20px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 4px 7px 13px 0px rgba(0, 0, 0, 0.09);
+          box-shadow: 4px 7px 13px 0px rgba(0, 0, 0, 0.09);
+  text-align: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.v1_feature_082 .naver li {
+  position: relative;
+  display: inline-block;
+  padding: 5px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all .24s;
+  -o-transition: all .24s;
+  transition: all .24s;
+  cursor: pointer;
+}
+
+.v1_feature_082 .naver li::before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #2d72da;
+  -webkit-transition: all .24s;
+  -o-transition: all .24s;
+  transition: all .24s;
+}
+
+.v1_feature_082 .naver li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.v1_feature_082 .tab-wrap {
+  max-width: 780px;
+  width: 70%;
+  margin: 0 0 0 auto;
+}
+
+.v1_feature_082 .tab-ct:not(:first-child) {
+  display: none;
+}
+
+.v1_feature_082 .tab-ct .desc {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  width: 95%;
+  background-color: #ffffff;
+  margin: -80px 0 0 auto;
+  padding: 30px 60px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: left;
+}
+
+.v1_feature_082 .btns {
+  margin-top: 50px;
+}
+
+.v1_feature_082 .btn {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+@media screen and (max-width: 800px) {
+  .v1_feature_082 .naver {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-flex: unset;
+    -webkit-flex: unset;
+        -ms-flex: unset;
+            flex: unset;
+  }
+  .v1_feature_082 .naver li {
+    margin-right: 20px;
+  }
+  .v1_feature_082 .tab-wrap {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

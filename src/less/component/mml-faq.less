@@ -1,0 +1,64 @@
+@textColor: #666; // FAQ文字颜色
+@textColorActive: #0095eb;
+
+.mml-faq{}
+.mml-faq-list {}
+.mml-faq-item {
+	position: relative;
+	margin-bottom: 10px;
+  background: rgba(0,0,0,.02);
+  color: @textColor;
+  &::before{
+		position: absolute;
+		top: 0;
+		left: 0;
+  	width: 60px;
+    height: 100%;
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: rgba(0,0,0,.1);
+		content: '';
+  }
+  &.active {
+		.mml-faq-item-hd {
+			color:@textColorActive;
+			i {
+				transform:rotate(180deg);
+			}
+		}
+  	.mml-faq-item-bd {
+  		// display: block;
+  		// height: auto;
+  	}
+  }
+	.mml-faq-item-hd {
+		display: flex;
+		padding: 20px 0;
+		cursor: pointer;
+		.number {
+    	width: 60px;
+    	text-align: center;
+		}
+		.title {
+			flex:1;
+			padding: 0 20px;
+			font-weight: normal;
+		}
+		i {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 80px;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			cursor: pointer;
+			transition: all .6s ease;
+		}
+	}
+	.mml-faq-item-bd {
+		display: none;
+		padding: 0 80px 20px 80px;
+		// transition: all 1s ease;
+	}
+}

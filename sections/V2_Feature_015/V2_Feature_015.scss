@@ -1,0 +1,31 @@
+.v2_feature_015{
+    .list{
+        >li{
+            position: relative;
+            padding:110px 30px 50px;
+            margin-top: 140px;
+            border-bottom: 5px solid transparent;
+            border-radius: 6px;
+            text-align: left;
+            transition: all .24s;
+            // overflow: hidden;
+        }
+        .icon{
+            position: absolute;
+            top:0;
+            left:50%;
+            transform: translate(-50%,-50%);
+            max-width: 160px;
+            max-height: 160px;
+            border: solid 10px #ffffff;
+            border-radius: 50%;
+            box-sizing: border-box;
+            overflow: hidden;
+
+        }
+        p{
+            transition: all .24s;
+
+        }
+    }
+}

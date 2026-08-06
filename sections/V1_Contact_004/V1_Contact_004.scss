@@ -1,0 +1,326 @@
+.v1_contact_004 {
+    .top {
+        h2 {
+            color: #1a1a1a;
+        }
+
+        .desc {
+            color: #808080;
+            max-width: 960px;
+            width: 82%;
+            margin: 20px auto 0;
+        }
+
+        .slicker {
+            margin-top: 30px;
+        }
+
+        .slick-dots {
+            justify-content: center;
+            margin-top: 38px;
+        }
+
+        .slick-active button {
+            width: 50px;
+            background-color: #03a67b;
+        }
+
+        .slick-slide {
+            margin: 0 5px;
+        }
+    }
+
+    .bottom {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        margin-top: 80px;
+
+        .left-wrap {
+            max-width: 580px;
+            width: 50%;
+            margin-right: 10px;
+            h3 {
+                color: #1a1a1a;
+            }
+
+            ul {
+                margin-top: 20px;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                color: #333333;
+
+                &:nth-last-of-type(1) {
+                    margin-bottom: 0;
+                }
+            }
+
+            i {
+                color: #03a67b;
+                font-size: 20px;
+                margin-right: 20px;
+            }
+
+            .img-wrap {
+                margin-top: 40px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .text-wrap {
+                position: absolute;
+                background-color: rgba(111, 237, 188, 0.5);
+                padding: 40px;
+                box-sizing: border-box;
+                max-width: 500px;
+                width: 87%;
+                box-sizing: border-box;
+
+                h3 {
+                    border-radius: 4px;
+                    margin-bottom: 20px;
+                    color: #038764;
+                }
+
+                div {
+                    color: #038764;
+                    border-bottom: 1px solid #66d9ad;
+                    padding-bottom: 4px;
+                    margin-bottom: 8px;
+                }
+            }
+
+        }
+
+        .right-wrap {
+            .input-submit {
+                input:hover {
+                    background: #acfcb2;
+                }
+            }
+        }
+
+        .my-form-wrap {
+            max-width: 580px;
+            box-sizing: border-box;
+            width: 50%;
+            background-color: #03a67b;
+            box-shadow: 0 30px 40px 0 rgba(104, 90, 86, 0.10);
+            border-radius: 10px;
+            padding: 44px 0 24px 0;
+            margin-left: auto;
+
+            .mml-form {
+                max-width: 460px;
+                width: 80%;
+                margin: 0 auto;
+
+                label {
+                    margin: 0;
+                }
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 10px;
+                color: #ffffff;
+            }
+
+            .desc {
+                font-size: 16px;
+                color: #746992;
+                text-align: center;
+                margin-bottom: 36px;
+            }
+
+            h5 {
+                font-size: 16px;
+                color: #ada6bf;
+            }
+
+            label {
+
+                input,
+                textarea {
+                    border: 1px solid rgba(255, 255, 255, 0.5);
+                    outline: none;
+                    min-height: 50px;
+                    padding-left: 20px;
+                    padding-top: 14px;
+                    outline: none;
+                    background-color: #03a67b;
+                    color: #FFF;
+                    border-radius: 5px;
+                    box-sizing: border-box;
+
+                    &:focus {
+                        // border: solid 2px #ffffff;
+                    }
+                }
+            }
+
+            .input-row {
+                margin-top: 0;
+                margin-bottom: 10px;
+
+                &:nth-of-type(4) {
+                    label {
+                        .codedropz-upload-handler {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .new-upload-box {
+                display: flex;
+                align-items: center;
+                margin-top: 6px;
+
+                p {
+                    color: #ada6bf;
+                }
+            }
+
+            .upload-btn {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 125px;
+                height: 50px;
+                border-radius: 5px;
+                border: solid 2px #ffffff;
+                cursor: pointer;
+                margin-right: 23px;
+                margin-bottom: 10px;
+
+                span {
+                    display: inline-block;
+                    width: 2px;
+                    height: 24px;
+                    background-color: #ffffff;
+                    border-radius: 1px;
+
+                    &:nth-of-type(2) {
+                        transform: translateX(-50%) rotate(90deg);
+                        color: red;
+                    }
+                }
+            }
+
+            .tip {
+                margin-bottom: 33px;
+                color: #746992;
+            }
+
+            .wpcf7-submit {
+                width: 100%;
+                outline: none;
+                border: none !important;
+                background-color: #ffffff;
+                border-radius: 29px;
+                color: #03a67b;
+                max-height: 50px;
+                padding: 14px 0;
+                line-height: unset;
+                margin: 0;
+            }
+
+            .dnd-upload-status {
+                .dnd-upload-details .name {
+                    color: #746992;
+                }
+
+                .dnd-upload-image {
+                    border: 1px solid #FFF;
+
+                    span {
+                        color: #FFF;
+                    }
+                }
+
+                .dnd-upload-details .name em {
+                    color: #FFF;
+                }
+
+                .dnd-icon-remove.deleting {
+                    color: #ff3232;
+                }
+            }
+
+            // .codedropz-upload-wrapper {
+            // 	.codedropz-upload-wrapper {
+            // 		display: none;
+            // 	}
+            // }
+            // .codedropz-upload-handler {
+            // 	margin-top: 10px;
+            // 	border: 1px solid #DDDDDD;
+            // }
+            // .codedropz-upload-inner {
+            // 	a {
+            // 		color: #dddddd;
+            // 		display: flex;
+            // 		align-items: center;
+            // 		justify-content: center;
+            // 	}
+            // 	.fa-cloud-upload-alt {
+            // 		margin-right: 20px;
+            // 	}
+            // }
+            br {
+                display: none;
+            }
+        }
+    }
+
+
+}
+
+@media (max-width:768px) {
+    .v1_contact_004 {
+        .container {
+            display: block;
+        }
+
+        .bottom {
+            .left-wrap {
+                width: 100%;
+                margin: 0 auto 40px;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            .desc {
+                text-align: center;
+            }
+
+            .right-wrap {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            h3 {
+                text-align: left;
+            }
+
+        }
+
+    }
+}
+
+
+@media (max-width:500px) {
+    .v1_contact_004 .bottom .left-wrap .text-wrap {
+        padding: 20px;
+    }
+}

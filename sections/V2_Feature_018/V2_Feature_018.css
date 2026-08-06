@@ -1,0 +1,68 @@
+.v2_feature_018.mml-section {
+  padding: 80px 0;
+}
+
+.v2_feature_018 > .container {
+  max-width: 1920px;
+  width: 100%;
+}
+
+.v2_feature_018 .list {
+  margin: 0;
+}
+
+.v2_feature_018 .list > li {
+  width: 33.3333%;
+  max-width: 100%;
+  padding: 60px 20px 50px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all .24s;
+  -o-transition: all .24s;
+  transition: all .24s;
+}
+
+.v2_feature_018 .list p {
+  max-width: 420px;
+  margin: 10px auto;
+}
+
+.v2_feature_018 img {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  overflow: hidden;
+}
+
+.v2_feature_018 .icon {
+  width: 62px;
+  height: 62px;
+  line-height: 62px;
+  font-size: 20px;
+  border-style: solid;
+  border-width: 2px;
+  text-align: center;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  margin: 0 auto 30px;
+  -webkit-transition: all .24s;
+  -o-transition: all .24s;
+  transition: all .24s;
+}
+
+.v2_feature_018 .link {
+  display: inline-block;
+}
+
+@media screen and (max-width: 1024px) {
+  .v2_feature_018 .list.mml-cols-3 {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .v2_feature_018 .list > li {
+    width: 100%;
+    padding: 20px;
+  }
+}

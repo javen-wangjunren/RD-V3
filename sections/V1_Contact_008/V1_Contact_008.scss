@@ -1,0 +1,124 @@
+.v1_contact_008{
+    .mml-box{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 70px -10px 0;
+        
+    }
+    .mml-form{
+        max-width: 580px;
+        width: calc(50% - 20px);
+        margin: 0 10px ;
+        border-radius: 5px;
+        padding: 50px 60px;
+        box-sizing: border-box;
+
+        label{
+            text-align: left;
+            transition: color .24s;
+            &.focus{
+                color: #05f0b1;
+            }
+        }
+        input:not([type="submit"]), textarea{
+            border-radius: 5px;
+            border-width: 1px;
+            border-style: solid;
+            outline: 1px solid transparent;
+            box-shadow: none;
+            &:focus,&:active{
+                border-radius: 5px;
+            }
+
+        }
+        input[type="submit"]{
+            width: 100%;
+            border-radius: 29px;
+        }
+        div.wpcf7 .ajax-loader{
+            position: absolute;
+            right:0;
+            top:0;
+        }
+    }
+    .info{
+        position: relative;
+        max-width: 580px;
+        width: calc(50% - 20px);
+        margin: 0 10px ;
+        padding-top: 40px;
+        text-align: left;
+        &::before{
+            position: absolute;
+            top:50%;
+            right:50px;
+            z-index: -1;
+            transform: translateY(-50%);
+            display: block;
+            content: '';
+            background-color: #fafafa;
+            width: 200%;
+            height: 78%;
+        }
+    }
+    .list{
+        margin-bottom: 40px;
+        li{
+            position: relative;
+            padding-left: 40px;
+            margin:10px 0;
+        }
+        i{
+            position: absolute;
+            left:0;
+            top:2px;
+        }
+    }
+    .mml-img{
+        position: relative;
+        max-width: 580px;
+    }
+    .detail{
+        position: absolute;
+        top:50px;
+        left:50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        max-width: 500px;
+        width: 95%;
+        padding:30px 40px 50px;
+        box-sizing: border-box;
+        h4{
+            margin-bottom: 10px;
+        }
+        li{
+            &:not(:first-child){
+                padding:5px 0;
+                border-bottom: 1px solid #66d9ad;
+            }
+        }
+    }
+
+    @media screen and (max-width:880px){
+        .mml-box{
+            margin: 70px 0 0;
+        }
+        .info{
+            width: 100%;
+            margin:0 auto 30px;
+        }
+        .mml-form{
+            width: 100%;
+            margin:0 auto ;
+        }
+    }
+    @media screen and (max-width:500px){
+        .detail{
+            position: relative;
+            top:0;
+            width: 100%;
+            margin:0 auto ;
+
+        }
+    }
+}

@@ -1,0 +1,96 @@
+.v1_feature_082 {
+    .mml-box{
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .naver{
+        max-width: 280px;
+        flex:1;
+        height: fit-content;
+        padding: 30px;
+        margin-top: 30px;
+        margin-right: 20px;
+        background-color: #ffffff;
+        box-shadow: 4px 7px 13px 0px 
+            rgba(0, 0, 0, 0.09);
+        text-align: left;
+        box-sizing: border-box;
+        li{
+            position: relative;
+            display: inline-block;
+            padding: 5px 0;
+            box-sizing: border-box;
+            transition: all .24s;
+            cursor: pointer;
+
+            &::before{
+                position: absolute;
+                left:0;
+                bottom:0;
+                display: block;
+                content: '';
+                width: 0;
+                height: 2px;
+                background-color: #2d72da;
+                transition: all .24s;
+            }
+
+            &:not(:last-child){
+                margin-bottom: 10px;
+            }
+            
+        }
+    }
+
+    .tab-wrap{
+        max-width: 780px;
+        width: 70%;
+        margin: 0 0 0 auto;
+    }
+    .tab-ct{
+        &:not(:first-child){
+            display: none;
+        }
+
+        .desc{
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+            width: 95%;
+        	background-color: #ffffff;
+            margin: -80px 0 0 auto;
+            padding:30px 60px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+    }
+    .btns{
+        margin-top: 50px;
+    }
+   
+    .btn{
+        border-radius: 5px;
+        border-style: solid  ;
+        border-width: 1px;
+    }
+
+    @media screen and (max-width:800px){
+        .naver{
+            width: 100%;
+            max-width: 100%;
+            margin:0 auto 30px;
+            display: flex;
+            flex-wrap: wrap;
+            flex:unset;
+            li{
+                    margin-right: 20px;
+            }
+        }
+        .tab-wrap{
+            width: 100%;
+            margin:0 auto ;
+
+        }
+    }
+}

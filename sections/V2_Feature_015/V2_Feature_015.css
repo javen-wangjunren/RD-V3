@@ -1,0 +1,35 @@
+.v2_feature_015 .list > li {
+  position: relative;
+  padding: 110px 30px 50px;
+  margin-top: 140px;
+  border-bottom: 5px solid transparent;
+  -webkit-border-radius: 6px;
+          border-radius: 6px;
+  text-align: left;
+  -webkit-transition: all .24s;
+  -o-transition: all .24s;
+  transition: all .24s;
+}
+
+.v2_feature_015 .list .icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  max-width: 160px;
+  max-height: 160px;
+  border: solid 10px #ffffff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+}
+
+.v2_feature_015 .list p {
+  -webkit-transition: all .24s;
+  -o-transition: all .24s;
+  transition: all .24s;
+}

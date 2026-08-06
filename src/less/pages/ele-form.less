@@ -1,0 +1,111 @@
+// @textarea_height: 120px;
+@label_width_pc: 48%;
+@label_textAlign: left;
+
+//文件上传start
+@uploadFile_border_color: #eee;
+@uploadFile_border_width: 1px 1px 1px 1px;
+@uploadFile_border_style: solid;
+@uploadFile_container_bgColor: #fafafa;
+@uploadFile_text_color: #898989;
+@uploadFile_text_size: 16px;
+@uploadFile_text_weight: 400;
+//文件上传end
+
+
+.ele-form {
+    label {
+        text-align: @label_textAlign;
+
+        input:not([type="submit"]),
+        textarea {
+            background-color: #fafafa;
+            padding: 8px 20px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+
+            &:focus {
+                border: 1px solid #ccc;
+            }
+        }
+
+        textarea {
+            // height: @textarea_height;
+        }
+    }
+
+    &.row {
+        .required-info {
+            display: flex;
+            justify-content: space-between;
+
+            label {
+                width: @label_width_pc;
+            }
+        }
+    }
+
+    &.mb-5 {
+        label {
+            margin-bottom: 5px;
+        }
+    }
+
+    &.mb-10 {
+        label {
+            margin-bottom: 10px;
+        }
+    }
+
+    &.mb-15 {
+        label {
+            margin-bottom: 15px;
+        }
+    }
+
+    &.mb-20 {
+        label {
+            margin-bottom: 20px;
+        }
+    }
+
+    //文件上传start
+    .codedropz-upload-handler {
+        border-color: @uploadFile_border_color;
+        border-width: @uploadFile_border_width;
+        border-style: @uploadFile_border_style;
+        background-color: @uploadFile_container_bgColor;
+        margin-bottom: 0;
+    }
+
+    .codedropz-btn-wrap {
+        color: @uploadFile_text_color;
+        font-size: @uploadFile_text_size;
+        font-weight: @uploadFile_text_weight;
+    }
+
+    .codedropz-upload-inner {
+
+        h3,
+        span {
+            display: none;
+        }
+    }
+
+    .dnd-upload-counter {
+        display: none;
+    }
+
+    //文件上传end
+    @media screen and (max-width: 767px) {
+        &.row {
+            .required-info {
+                display: block;
+
+                label {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

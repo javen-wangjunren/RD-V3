@@ -1,0 +1,63 @@
+.v1_feature_063 .slick-arrow {
+  top: unset;
+  bottom: -90px;
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  opacity: .2;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  line-height: 50px;
+  text-align: center;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.v1_feature_063 .slick-arrow i {
+  color: #fff;
+}
+
+.v1_feature_063 .slick-arrow.arrow-prev {
+  left: 45%;
+}
+
+.v1_feature_063 .slick-arrow.arrow-next {
+  right: 45%;
+}
+
+.v1_feature_063 .slick-arrow:hover {
+  opacity: 1;
+}
+
+@media (max-width: 1000px) {
+  .v1_feature_063 .slick-arrow.arrow-prev {
+    left: 42%;
+  }
+  .v1_feature_063 .slick-arrow.arrow-next {
+    right: 42%;
+  }
+}
+
+@media (max-width: 680px) {
+  .v1_feature_063 .slick-arrow.arrow-prev {
+    left: 40%;
+  }
+  .v1_feature_063 .slick-arrow.arrow-next {
+    right: 40%;
+  }
+}
+
+@media (max-width: 540px) {
+  .v1_feature_063 ul.list {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .v1_feature_063 .slick-arrow.arrow-prev {
+    left: 30%;
+  }
+  .v1_feature_063 .slick-arrow.arrow-next {
+    right: 30%;
+  }
+}
