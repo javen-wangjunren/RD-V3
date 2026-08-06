@@ -318,58 +318,6 @@
 		}
 		bindEvents(form);
 
-		// #region debug-point A:submit-fields
-		form.addEventListener('submit', function () {
-			var names = [];
-			var els = form.querySelectorAll('input, select, textarea');
-			for (var i = 0; i < els.length; i++) {
-				var n = els[i].getAttribute('name');
-				if (n) {
-					names.push(n);
-				}
-			}
-			var dup = {}, iPlace = 0, navMap = {};
-			var navRe = /^rd_site_header\[nav_items\]\[(\d+)\]/;
-			for (var i = 0; i < names.length; i++) {
-				if (names[i].indexOf('__i__') >= 0) {
-					iPlace++;
-				}
-				dup[names[i]] = (dup[names[i]] || 0) + 1;
-				var m = names[i].match(navRe);
-				if (m) {
-					navMap[m[1]] = (navMap[m[1]] || 0) + 1;
-				}
-			}
-			var dupList = [], perNav = [];
-			for (var k in dup) {
-				if (dup[k] > 1) {
-					dupList.push(k + ' x' + dup[k]);
-				}
-			}
-			for (var k2 in navMap) {
-				perNav.push(k2 + ':' + navMap[k2]);
-			}
-			fetch("http://127.0.0.1:7777/event", {
-				method: "POST",
-				body: JSON.stringify({
-					sessionId: "header-save-card-loss",
-					runId: "pre",
-					hypothesisId: "A",
-					location: "site-header-admin.js:submit",
-					msg: "[DEBUG] submit field summary",
-					data: {
-						total: names.length,
-						placeholderCount: iPlace,
-						duplicateCount: Object.keys(dup).filter(function (k) { return dup[k] > 1; }).length,
-						duplicates: dupList.slice(0, 20),
-						perNav: perNav.sort()
-					},
-					ts: Date.now()
-				})
-			}).catch(function () {});
-		});
-		// #endregion
-
 		// 初始状态：按当前 select 值应用分支显隐（模板行同样生效）
 		var selects = form.querySelectorAll('[data-rd-branch]');
 		for (var i = 0; i < selects.length; i++) {
