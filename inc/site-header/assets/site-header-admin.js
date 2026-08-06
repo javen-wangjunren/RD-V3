@@ -71,10 +71,14 @@
 	 */
 	function replacePlaceholders(root, pos, idx) {
 		var fields = root.querySelectorAll('input, select, textarea');
+		console.log('[replace] found ' + fields.length + ' fields in root, pos=' + pos + ' idx=' + idx);
 		for (var f = 0; f < fields.length; f++) {
 			var name = fields[f].getAttribute('name');
-			if (name && name.slice(pos, pos + 4) === '__i__') {
+			var match = name && name.slice(pos, pos + 4) === '__i__';
+			console.log('[replace] field[' + f + '] name=' + name + ' sliceAt' + pos + '="' + (name ? name.slice(pos, pos + 4) : '') + '" match=' + match);
+			if (name && match) {
 				fields[f].setAttribute('name', name.slice(0, pos) + String(idx) + name.slice(pos + 4));
+				console.log('[replace] field[' + f + '] -> ' + fields[f].getAttribute('name'));
 			}
 		}
 		var templates = root.querySelectorAll('template[data-rd-template]');
