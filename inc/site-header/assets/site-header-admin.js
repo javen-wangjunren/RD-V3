@@ -117,9 +117,18 @@
 		if (!repeater) {
 			return;
 		}
-		var template = repeater.querySelector('template[data-rd-template]');
-		var rowsEl = null;
+		// 模板必须是 repeater 的直属子元素：
+		// 嵌套 repeater（sections→tabs→cards）的内层行里也有 template[data-rd-template]，
+		// querySelector 深度优先会先命中内层模板（如 link_row），导致克隆出无 label 的字段。
+		var template = null;
 		var children = repeater.children;
+		for (var i = 0; i < children.length; i++) {
+			if (children[i].matches('template[data-rd-template]')) {
+				template = children[i];
+				break;
+			}
+		}
+		var rowsEl = null;
 		for (var i = 0; i < children.length; i++) {
 			if (children[i].classList.contains('rd-repeater-rows')) {
 				rowsEl = children[i];
