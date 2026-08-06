@@ -8,5 +8,8 @@
 # 插件开发目录（独立维护）
 plugins/
 
+# 调试会话产物（Debug Server 日志与环境文件）
+.dbg/
+
 # macOS
 .DS_Store

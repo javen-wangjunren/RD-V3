@@ -51,9 +51,45 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			}
 
 			$saved = false;
+			$diag  = '';
 			if ( isset( $_POST['rd_site_header_submit'] ) && check_admin_referer( 'rd_site_header_save', 'rd_site_header_nonce' ) ) {
-				$raw = isset( $_POST['rd_site_header'] ) && is_array( $_POST['rd_site_header'] ) ? wp_unslash( $_POST['rd_site_header'] ) : [];
-				update_option( RD_Site_Header::OPTION_KEY, RD_Site_Header::normalize( (array) $raw ) );
+				$raw        = isset( $_POST['rd_site_header'] ) && is_array( $_POST['rd_site_header'] ) ? wp_unslash( $_POST['rd_site_header'] ) : [];
+				$normalized = RD_Site_Header::normalize( (array) $raw );
+				update_option( RD_Site_Header::OPTION_KEY, $normalized );
+				$readback = RD_Site_Header::get_content();
+				// #region debug-point A/B/C/D:save-digest
+				$digest = function ( $data ) {
+					$leaves = 0;
+					$per    = [];
+					if ( isset( $data['nav_items'] ) && is_array( $data['nav_items'] ) ) {
+						foreach ( $data['nav_items'] as $ni ) {
+							$sub  = 0;
+							$walk = function ( $d ) use ( &$walk, &$sub ) {
+								if ( is_array( $d ) ) {
+									foreach ( $d as $v ) {
+										$walk( $v );
+									}
+								} else {
+									$sub++;
+								}
+							};
+							$walk( $ni );
+							$leaves += $sub;
+							$per[]   = ( isset( $ni['label'] ) ? $ni['label'] : '?' ) . '|' . ( isset( $ni['mega_type'] ) ? $ni['mega_type'] : '?' ) . '=' . $sub;
+						}
+					}
+
+					return [ 'leaves' => $leaves, 'per' => $per ];
+				};
+				$d_raw  = $digest( $raw );
+				$d_norm = $digest( $normalized );
+				$d_back = $digest( $readback );
+				$diag   = 'RAW leaves=' . $d_raw['leaves'] . ' | NORM leaves=' . $d_norm['leaves'] . ' | READBACK leaves=' . $d_back['leaves']
+					. "\nRAW per: " . implode( ', ', $d_raw['per'] )
+					. "\nNORM per: " . implode( ', ', $d_norm['per'] )
+					. "\nREADBACK per: " . implode( ', ', $d_back['per'] );
+				error_log( '[DEBUG header-save-card-loss] ' . str_replace( "\n", ' | ', $diag ) );
+				// #endregion
 				$saved = true;
 			}
 
@@ -66,6 +102,11 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			if ( $saved ) {
 				echo '<div class="notice notice-success is-dismissible"><p>Header 已保存。</p></div>';
 			}
+			// #region debug-point A/B/C/D:page-digest
+			if ( $diag !== '' ) {
+				echo '<div class="notice notice-info"><pre style="white-space:pre-wrap;max-height:400px;overflow:auto;">' . esc_html( $diag ) . '</pre></div>';
+			}
+			// #endregion
 
 			echo '<form method="post" action="">';
 			wp_nonce_field( 'rd_site_header_save', 'rd_site_header_nonce' );
