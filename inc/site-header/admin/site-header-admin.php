@@ -51,9 +51,26 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			}
 
 			$saved = false;
+			$dump  = '';
 			if ( isset( $_POST['rd_site_header_submit'] ) && check_admin_referer( 'rd_site_header_save', 'rd_site_header_nonce' ) ) {
 				$raw = isset( $_POST['rd_site_header'] ) && is_array( $_POST['rd_site_header'] ) ? wp_unslash( $_POST['rd_site_header'] ) : [];
 				update_option( RD_Site_Header::OPTION_KEY, RD_Site_Header::normalize( (array) $raw ) );
+				// 临时诊断：dump 每个 tab 的 cards 键名
+				$lines = [];
+				$ni = isset( $raw['nav_items'] ) ? $raw['nav_items'] : [];
+				foreach ( $ni as $nii => $item ) {
+					$secs = isset( $item['sections'] ) ? $item['sections'] : [];
+					foreach ( $secs as $si => $sec ) {
+						$tabs = isset( $sec['tabs'] ) ? $sec['tabs'] : [];
+						foreach ( $tabs as $ti => $tab ) {
+							$keys = isset( $tab['cards'] ) && is_array( $tab['cards'] ) ? array_keys( $tab['cards'] ) : [];
+							$tl = isset( $tab['tab_label'] ) ? substr( $tab['tab_label'], 0, 10 ) : 'tab' . $ti;
+							$lines[] = 'sec' . $si . '/' . $tl . ' cards keys=[' . implode( ',', $keys ) . '] count=' . count( $keys );
+						}
+					}
+				}
+				$dump = implode( "\n", $lines );
+				error_log( '[DEBUG] ' . str_replace( "\n", ' | ', $dump ) );
 				$saved = true;
 			}
 
@@ -65,6 +82,9 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			echo '<p>内容契约对齐 <code>设计稿/header.md</code>：单 option 存储，前台 <code>rd-header</code> 渲染。</p>';
 			if ( $saved ) {
 				echo '<div class="notice notice-success is-dismissible"><p>Header 已保存。</p></div>';
+			}
+			if ( $dump !== '' ) {
+				echo '<div class="notice notice-info"><pre style="white-space:pre-wrap;max-height:300px;overflow:auto;">' . esc_html( $dump ) . '</pre></div>';
 			}
 
 			echo '<form method="post" action="">';
