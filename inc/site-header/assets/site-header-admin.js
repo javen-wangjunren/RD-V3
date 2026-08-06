@@ -57,6 +57,33 @@
 	}
 
 	/**
+	 * 递归替换"当前层"占位符 __i__ 为行索引。
+	 *
+	 * 克隆行卡片后，卡片内部嵌套 repeater 的 <template> 内容不会被 querySelectorAll
+	 * 遍历（DOM 规范：template 元素的内容在其 .content 中），但其字段名共享同一前缀
+	 * （如 ...[sections][__i__]），必须一并替换当前层占位符。否则内层 repeater 添加时
+	 * 会以错误层级计算索引（如 tabs['__i__'] 与 tabs[0] 并存），提交后 PHP 数组结构
+	 * 错位导致 cards 等字段丢失。
+	 *
+	 * @param {DocumentFragment|Element} root 克隆后的行节点
+	 * @param {number} pos 模板首字段名中 __i__ 的位置（当前层）
+	 * @param {number} idx 新行索引
+	 */
+	function replacePlaceholders(root, pos, idx) {
+		var fields = root.querySelectorAll('input, select, textarea');
+		for (var f = 0; f < fields.length; f++) {
+			var name = fields[f].getAttribute('name');
+			if (name && name.slice(pos, pos + 4) === '__i__') {
+				fields[f].setAttribute('name', name.slice(0, pos) + String(idx) + name.slice(pos + 4));
+			}
+		}
+		var templates = root.querySelectorAll('template[data-rd-template]');
+		for (var t = 0; t < templates.length; t++) {
+			replacePlaceholders(templates[t].content, pos, idx);
+		}
+	}
+
+	/**
 	 * 更新 repeater 标题旁的计数徽标。
 	 *
 	 * @param {Element} repeater [data-rd-repeater]
@@ -140,19 +167,15 @@
 		}
 		var idx = nextIndex(rowsEl, template);
 
-		// 仅替换"行级"占位符：以模板第一个字段名中 __i__ 的位置为准，
+		// 仅替换"当前层"占位符：以模板第一个字段名中 __i__ 的位置为准，
 		// 嵌套 repeater（sections→tabs→cards…）更深层的 __i__ 保留不动。
+		// 注意：必须递归进入卡片内部的 <template> content，否则内层字段名
+		// 残留当前层 __i__，保存后 PHP 解析出的数组层级错位（cards 丢失）。
 		var tplField = template.querySelector('input, select, textarea');
 		var pos = tplField && tplField.name ? tplField.name.indexOf('__i__') : -1;
 		var frag = document.importNode(template.content, true);
 		if (pos >= 0) {
-			var fields = frag.querySelectorAll('input, select, textarea');
-			for (var f = 0; f < fields.length; f++) {
-				var name = fields[f].getAttribute('name');
-				if (name && name.slice(pos, pos + 4) === '__i__') {
-					fields[f].setAttribute('name', name.slice(0, pos) + String(idx) + name.slice(pos + 4));
-				}
-			}
+			replacePlaceholders(frag, pos, idx);
 		}
 		rowsEl.appendChild(frag);
 
