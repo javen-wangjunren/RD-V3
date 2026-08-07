@@ -1,6 +1,6 @@
 <?php
 /**
- * RD Site Header — 后台编辑页
+ * RD New Header — 后台编辑页
  *
  * 复刻 设计稿/header.md 的后台编辑器布局逻辑：
  * 折叠卡片 / 计数徽标 / 添加删除 / 排序（仅 Capabilities Section·Tab 与 Solutions Tab）/ 条件渲染。
@@ -24,8 +24,8 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 
 		public static function register_menu() {
 			add_menu_page(
-				'RD Site Header',
-				'RD Site Header',
+				'RD New Header',
+			'RD New Header',
 				'manage_options',
 				self::MENU_SLUG,
 				[ __CLASS__, 'render_page' ],
@@ -61,7 +61,7 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			$nav_items = $content['nav_items'];
 
 			echo '<div class="wrap rd-header-admin">';
-			echo '<h1>RD Site Header</h1>';
+			echo '<h1>RD New Header</h1>';
 			echo '<p>内容契约对齐 <code>设计稿/header.md</code>：单 option 存储，前台 <code>rd-header</code> 渲染。</p>';
 			if ( $saved ) {
 				echo '<div class="notice notice-success is-dismissible"><p>Header 已保存。</p></div>';
@@ -471,15 +471,12 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			$html .= '<span class="rd-collapse-arrow">▾</span>';
 			$html .= '</div>';
 			$html .= '<div class="rd-collapse-body">';
-			// 紧凑行：Name + Href + 删除
+			// 紧凑行：Name + Href + SVG + 删除
 			$html .= '<div class="rd-field-inline">';
 			$html .= self::text_input( $prefix . '[label]', $label, 'Name' );
 			$html .= self::text_input( $prefix . '[href]', $href, '链接' );
+			$html .= '<input type="text" class="rd-industry-svg-input" name="' . esc_attr( $prefix . '[icon_svg]' ) . '" value="' . esc_attr( $svg ) . '" placeholder="Icon SVG" />';
 			$html .= '<button type="button" class="button rd-remove" data-rd-remove>删除</button>';
-			$html .= '</div>';
-			// SVG 代码：小字号 textarea，不需要看到全文
-			$html .= '<div class="rd-industry-svg">';
-			$html .= '<textarea class="large-text" rows="3" name="' . esc_attr( $prefix . '[icon_svg]' ) . '" placeholder="Icon SVG" style="font-size:11px;font-family:monospace">' . esc_textarea( $svg ) . '</textarea>';
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '</div>';
@@ -873,12 +870,11 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			.rd-header-admin .rd-industry-row .rd-collapse-body {
 				padding: 6px 10px 10px;
 			}
-			.rd-header-admin .rd-industry-svg {
-				margin-top: 6px;
-			}
-			.rd-header-admin .rd-industry-svg textarea {
-				width: 100%;
-				resize: vertical;
+			.rd-header-admin .rd-industry-svg-input {
+				flex: 2;
+				min-width: 0;
+				font-size: 11px;
+				font-family: monospace;
 			}
 			.rd-header-admin .rd-platform-row {
 				margin: 4px 0;
