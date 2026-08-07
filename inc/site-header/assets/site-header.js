@@ -110,7 +110,21 @@
 			tab.addEventListener('focus', function () {
 				activateCapTab(tab.getAttribute('data-cap-tab'));
 			});
-			tab.addEventListener('click', function () {
+			tab.addEventListener('click', function (e) {
+				if (window.innerWidth <= 1150) {
+					// 移动端手风琴：点击展开/折叠对应面板
+					e.preventDefault();
+					var key = tab.getAttribute('data-cap-tab');
+					var panel = root.querySelector('.cap-panel[data-cap-panel="' + key + '"]');
+					var isOpen = tab.classList.contains('is-open');
+					capTabs.forEach(function (t) { t.classList.remove('is-open'); });
+					capPanels.forEach(function (p) { p.classList.remove('is-mobile-open'); });
+					if (!isOpen && panel) {
+						tab.classList.add('is-open');
+						panel.classList.add('is-mobile-open');
+					}
+					return;
+				}
 				activateCapTab(tab.getAttribute('data-cap-tab'));
 			});
 		});
@@ -141,7 +155,21 @@
 			tab.addEventListener('focus', function () {
 				activateSolTab(tab.getAttribute('data-sol-tab'));
 			});
-			tab.addEventListener('click', function () {
+			tab.addEventListener('click', function (e) {
+				if (window.innerWidth <= 1150) {
+					// 移动端手风琴：点击展开/折叠对应面板
+					e.preventDefault();
+					var key = tab.getAttribute('data-sol-tab');
+					var panel = root.querySelector('.sol-panel[data-sol-panel="' + key + '"]');
+					var isOpen = tab.classList.contains('is-open');
+					solTabs.forEach(function (t) { t.classList.remove('is-open'); });
+					solPanels.forEach(function (p) { p.classList.remove('is-mobile-open'); });
+					if (!isOpen && panel) {
+						tab.classList.add('is-open');
+						panel.classList.add('is-mobile-open');
+					}
+					return;
+				}
 				activateSolTab(tab.getAttribute('data-sol-tab'));
 			});
 		});

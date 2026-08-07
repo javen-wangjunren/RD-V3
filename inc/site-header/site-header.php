@@ -1093,7 +1093,7 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 		public static function svg_kses( $svg ) {
 			$allowed = [
 				'svg'     => [
-					'viewbox' => true, 'xmlns' => true, 'class' => true, 'width' => true, 'height' => true,
+					'viewbox' => true, 'viewBox' => true, 'xmlns' => true, 'class' => true, 'width' => true, 'height' => true,
 					'fill' => true, 'stroke' => true, 'stroke-width' => true,
 					'stroke-linecap' => true, 'stroke-linejoin' => true, 'aria-hidden' => true,
 				],

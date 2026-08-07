@@ -127,6 +127,8 @@
 	transform: translateX(-50%);
 	min-width: 1120px;
 	max-width: 1280px;
+	display: flex;
+	overflow: hidden;
 	background: #1c1c1c;
 	color: #ffffff;
 	border-radius: 16px;
@@ -153,11 +155,11 @@
 
 .rd-header .category-title {
 	margin: 0 0 16px;
-	font-size: 13px;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: rgba(255, 255, 255, 0.45);
+	font-size: 18px;
+	font-weight: 700;
+	color: #ea543f;
+	padding-bottom: 12px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.14);
 }
 
 .rd-header .menu-list {
@@ -260,9 +262,11 @@
 }
 
 .rd-header .cap-panel-title {
-	font-size: 20px;
+	font-size: 21px;
+	line-height: 1.15;
 	font-weight: 600;
-	color: #ffffff;
+	color: #ea543f;
+	letter-spacing: -0.01em;
 }
 
 .rd-header .cap-card-grid {
@@ -307,14 +311,25 @@
 .rd-header .cap-footer-quote {
 	font-size: 13px;
 	font-weight: 600;
-	color: #ea543f;
 	text-decoration: none;
-	transition: color 0.15s ease;
+	transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.rd-header .cap-footer-browse:hover,
+.rd-header .cap-footer-browse {
+	color: #ea543f;
+}
+
+.rd-header .cap-footer-quote {
+	color: #f5f5f5;
+}
+
+.rd-header .cap-footer-browse:hover {
+	transform: translateX(3px);
+}
+
 .rd-header .cap-footer-quote:hover {
-	color: #ffffff;
+	color: #ea543f;
+	transform: translateX(3px);
 }
 
 .rd-header .cap-visual {
@@ -395,9 +410,11 @@
 }
 
 .rd-header .sol-panel-title {
-	font-size: 20px;
+	font-size: 21px;
+	line-height: 1.15;
 	font-weight: 600;
-	color: #ffffff;
+	color: #ea543f;
+	letter-spacing: -0.01em;
 }
 
 .rd-header .sol-panel-desc {
@@ -497,7 +514,7 @@
 	font-size: 13px;
 	font-weight: 600;
 	text-decoration: none;
-	transition: background 0.15s ease, color 0.15s ease;
+	transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .rd-header .sol-footer-primary {
@@ -510,14 +527,16 @@
 .rd-header .sol-footer-primary:hover {
 	background: #d54530;
 	color: #ffffff;
+	transform: translateX(3px);
 }
 
 .rd-header .sol-footer-secondary {
-	color: #ea543f;
+	color: #f5f5f5;
 }
 
 .rd-header .sol-footer-secondary:hover {
-	color: #ffffff;
+	color: #ea543f;
+	transform: translateX(3px);
 }
 
 .rd-header .sol-aside {
@@ -562,9 +581,9 @@
 }
 
 .rd-header .industries-title {
-	font-size: 20px;
-	font-weight: 600;
-	color: #ffffff;
+	font-size: 18px;
+	font-weight: 700;
+	color: #ea543f;
 }
 
 .rd-header .industries-browse {
@@ -608,9 +627,13 @@
 	color: #ffffff;
 }
 
-.rd-header .industry-icon {
+.rd-header .industry-icon,
+.rd-header .industry-link svg {
+	display: block;
 	width: 20px;
 	height: 20px;
+	max-width: 20px;
+	max-height: 20px;
 	flex-shrink: 0;
 	fill: #ea543f;
 	stroke: none;
@@ -782,15 +805,17 @@
 
 .rd-header .link-explore {
 	margin-top: 4px;
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 600;
 	color: #ea543f;
 	text-decoration: none;
-	transition: color 0.15s ease;
+	display: inline-block;
+	transition: transform 0.3s ease;
 }
 
 .rd-header .link-explore:hover {
-	color: #ffffff;
+	text-decoration: underline;
+	transform: translateX(5px);
 }
 
 /* ---------- About ---------- */
@@ -926,11 +951,17 @@
 		box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16);
 	}
 
-	/* 移动端：隐藏公告文字，仅保留语言选择器 */
-	.rd-header__top-banner { padding: 6px 16px; }
-	.rd-header__top-text,
+	/* 移动端：公告文字单行截断，CTA/语言/登录保留 */
+	.rd-header__top-banner { padding: 8px 16px; gap: 10px; }
 	.rd-header__top-spacer { display: none; }
-	.rd-header__top-utils { flex: none; }
+	.rd-header__top-text {
+		flex: 1; min-width: 0;
+		white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+		font-size: 12px; text-align: left;
+	}
+	.rd-header__top-text a { margin-left: 6px; white-space: nowrap; }
+	.rd-header__top-utils { flex-shrink: 0; gap: 16px; }
+	.rd-header__top-login { font-size: 12px; }
 
 	.rd-header__nav.is-active {
 		display: flex;
@@ -988,16 +1019,52 @@
 		border: none;
 	}
 
+	/* Capabilities & Solutions 手风琴 */
 	.rd-header .cap-nav-tabs,
 	.rd-header .sol-tabs {
-		flex-direction: row;
-		overflow-x: auto;
-		gap: 8px;
+		flex-direction: column;
+		overflow-x: visible;
+		gap: 0;
 	}
 
 	.rd-header .cap-tab,
 	.rd-header .sol-tab {
-		white-space: nowrap;
+		width: 100%; flex: auto; white-space: normal;
+		display: flex; justify-content: space-between; align-items: center;
+		padding: 14px 16px;
+		border-bottom: 1px solid rgba(255,255,255,0.06);
+		border-left: 2px solid transparent; border-radius: 0;
+		color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 600;
+		transition: color 0.2s, border-color 0.2s, background 0.2s;
+	}
+
+	.rd-header .cap-tab::after,
+	.rd-header .sol-tab::after {
+		content: '▸'; font-size: 11px; opacity: 0.4; transition: transform 0.25s ease, opacity 0.25s;
+	}
+
+	.rd-header .cap-tab.is-open,
+	.rd-header .sol-tab.is-open {
+		color: #EA543F;
+		border-left-color: #EA543F;
+		background: rgba(234,84,63,0.06);
+	}
+
+	.rd-header .cap-tab.is-open::after,
+	.rd-header .sol-tab.is-open::after {
+		content: '▾'; opacity: 0.8;
+	}
+
+	.rd-header .cap-tab.is-muted { opacity: 0.5; }
+
+	.rd-header .cap-panel,
+	.rd-header .sol-panel {
+		display: none !important;
+	}
+
+	.rd-header .cap-panel.is-mobile-open,
+	.rd-header .sol-panel.is-mobile-open {
+		display: block !important;
 	}
 
 	.rd-header .cap-visual,
@@ -1009,6 +1076,7 @@
 	.rd-header .cap-panel-title,
 	.rd-header .sol-panel-title {
 		font-size: 18px;
+		color: #ea543f;
 	}
 
 	.rd-header .menu-body-platform,
@@ -1060,7 +1128,7 @@
 }
 
 .rd-header__top-spacer { flex: 1; }
-.rd-header__top-text { flex: 2; text-align: center; margin: 0; }
+.rd-header__top-text { flex: 2; text-align: center; margin: 0; font-size: 13px; font-weight: 500; }
 .rd-header__top-text a { color: #ea543f; text-decoration: underline; font-weight: 700; margin-left: 10px; }
 .rd-header__top-text a:hover { color: #ff7a63; }
 
