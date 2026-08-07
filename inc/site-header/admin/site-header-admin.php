@@ -193,11 +193,10 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 				'about'        => 'About',
 			];
 
-			$open = ( $idx === '0' ) ? ' rd-collapse-open' : '';
 			ob_start();
 			self::collapse_open(
 				'<span class="rd-nav-title">' . esc_html( $label !== '' ? $label : '(未命名)' ) . '</span> <span class="rd-nav-type">' . ( isset( $type_names[ $type ] ) ? esc_html( $type_names[ $type ] ) : esc_html( $type ) ) . '</span>',
-				$open
+				''
 			);
 			echo '<div class="rd-fields">';
 			self::field( 'Label', self::text_input( $prefix . '[label]', $label ) );
@@ -302,10 +301,11 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 
 			ob_start();
 			self::collapse_open( esc_html( $tab_label !== '' ? $tab_label : '(未命名 Tab)' ) . ' ' . self::sort_controls(), 'rd-collapse-open' );
-			echo '<div class="rd-fields">';
-			self::field( 'Tab Label', self::text_input( $tab_prefix . '[tab_label]', $tab_label ) );
-			self::field( 'Image URL（右侧联动图）', self::text_input( $tab_prefix . '[image_url]', $image ) );
-			self::field( '', self::checkbox_input( $tab_prefix . '[is_muted]', $muted, '灰显（is_muted）' ) );
+			// 紧凑行：Tab Label + Image URL + 灰显
+			echo '<div class="rd-field-inline">';
+			echo self::text_input( $tab_prefix . '[tab_label]', $tab_label, 'Tab Label' );
+			echo self::text_input( $tab_prefix . '[image_url]', $image, 'Image URL' );
+			echo self::checkbox_input( $tab_prefix . '[is_muted]', $muted, '灰显' );
 			echo '</div>';
 
 			self::repeater_plain(
@@ -403,15 +403,29 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 		}
 
 		private static function step_row( $prefix, $row ) {
-			$title = isset( $row['title'] ) ? $row['title'] : '';
-			$desc  = isset( $row['desc'] ) ? $row['desc'] : '';
-			$href  = isset( $row['href'] ) ? $row['href'] : '#';
-			$html  = '<div class="rd-repeater-row" data-rd-row><div class="rd-fields">';
-			$html .= self::field( 'Title', self::text_input( $prefix . '[title]', $title ) );
-			$html .= self::field( '描述', self::textarea_input( $prefix . '[desc]', $desc, 2 ) );
-			$html .= self::field( 'Href', self::text_input( $prefix . '[href]', $href ) );
-			$html .= '<p class="rd-row-actions"><button type="button" class="button rd-remove" data-rd-remove>删除</button></p>';
-			$html .= '</div></div>';
+			$title       = isset( $row['title'] ) ? $row['title'] : '';
+			$desc        = isset( $row['desc'] ) ? $row['desc'] : '';
+			$href        = isset( $row['href'] ) ? $row['href'] : '#';
+			$head_label  = $title !== '' ? 'Step: ' . $title : 'Step';
+
+			$html  = '<div class="rd-collapse rd-collapse-open rd-step-row" data-rd-row>';
+			$html .= '<div class="rd-collapse-head" data-rd-collapse-head>';
+			$html .= '<span class="rd-collapse-title">' . esc_html( $head_label ) . '</span>';
+			$html .= '<span class="rd-collapse-arrow">▾</span>';
+			$html .= '</div>';
+			$html .= '<div class="rd-collapse-body">';
+			// 紧凑行：title + href + 删除
+			$html .= '<div class="rd-field-inline">';
+			$html .= self::text_input( $prefix . '[title]', $title, 'Title' );
+			$html .= self::text_input( $prefix . '[href]', $href, '链接' );
+			$html .= '<button type="button" class="button rd-remove" data-rd-remove>删除</button>';
+			$html .= '</div>';
+			// 描述单独一行
+			$html .= '<div class="rd-step-desc">';
+			$html .= self::textarea_input( $prefix . '[desc]', $desc, 2 );
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '</div>';
 
 			return $html;
 		}
@@ -446,15 +460,29 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 		}
 
 		private static function industry_row( $prefix, $row ) {
-			$label = isset( $row['label'] ) ? $row['label'] : '';
-			$href  = isset( $row['href'] ) ? $row['href'] : '#';
-			$svg   = isset( $row['icon_svg'] ) ? $row['icon_svg'] : '';
-			$html  = '<div class="rd-repeater-row" data-rd-row><div class="rd-fields">';
-			$html .= self::field( 'Name', self::text_input( $prefix . '[label]', $label ) );
-			$html .= self::field( 'Href', self::text_input( $prefix . '[href]', $href ) );
-			$html .= self::field( 'Icon SVG', self::textarea_input( $prefix . '[icon_svg]', $svg, 2 ) );
-			$html .= '<p class="rd-row-actions"><button type="button" class="button rd-remove" data-rd-remove>删除</button></p>';
-			$html .= '</div></div>';
+			$label      = isset( $row['label'] ) ? $row['label'] : '';
+			$href       = isset( $row['href'] ) ? $row['href'] : '#';
+			$svg        = isset( $row['icon_svg'] ) ? $row['icon_svg'] : '';
+			$head_label = $label !== '' ? 'Industry: ' . $label : 'Industry';
+
+			$html  = '<div class="rd-collapse rd-collapse-open rd-industry-row" data-rd-row>';
+			$html .= '<div class="rd-collapse-head" data-rd-collapse-head>';
+			$html .= '<span class="rd-collapse-title">' . esc_html( $head_label ) . '</span>';
+			$html .= '<span class="rd-collapse-arrow">▾</span>';
+			$html .= '</div>';
+			$html .= '<div class="rd-collapse-body">';
+			// 紧凑行：Name + Href + 删除
+			$html .= '<div class="rd-field-inline">';
+			$html .= self::text_input( $prefix . '[label]', $label, 'Name' );
+			$html .= self::text_input( $prefix . '[href]', $href, '链接' );
+			$html .= '<button type="button" class="button rd-remove" data-rd-remove>删除</button>';
+			$html .= '</div>';
+			// SVG 代码：小字号 textarea，不需要看到全文
+			$html .= '<div class="rd-industry-svg">';
+			$html .= '<textarea class="large-text" rows="3" name="' . esc_attr( $prefix . '[icon_svg]' ) . '" placeholder="Icon SVG" style="font-size:11px;font-family:monospace">' . esc_textarea( $svg ) . '</textarea>';
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '</div>';
 
 			return $html;
 		}
@@ -478,24 +506,29 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			$desc       = isset( $card['description'] ) ? $card['description'] : '';
 			$list_style = isset( $card['list_style'] ) ? $card['list_style'] : 'simple';
 			$links      = isset( $card['links'] ) && is_array( $card['links'] ) ? $card['links'] : [];
+			$head_label = $title !== '' ? 'Card: ' . $title : '(未命名 Card)';
 
 			ob_start();
-			echo '<div class="rd-card rd-card-sub rd-collapse-open">';
-			echo '<div class="rd-card-head"><h3>' . esc_html( $title !== '' ? $title : '(未命名 Card)' ) . '</h3></div>';
-			echo '<div class="rd-card-body">';
-			echo '<div class="rd-fields">';
-			self::field( 'Title', self::text_input( $card_prefix . '[title]', $title ) );
-			self::field( 'Image URL（顶部截图）', self::text_input( $card_prefix . '[image_url]', $image ) );
-			self::field( 'Description', self::textarea_input( $card_prefix . '[description]', $desc, 2 ) );
-			self::field(
-				'List Style',
-				self::select_input(
-					$card_prefix . '[list_style]',
-					$list_style,
-					[ 'simple' => 'Simple', 'timeline' => 'Timeline' ],
-					'data-rd-branch="list_style"'
-				)
+			echo '<div class="rd-collapse rd-collapse-open rd-platform-row" data-rd-row>';
+			echo '<div class="rd-collapse-head" data-rd-collapse-head>';
+			echo '<span class="rd-collapse-title">' . esc_html( $head_label ) . '</span>';
+			echo '<span class="rd-collapse-arrow">▾</span>';
+			echo '</div>';
+			echo '<div class="rd-collapse-body">';
+			// 紧凑行：Title + Image URL + List Style
+			echo '<div class="rd-field-inline">';
+			echo self::text_input( $card_prefix . '[title]', $title, 'Title' );
+			echo self::text_input( $card_prefix . '[image_url]', $image, 'Image URL' );
+			echo self::select_input(
+				$card_prefix . '[list_style]',
+				$list_style,
+				[ 'simple' => 'Simple', 'timeline' => 'Timeline' ],
+				'data-rd-branch="list_style" style="min-width:120px"'
 			);
+			echo '</div>';
+			// 描述单独一行
+			echo '<div class="rd-platform-desc">';
+			echo self::textarea_input( $card_prefix . '[description]', $desc, 2 );
 			echo '</div>';
 
 			self::repeater_plain(
@@ -534,21 +567,23 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			$link_style = isset( $sec['link_style'] ) ? $sec['link_style'] : 'simple';
 			$links      = isset( $sec['links'] ) && is_array( $sec['links'] ) ? $sec['links'] : [];
 			$services   = isset( $sec['service_items'] ) && is_array( $sec['service_items'] ) ? $sec['service_items'] : [];
+			$head_label = $title !== '' ? 'Section: ' . $title : '(未命名 Section)';
 
 			ob_start();
-			echo '<div class="rd-card rd-card-sub rd-collapse-open">';
-			echo '<div class="rd-card-head"><h3>' . esc_html( $title !== '' ? $title : '(未命名 Section)' ) . '</h3></div>';
-			echo '<div class="rd-card-body">';
-			echo '<div class="rd-fields">';
-			self::field( 'Title', self::text_input( $sec_prefix . '[section_title]', $title ) );
-			self::field(
-				'Style',
-				self::select_input(
-					$sec_prefix . '[link_style]',
-					$link_style,
-					[ 'simple' => 'Simple', 'service' => 'Service' ],
-					'data-rd-branch="link_style"'
-				)
+			echo '<div class="rd-collapse rd-collapse-open rd-resource-row" data-rd-row>';
+			echo '<div class="rd-collapse-head" data-rd-collapse-head>';
+			echo '<span class="rd-collapse-title">' . esc_html( $head_label ) . '</span>';
+			echo '<span class="rd-collapse-arrow">▾</span>';
+			echo '</div>';
+			echo '<div class="rd-collapse-body">';
+			// 紧凑行：Title + Link Style
+			echo '<div class="rd-field-inline">';
+			echo self::text_input( $sec_prefix . '[section_title]', $title, 'Title' );
+			echo self::select_input(
+				$sec_prefix . '[link_style]',
+				$link_style,
+				[ 'simple' => 'Simple', 'service' => 'Service' ],
+				'data-rd-branch="link_style" style="min-width:120px"'
 			);
 			echo '</div>';
 
@@ -570,9 +605,10 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			);
 			echo '</div>';
 
-			echo '<div class="rd-fields">';
-			self::field( 'Footer Label', self::text_input( $sec_prefix . '[footer_label]', isset( $sec['footer_label'] ) ? $sec['footer_label'] : '' ) );
-			self::field( 'Footer Href', self::text_input( $sec_prefix . '[footer_href]', isset( $sec['footer_href'] ) ? $sec['footer_href'] : '' ) );
+			// Footer 紧凑行
+			echo '<div class="rd-field-inline" style="margin-top:8px">';
+			echo self::text_input( $sec_prefix . '[footer_label]', isset( $sec['footer_label'] ) ? $sec['footer_label'] : '', 'Footer Label' );
+			echo self::text_input( $sec_prefix . '[footer_href]', isset( $sec['footer_href'] ) ? $sec['footer_href'] : '', 'Footer Href' );
 			echo '</div>';
 
 			echo '<p class="rd-row-actions"><button type="button" class="button rd-remove" data-rd-remove>删除</button></p>';
@@ -585,12 +621,18 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			$title = isset( $row['title'] ) ? $row['title'] : '';
 			$desc  = isset( $row['desc'] ) ? $row['desc'] : '';
 			$href  = isset( $row['href'] ) ? $row['href'] : '#';
-			$html  = '<div class="rd-repeater-row" data-rd-row><div class="rd-fields">';
-			$html .= self::field( 'Title', self::text_input( $prefix . '[title]', $title ) );
-			$html .= self::field( 'Description', self::textarea_input( $prefix . '[desc]', $desc, 2 ) );
-			$html .= self::field( 'Href', self::text_input( $prefix . '[href]', $href ) );
-			$html .= '<p class="rd-row-actions"><button type="button" class="button rd-remove" data-rd-remove>删除</button></p>';
-			$html .= '</div></div>';
+			$html  = '<div class="rd-repeater-row" data-rd-row>';
+			// 第一行：Title + Href + 删除
+			$html .= '<div class="rd-field-inline">';
+			$html .= self::text_input( $prefix . '[title]', $title, 'Title' );
+			$html .= self::text_input( $prefix . '[href]', $href, '链接' );
+			$html .= '<button type="button" class="button rd-remove" data-rd-remove>删除</button>';
+			$html .= '</div>';
+			// 第二行：描述（单行 text）
+			$html .= '<div class="rd-service-desc">';
+			$html .= self::text_input( $prefix . '[desc]', $desc, 'Description' );
+			$html .= '</div>';
+			$html .= '</div>';
 
 			return $html;
 		}
@@ -615,15 +657,20 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 		}
 
 		private static function about_group_card( $group_prefix, $group ) {
-			$title = isset( $group['group_title'] ) ? $group['group_title'] : '';
-			$links = isset( $group['links'] ) && is_array( $group['links'] ) ? $group['links'] : [];
+			$title      = isset( $group['group_title'] ) ? $group['group_title'] : '';
+			$links      = isset( $group['links'] ) && is_array( $group['links'] ) ? $group['links'] : [];
+			$head_label = $title !== '' ? 'Group: ' . $title : '(未命名 Group)';
 
 			ob_start();
-			echo '<div class="rd-card rd-card-sub rd-collapse-open">';
-			echo '<div class="rd-card-head"><h3>' . esc_html( $title !== '' ? $title : '(未命名 Group)' ) . '</h3></div>';
-			echo '<div class="rd-card-body">';
-			echo '<div class="rd-fields">';
-			self::field( 'Title', self::text_input( $group_prefix . '[group_title]', $title ) );
+			echo '<div class="rd-collapse rd-collapse-open rd-about-row" data-rd-row>';
+			echo '<div class="rd-collapse-head" data-rd-collapse-head>';
+			echo '<span class="rd-collapse-title">' . esc_html( $head_label ) . '</span>';
+			echo '<span class="rd-collapse-arrow">▾</span>';
+			echo '</div>';
+			echo '<div class="rd-collapse-body">';
+			echo '<div class="rd-field-inline">';
+			echo self::text_input( $group_prefix . '[group_title]', $title, 'Title' );
+			echo '<button type="button" class="button rd-remove" data-rd-remove>删除</button>';
 			echo '</div>';
 
 			self::repeater_plain(
@@ -633,7 +680,6 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 				[ __CLASS__, 'link_row' ]
 			);
 
-			echo '<p class="rd-row-actions"><button type="button" class="button rd-remove" data-rd-remove>删除</button></p>';
 			echo '</div></div>';
 
 			return ob_get_clean();
@@ -793,10 +839,95 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 					padding: 0 4px;
 				}
 				.rd-header-admin .rd-checkbox {
-					display: inline-flex;
-					align-items: center;
-					gap: 6px;
-				}
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+			}
+			.rd-header-admin .rd-step-row {
+				margin: 4px 0;
+				border-color: #e5e7eb;
+				background: #fafbfc;
+			}
+			.rd-header-admin .rd-step-row .rd-collapse-head {
+				padding: 6px 10px;
+				font-size: 13px;
+			}
+			.rd-header-admin .rd-step-row .rd-collapse-body {
+				padding: 6px 10px 10px;
+			}
+			.rd-header-admin .rd-step-desc {
+				margin-top: 6px;
+			}
+			.rd-header-admin .rd-step-desc textarea {
+				width: 100%;
+			}
+			.rd-header-admin .rd-industry-row {
+				margin: 4px 0;
+				border-color: #e5e7eb;
+				background: #fafbfc;
+			}
+			.rd-header-admin .rd-industry-row .rd-collapse-head {
+				padding: 6px 10px;
+				font-size: 13px;
+			}
+			.rd-header-admin .rd-industry-row .rd-collapse-body {
+				padding: 6px 10px 10px;
+			}
+			.rd-header-admin .rd-industry-svg {
+				margin-top: 6px;
+			}
+			.rd-header-admin .rd-industry-svg textarea {
+				width: 100%;
+				resize: vertical;
+			}
+			.rd-header-admin .rd-platform-row {
+				margin: 4px 0;
+				border-color: #e5e7eb;
+				background: #fafbfc;
+			}
+			.rd-header-admin .rd-platform-row .rd-collapse-head {
+				padding: 6px 10px;
+				font-size: 13px;
+			}
+			.rd-header-admin .rd-platform-row .rd-collapse-body {
+				padding: 6px 10px 10px;
+			}
+			.rd-header-admin .rd-platform-desc {
+				margin-top: 6px;
+			}
+			.rd-header-admin .rd-platform-desc textarea {
+				width: 100%;
+			}
+			.rd-header-admin .rd-resource-row {
+				margin: 4px 0;
+				border-color: #e5e7eb;
+				background: #fafbfc;
+			}
+			.rd-header-admin .rd-resource-row .rd-collapse-head {
+				padding: 6px 10px;
+				font-size: 13px;
+			}
+			.rd-header-admin .rd-resource-row .rd-collapse-body {
+				padding: 6px 10px 10px;
+			}
+			.rd-header-admin .rd-service-desc {
+				margin-top: 4px;
+			}
+			.rd-header-admin .rd-service-desc input {
+				width: 100%;
+			}
+			.rd-header-admin .rd-about-row {
+				margin: 4px 0;
+				border-color: #e5e7eb;
+				background: #fafbfc;
+			}
+			.rd-header-admin .rd-about-row .rd-collapse-head {
+				padding: 6px 10px;
+				font-size: 13px;
+			}
+			.rd-header-admin .rd-about-row .rd-collapse-body {
+				padding: 6px 10px 10px;
+			}
 				@media (max-width: 782px) {
 					.rd-header-admin .rd-field {
 						grid-template-columns: 1fr;

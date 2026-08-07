@@ -249,6 +249,13 @@
 		var collapse = head.closest('.rd-collapse');
 		if (collapse) {
 			collapse.classList.toggle('rd-collapse-open');
+			// 展开时重新触发内部 branch 显隐，处理 init 阶段父级 display:none 导致的状态遗漏
+			if (collapse.classList.contains('rd-collapse-open')) {
+				var selects = collapse.querySelectorAll('[data-rd-branch]');
+				for (var i = 0; i < selects.length; i++) {
+					applyBranch(selects[i]);
+				}
+			}
 		}
 	}
 
