@@ -70,8 +70,11 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 		public static function defaults() {
 			return [
 				'logo_url' => '',
-				'cta_text' => 'Get instant quote',
-				'cta_href' => '#',
+			'cta_text' => 'Get instant quote',
+			'cta_href' => '#',
+			'top_announcement' => 'Accelerate your innovation with RapidDirect\'s new AI capabilities.',
+			'top_cta_title' => 'Explore AI Make Studio',
+			'top_cta_href' => '#',
 				'nav_items' => [
 					[
 						'label'     => 'Capabilities',
@@ -402,8 +405,11 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 
 			$out = [
 				'logo_url' => self::u( $data, 'logo_url', $defaults['logo_url'] ),
-				'cta_text' => self::s( $data, 'cta_text', $defaults['cta_text'] ),
-				'cta_href' => self::u( $data, 'cta_href', $defaults['cta_href'] ),
+			'cta_text' => self::s( $data, 'cta_text', $defaults['cta_text'] ),
+			'cta_href' => self::u( $data, 'cta_href', $defaults['cta_href'] ),
+			'top_announcement' => self::s( $data, 'top_announcement', $defaults['top_announcement'] ),
+			'top_cta_title' => self::s( $data, 'top_cta_title', $defaults['top_cta_title'] ),
+			'top_cta_href' => self::u( $data, 'top_cta_href', $defaults['top_cta_href'] ),
 				'nav_items' => [],
 			];
 
@@ -663,10 +669,10 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 			$nav_items = $content['nav_items'];
 			$site_name = get_bloginfo( 'name' );
 
-			// 顶部公告条（当前硬编码，后续可后台化）
-			$top_text = "Accelerate your innovation with RapidDirect's new AI capabilities.";
-			$top_link_text = 'Explore AI Make Studio';
-			$top_link_href = '#';
+			// 顶部公告条
+			$top_announcement = $content['top_announcement'];
+			$top_cta_title    = $content['top_cta_title'];
+			$top_cta_href     = $content['top_cta_href'];
 
 			// GTranslate 语言列表：插件未激活时不渲染语言选择器
 			$lang_list_html = '';
@@ -674,10 +680,11 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 				$lang_list_html = do_shortcode( '[gtranslate widget_look="lang_names"]' );
 			}
 			?>
+			<div class="rd-header" data-rd-header>
 			<div class="rd-header__top">
 				<div class="rd-header__top-banner">
 					<div class="rd-header__top-spacer"></div>
-					<p class="rd-header__top-text"><?php echo esc_html( $top_text ); ?><a href="<?php echo esc_url( $top_link_href ); ?>"><?php echo esc_html( $top_link_text ); ?> →</a></p>
+					<p class="rd-header__top-text"><?php echo esc_html( $top_announcement ); ?><a href="<?php echo esc_url( $top_cta_href ); ?>"><?php echo esc_html( $top_cta_title ); ?> →</a></p>
 					<div class="rd-header__top-utils">
 						<?php if ( $lang_list_html !== '' ) : ?>
 							<div class="rd-header__lang">
@@ -691,6 +698,10 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 								</div>
 							</div>
 						<?php endif; ?>
+						<a class="rd-header__top-login" href="https://app.rapiddirect.com/" target="_blank" rel="noopener">
+							<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"></path><path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"></path></svg>
+							Log in
+						</a>
 					</div>
 				</div>
 			</div>
@@ -741,6 +752,7 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 					<a class="rd-header__cta btn-quote" href="<?php echo esc_url( $cta_href ); ?>"><?php echo esc_html( $cta_text ); ?></a>
 				</div>
 			</nav>
+			</div>
 			<?php
 		}
 

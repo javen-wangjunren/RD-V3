@@ -76,8 +76,18 @@ if ( ! class_exists( 'RD_Site_Header_Admin' ) ) {
 			echo '<div class="rd-card-body">';
 			echo '<div class="rd-fields">';
 			self::field( 'Logo URL', self::text_input( 'rd_site_header[logo_url]', $content['logo_url'], '留空则使用主题 Logo' ) );
-			self::field( 'CTA 文案', self::text_input( 'rd_site_header[cta_text]', $content['cta_text'] ) );
-			self::field( 'CTA 链接', self::text_input( 'rd_site_header[cta_href]', $content['cta_href'] ) );
+			self::field( 'CTA 文案（导航栏按钮）', self::text_input( 'rd_site_header[cta_text]', $content['cta_text'] ) );
+			self::field( 'CTA 链接（导航栏按钮）', self::text_input( 'rd_site_header[cta_href]', $content['cta_href'] ) );
+			echo '</div></div></div>';
+
+			/* ---------- Card 1.5: Top Banner ---------- */
+			echo '<div class="rd-card rd-card-open">';
+			echo '<div class="rd-card-head"><h2>Top Banner</h2></div>';
+			echo '<div class="rd-card-body">';
+			echo '<div class="rd-fields">';
+			self::field( 'Announcement（公告文案）', self::text_input( 'rd_site_header[top_announcement]', $content['top_announcement'] ) );
+			self::field( 'CTA Title（公告跳转文案）', self::text_input( 'rd_site_header[top_cta_title]', $content['top_cta_title'] ) );
+			self::field( 'CTA Href（公告跳转链接）', self::text_input( 'rd_site_header[top_cta_href]', $content['top_cta_href'] ) );
 			echo '</div></div></div>';
 
 			/* ---------- Card 2: Nav Items ---------- */

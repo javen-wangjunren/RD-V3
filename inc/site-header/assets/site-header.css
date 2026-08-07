@@ -17,7 +17,7 @@
 	z-index: 1000;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	gap: 40px;
 	padding: 0 56px;
 	height: 80px;
@@ -60,7 +60,7 @@
 	padding: 0 16px;
 	height: 80px;
 	font-size: 15px;
-	font-weight: 500;
+	font-weight: 600;
 	color: #1c1c1c;
 	cursor: pointer;
 	text-decoration: none;
@@ -95,6 +95,7 @@
 .rd-header__actions {
 	display: flex;
 	align-items: center;
+	margin-left: auto;
 }
 
 .btn-quote {
@@ -1120,6 +1121,19 @@
 
 .rd-header__lang:hover .rd-header__lang-menu,
 .rd-header__lang:focus-within .rd-header__lang-menu { display: flex; }
+
+/* Login 链接 */
+.rd-header__top-login {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	color: #ffffff;
+	text-decoration: none;
+	transition: opacity 0.2s;
+}
+.rd-header__top-login:hover { opacity: 0.8; }
+.rd-header__top-login svg { width: 16px; height: 16px; }
 
 /* GTranslate lang_names 输出：覆盖插件容器的默认布局与链接样式 */
 .rd-header__lang-menu .gtranslate_wrapper,
