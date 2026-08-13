@@ -12,14 +12,6 @@
 	Cookies.set('rd_salesrep', searchParams.get("salesrep"), { domain: 'rapiddirect.com', expires: 30 })
   }
   
-  function closeNotify(){
-  	Cookies.set('rd_notify_cms', 'true', { expires: 1, path: '/' })
-	isSingleNotification();
-  }
-  function closeNotifyFlip(){
-  	Cookies.set('rd_notify_cms_flip', 'true', { expires: 1, path: '/' })
-	isSingleNotification();
-  }
   (function() {
   	if(!Cookies.get('rd_usr_landing')){
   		Cookies.set('rd_usr_landing', window.location.href.split('?')[0], { domain: 'rapiddirect.com', expires: 3 })
@@ -30,73 +22,7 @@
   if(!Cookies.get('rd_usr_landing_session')){
   	Cookies.set('rd_usr_landing_session', window.location.href.split('?')[0], { domain: 'rapiddirect.com' })
   }
-	//Notification Center
-(function() {
-  	if(!Cookies.get('rd_notify_cms') || !Cookies.get('rd_notify_cms_flip')){
-		var currentdate = new Date();
-		ppp = '/wp-content/themes/mml-theme/notification-center.php'
-		fetch("/notification-center/?time=" + currentdate)
-		  .then((response) => {
-			return response.text();
-		  })
-		  .then((html) => {
-			const divp = document.createElement("div");
-			divp.className = "notification-center-rd";
-			divp.innerHTML = html;
-			let notifyP = document.querySelector('#header-rd-p');
-			notifyP.prepend(divp);
-			jQuery('.switcher.top-switch .selected a span.jkhui').html(jQuery('.switcher:not(.top-switch) .selected a').html())
-			isSingleNotification();
-			jQuery(window).trigger('resize')
-			watchForWheelButton(); 
-		  });
-  	}else{
-		isSingleNotification();
-	}
-})();
-function isSingleNotification(){
-	if(Cookies.get('rd_notify_cms') || Cookies.get('rd_notify_cms_flip')){
-		jQuery(".simple-flip-e-d").removeClass("flip-notification");
-		jQuery(".notify-center").addClass("position-relative-imp");
-		jQuery(".ghost-div").remove();	 
-	}
-	if(Cookies.get('rd_notify_cms')){
-	   	jQuery(".front-flip-notify").remove();
-		jQuery(".notify-center").removeClass("back-flip-notify");
-	}
-	if(Cookies.get('rd_notify_cms_flip')){
-	   jQuery(".back-flip-botify-v2").remove();	
-	}
-};
 
-jQuery(function(){
-    var lastScrollTop = 0, delta = 15;
-    jQuery(window).scroll(function(event){
-	   event.preventDefault();
-	   event.stopPropagation();
-		//console.log('working right');
-	   var navbarHeight = jQuery('.notification-center-rd').outerHeight();
-       var st = window.pageYOffset;
-//        if(Math.abs(lastScrollTop - st) <= delta)
-//           return;
-if (st >> 0) {
-	//console.log('working right if');
-       // downscroll code
-      //jQuery(".notification-center-rd").css({"top":"-80px", "margin-bottom": "-"+navbarHeight+"px"});
-//   		jQuery(".notification-center-rd").addClass('hide-ntfy')
-		jQuery(".notification-center-rd").hide();
-		jQuery(".mml-ele-custom-menu").addClass('top-75');
-   } else if(st == 0 ){
-	   //console.log('working right if else');
-      // upscroll code
-      //jQuery(".notification-center-rd").css({"top":"0px", "margin-bottom": "0px"});
-// 	   jQuery(".notification-center-rd").removeClass('hide-ntfy')
-       jQuery(".notification-center-rd").show();
-	   jQuery(".mml-ele-custom-menu").removeClass('top-75');
-   }
-       lastScrollTop = st;
-    });
-});
 
 function gt_jquery_ready_custom(event) {
 	event.preventDefault();

@@ -19,7 +19,7 @@ $(document).ready(function () {
 
   var MachineSlickerLength = $(".manufacturing-content-slicker .item").length;
   $(MachineSlicker).slick({
-    slidesToShow: MachineSlickerLength === 4 ? 5 : 4,
+    slidesToShow: MachineSlickerLength === 4 ? 3 : 3,
     slidesToScroll: 3,
     dots: false,
     // arrows: false,
@@ -214,5 +214,29 @@ $(document).ready(function () {
       var that = $(this);
       that.removeClass("active").siblings().removeClass("active");
     });
+  }
+
+  var rapiddirectNav = document.querySelector(".pp-advanced-menu--main");
+  rapiddirectNav.addEventListener("mouseenter", submenuDelete);
+
+  function submenuDelete() {
+    console.log("mouseenter");
+    var submenu = document.querySelectorAll("#menu-menu-header .sub-menu");
+
+    if (submenu) {
+      submenu.forEach(function (item, index) {
+        item.style.height = 60 + "px";
+        item.style.width = 100 + "%";
+        var children = item.children;
+
+        if (children) {
+          _toConsumableArray(children).forEach(function (item, index) {
+            item.remove();
+          });
+        }
+      });
+    }
+
+    rapiddirectNav.removeEventListener("mouseenter", submenuDelete);
   }
 });
