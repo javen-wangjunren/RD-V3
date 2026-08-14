@@ -153,6 +153,20 @@
 	padding: 32px;
 }
 
+.rd-header .menu-body-capabilities {
+	display: grid;
+	grid-template-columns: 220px minmax(0, 1fr) 248px;
+	gap: 28px;
+	align-items: start;
+}
+
+.rd-header .menu-body-solutions {
+	display: grid;
+	grid-template-columns: 176px minmax(0, 1fr) 280px;
+	gap: 22px;
+	align-items: start;
+}
+
 .rd-header .category-title {
 	margin: 0 0 16px;
 	font-size: 18px;
@@ -189,10 +203,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
-	width: 250px;
+	width: 220px;
 	flex-shrink: 0;
-	padding-right: 32px;
-	border-right: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .rd-header .cap-nav-section {
@@ -334,11 +346,13 @@
 
 .rd-header .cap-visual {
 	position: relative;
-	width: 190px;
+	width: 248px;
 	flex-shrink: 0;
-	min-height: 320px;
-	border-radius: 12px;
+	height: clamp(280px, 30vw, 340px);
+	min-height: 0;
+	border-radius: 8px;
 	overflow: hidden;
+	align-self: start;
 }
 
 .rd-header .cap-visual-img {
@@ -358,10 +372,8 @@
 /* ---------- Solutions ---------- */
 
 .rd-header .sol-nav {
-	width: 250px;
+	width: 176px;
 	flex-shrink: 0;
-	padding-right: 32px;
-	border-right: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .rd-header .sol-tabs {
@@ -540,14 +552,16 @@
 }
 
 .rd-header .sol-aside {
-	width: 220px;
+	width: 280px;
 	flex-shrink: 0;
 }
 
 .rd-header .sol-visual {
 	position: relative;
-	min-height: 340px;
-	border-radius: 12px;
+	width: 100%;
+	height: clamp(260px, 30vw, 340px);
+	min-height: 0;
+	border-radius: 8px;
 	overflow: hidden;
 }
 
