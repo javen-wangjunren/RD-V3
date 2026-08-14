@@ -182,6 +182,53 @@ require('inc/mml-cpt.php');
 include_once('mml-cf7.php');
 include_once('front-end.php');
 
+// ================================== Ebook CF7 提交后跳转 START ==================================
+
+add_action('wp_enqueue_scripts', 'mml_theme_on_enqueue_ebook_redirect', 20);
+function mml_theme_on_enqueue_ebook_redirect() {
+	$redirects_file = get_stylesheet_directory() . '/inc/ebook-redirects.php';
+	if (!file_exists($redirects_file)) {
+		return;
+	}
+
+	$ebook_redirects = require $redirects_file;
+	if (empty($ebook_redirects) || !is_array($ebook_redirects)) {
+		return;
+	}
+
+	// 仅当当前页面在映射表中才加载脚本，避免所有页面都额外请求
+	$page_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
+	$page_path = trailingslashit($page_path);
+	if (!isset($ebook_redirects[$page_path])) {
+		return;
+	}
+
+	$js_file = get_stylesheet_directory() . '/assets/js/ebook-redirect.js';
+	if (!file_exists($js_file)) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'rapiddirect-ebook-redirect',
+		get_stylesheet_directory_uri() . '/assets/js/ebook-redirect.js',
+		array(),
+		filemtime($js_file),
+		true
+	);
+
+	wp_localize_script(
+		'rapiddirect-ebook-redirect',
+		'rapidDirectEbooks',
+		[
+			'formId'    => 89270,
+			'redirects' => $ebook_redirects,
+			'delay'     => 1200,
+		]
+	);
+}
+
+// ================================== Ebook CF7 提交后跳转 END ==================================
+
 // ---- RD Site Header ----
 
 require('inc/site-header/site-header.php'); // 文件内自行 RD_Site_Header::init()
