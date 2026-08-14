@@ -159,6 +159,7 @@
 	gap: 28px 56px;
 	align-items: start;
 	padding: 32px 24px;
+	width: 100%;
 }
 
 .rd-header .menu-body-solutions {
@@ -166,6 +167,7 @@
 	grid-template-columns: 176px minmax(0, 1fr) 280px;
 	gap: 22px;
 	align-items: start;
+	width: 100%;
 }
 
 .rd-header .category-title {
@@ -588,6 +590,7 @@
 	gap: 28px 56px;
 	align-items: start;
 	padding: 32px 24px;
+	width: 100%;
 }
 
 .rd-header .industries-main {
@@ -758,6 +761,7 @@
 	grid-template-columns: repeat(2, 1fr);
 	gap: 24px;
 	padding: 24px;
+	width: 100%;
 }
 
 .rd-header .platform-card {
@@ -814,6 +818,7 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 24px;
+	width: 100%;
 }
 
 .rd-header .resources-section {
