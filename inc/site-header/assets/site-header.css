@@ -581,8 +581,15 @@
 
 /* ---------- Industries ---------- */
 
+.rd-header .menu-body-industries {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 240px;
+	gap: 28px;
+	align-items: start;
+	padding: 32px 40px;
+}
+
 .rd-header .industries-main {
-	flex: 1;
 	min-width: 0;
 }
 
@@ -590,8 +597,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 16px;
-	margin-bottom: 20px;
+	gap: 18px;
+	margin-bottom: 16px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .rd-header .industries-title {
@@ -605,17 +614,19 @@
 	font-weight: 600;
 	color: #ea543f;
 	text-decoration: none;
-	transition: color 0.15s ease;
+	white-space: nowrap;
+	transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .rd-header .industries-browse:hover {
-	color: #ffffff;
+	color: #ea543f;
+	transform: translateX(3px);
 }
 
 .rd-header .industry-grid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 8px;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 2px 12px;
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -624,21 +635,23 @@
 .rd-header .industry-link {
 	display: flex;
 	align-items: center;
-	gap: 12px;
-	padding: 12px 14px;
-	background: rgba(255, 255, 255, 0.06);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	border-radius: 8px;
-	color: rgba(255, 255, 255, 0.85);
-	font-size: 13px;
+	gap: 10px;
+	min-height: 46px;
+	padding: 10px 12px;
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	color: #f5f5f5;
+	font-size: 14px;
+	font-weight: 550;
 	text-decoration: none;
-	transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+	transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .rd-header .industry-link:hover {
-	background: rgba(234, 84, 63, 0.12);
-	border-color: rgba(234, 84, 63, 0.35);
-	color: #ffffff;
+	background: rgba(255, 255, 255, 0.022);
+	border-color: rgba(234, 84, 63, 0.2);
+	color: #ea543f;
 }
 
 .rd-header .industry-icon,
@@ -654,19 +667,24 @@
 }
 
 .rd-header .industry-link-text {
+	flex: 1;
 	line-height: 1.3;
 }
 
 .rd-header .industries-aside {
-	width: 220px;
-	flex-shrink: 0;
+	min-width: 0;
+	align-self: center;
 }
 
 .rd-header .industries-castudies {
 	position: relative;
-	min-height: 300px;
-	border-radius: 12px;
+	width: 240px;
+	min-width: 0;
+	height: clamp(210px, 24vw, 280px);
+	border-radius: 8px;
 	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.01);
 }
 
 .rd-header .industries-castudies-img {
@@ -678,40 +696,58 @@
 }
 
 .rd-header .industries-castudies-overlay {
-	position: relative;
-	z-index: 1;
+	position: absolute;
+	inset: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	gap: 12px;
-	min-height: 300px;
-	padding: 20px;
-	background: linear-gradient(180deg, rgba(28, 28, 28, 0) 0%, rgba(28, 28, 28, 0.85) 100%);
+	padding: 20px 18px 18px;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 26%, rgba(0, 0, 0, 0.72) 100%);
+}
+
+.rd-header .industries-castudies-copy {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
 }
 
 .rd-header .industries-castudies-label {
-	font-size: 11px;
-	font-weight: 600;
+	align-self: flex-start;
+	width: fit-content;
+	padding: 3px 10px;
+	border-radius: 4px;
+	background: rgba(234, 84, 63, 0.9);
+	font-size: 10px;
+	font-weight: 700;
 	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	color: #ea543f;
+	letter-spacing: 0.06em;
+	color: #ffffff;
 }
 
 .rd-header .industries-castudies-title {
-	font-size: 15px;
-	line-height: 1.5;
-	font-weight: 600;
+	font-size: 18px;
+	line-height: 1.2;
+	font-weight: 650;
 	color: #ffffff;
 }
 
 .rd-header .industries-castudies-cta {
 	align-self: flex-start;
-	padding-bottom: 2px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	width: fit-content;
 	font-size: 13px;
-	font-weight: 600;
-	color: #ffffff;
+	font-weight: 650;
+	color: #ea543f;
 	text-decoration: none;
-	border-bottom: 1px solid rgba(234, 84, 63, 0.5);
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rd-header .industries-castudies-cta:hover {
+	color: #ea543f;
+	transform: translateX(3px);
 }
 
 /* ---------- Platform ---------- */
@@ -1105,7 +1141,22 @@
 	.rd-header .cap-card-grid,
 	.rd-header .sol-service-grid,
 	.rd-header .industry-grid {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.rd-header .menu-body-industries {
+		grid-template-columns: 1fr;
+		gap: 18px;
+		padding: 20px;
+	}
+
+	.rd-header .industries-aside {
+		order: -1;
+		align-self: start;
+	}
+
+	.rd-header .industries-castudies {
+		width: 100%;
 	}
 }
 
