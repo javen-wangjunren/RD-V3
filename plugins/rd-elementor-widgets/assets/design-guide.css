@@ -1,0 +1,226 @@
+.rd-design-guide {
+  --rd-primary-color: #ef533f;
+  --rd-primary-light: #fff5f3;
+  --rd-bg-light: #f5f5f5;
+  --rd-card-bg: #ffffff;
+  --rd-text-dark: #1a1a1a;
+  --rd-text-gray: #64748b;
+  --rd-border-color: #e2e8f0;
+
+  background-color: var(--rd-bg-light);
+  padding: 80px 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.rd-design-guide__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.rd-design-guide__header {
+  margin-bottom: 40px;
+}
+
+.rd-design-guide__title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--rd-text-dark);
+  margin: 0 0 12px;
+  display: inline-block;
+  position: relative;
+  line-height: 1.2;
+}
+
+.rd-design-guide__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background-color: var(--rd-primary-color);
+  border-radius: 2px;
+}
+
+.rd-design-guide__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.rd-design-guide__metric-card {
+  background-color: var(--rd-card-bg);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--rd-border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.rd-design-guide__metric-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+}
+
+.rd-design-guide__metric-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--rd-text-gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.rd-design-guide__metric-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--rd-text-dark);
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.rd-design-guide__metric-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.rd-design-guide__specs {
+  background-color: var(--rd-card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--rd-border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.rd-design-guide__spec-row {
+  display: flex;
+  border-bottom: 1px solid var(--rd-border-color);
+}
+
+.rd-design-guide__spec-row:last-child {
+  border-bottom: none;
+}
+
+.rd-design-guide__spec-name {
+  width: 30%;
+  padding: 24px;
+  background-color: #f8fafc;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rd-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid var(--rd-border-color);
+  display: flex;
+  align-items: center;
+}
+
+.rd-design-guide__spec-details {
+  width: 70%;
+  padding: 24px;
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+}
+
+.rd-design-guide__advice {
+  background-color: var(--rd-primary-light);
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid #ffe0db;
+  border-left: 6px solid var(--rd-primary-color);
+}
+
+.rd-design-guide__advice-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.rd-design-guide__advice-icon {
+  color: var(--rd-primary-color);
+  width: 24px;
+  height: 24px;
+}
+
+.rd-design-guide__advice-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--rd-text-dark);
+  margin: 0;
+}
+
+.rd-design-guide__advice-list {
+  list-style: none;
+  padding-left: 4px;
+  margin: 0;
+}
+
+.rd-design-guide__advice-item {
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.rd-design-guide__advice-item:last-child {
+  margin-bottom: 0;
+}
+
+.rd-design-guide__advice-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--rd-primary-color);
+  border-radius: 50%;
+}
+
+.rd-design-guide__advice-strong {
+  color: var(--rd-text-dark);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .rd-design-guide__metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rd-design-guide__spec-row {
+    flex-direction: column;
+  }
+
+  .rd-design-guide__spec-name {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--rd-border-color);
+    padding: 16px 20px;
+  }
+
+  .rd-design-guide__spec-details {
+    width: 100%;
+    padding: 16px 20px;
+  }
+
+  .rd-design-guide__advice {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rd-design-guide__metrics {
+    grid-template-columns: 1fr;
+  }
+}
+

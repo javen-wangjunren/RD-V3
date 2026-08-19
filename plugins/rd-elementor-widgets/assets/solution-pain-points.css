@@ -1,0 +1,143 @@
+.rd-solution-pain-points {
+  --rd-spp-accent: #EA543F;
+  --rd-spp-bg: #FFFFFF;
+  --rd-spp-text: #000000;
+  --rd-spp-text-soft: rgba(0, 0, 0, 0.68);
+  --rd-spp-border: #E5E5E5;
+
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: var(--rd-spp-bg);
+  color: var(--rd-spp-text);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.rd-solution-pain-points__container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 768px) {
+  .rd-solution-pain-points__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rd-solution-pain-points__container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.rd-solution-pain-points__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .rd-solution-pain-points__header {
+    margin-bottom: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rd-solution-pain-points__header {
+    margin-bottom: 64px;
+  }
+}
+
+.rd-solution-pain-points__title {
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--rd-spp-text);
+  margin: 0 0 16px;
+}
+
+@media (min-width: 768px) {
+  .rd-solution-pain-points__title {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+.rd-solution-pain-points__subtitle {
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.5px;
+  color: var(--rd-spp-text-soft);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.rd-solution-pain-points__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .rd-solution-pain-points__grid {
+    gap: 32px;
+  }
+}
+
+.rd-solution-pain-points__card {
+  width: 100%;
+  max-width: 380px;
+  background-color: var(--rd-spp-bg);
+  border: 1px solid var(--rd-spp-border);
+  border-radius: 20px;
+  padding: 32px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .rd-solution-pain-points__card {
+    width: calc(50% - 12px);
+    padding: 36px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rd-solution-pain-points__card {
+    width: calc(33.333% - 21.333px);
+  }
+}
+
+.rd-solution-pain-points__card:hover {
+  border-color: rgba(234, 84, 63, 0.35);
+  background-color: #FFFCFB;
+}
+
+.rd-solution-pain-points__icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  color: var(--rd-spp-accent);
+  margin-bottom: 20px;
+}
+
+.rd-solution-pain-points__card-title {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  color: var(--rd-spp-text);
+  margin: 0 0 12px;
+  letter-spacing: 0.2px;
+}
+
+.rd-solution-pain-points__card-desc {
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--rd-spp-text-soft);
+  letter-spacing: 0.2px;
+  margin: 0;
+}
