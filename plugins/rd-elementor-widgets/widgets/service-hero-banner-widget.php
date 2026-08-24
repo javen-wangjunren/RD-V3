@@ -179,6 +179,18 @@ if ( ! class_exists( 'RD_Service_Hero_Banner_Widget' ) ) {
 			);
 
 			$this->add_control(
+				'background_color',
+				[
+					'label'     => 'Background Color',
+					'type'      => \Elementor\Controls_Manager::COLOR,
+					'default'   => '#FFFFFF',
+					'selectors' => [
+						'{{WRAPPER}} .rd-shb' => '--rd-shb-bg: {{VALUE}};',
+					],
+				]
+			);
+
+			$this->add_control(
 				'accent_color',
 				[
 					'label'     => 'Accent Color',
