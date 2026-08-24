@@ -165,6 +165,28 @@ if ( ! class_exists( 'RD_Solution_Service_Matrix_Widget' ) ) {
 			);
 
 			$this->end_controls_section();
+
+			$this->start_controls_section(
+				'section_style',
+				[
+					'label' => 'Style',
+					'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				]
+			);
+
+			$this->add_control(
+				'background_color',
+				[
+					'label'     => 'Background Color',
+					'type'      => \Elementor\Controls_Manager::COLOR,
+					'default'   => '#F6F6F6',
+					'selectors' => [
+						'{{WRAPPER}} .rd-solution-service-matrix' => '--rd-sm-bg: {{VALUE}};',
+					],
+				]
+			);
+
+			$this->end_controls_section();
 		}
 
 		protected function render() {
