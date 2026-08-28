@@ -67,14 +67,14 @@ function mml_theme_fn_is_mobile ($ua = '') {
 }
 
 /**
- * 获取 git 最后一次提交的 hash 。默认使用 master 分支。以后修改成可用其他分支。
+ * 获取 git 最后一次提交的 hash 。默认使用 main 分支。以后修改成可用其他分支。
  * 不存在时返回空字符串。
  *
  * @param Integer $length 可选。 整数型。 截取长度。不填或小于1则不截取，返回全部。
  * @return String         字符串。 返回 hash 或者 空字符串
  */
 function mml_theme_fn_get_git_hash ($length = 0) {
-    $path = ABSPATH . '.git/refs/heads/master';
+    $path = ABSPATH . '.git/refs/heads/main';
     if (file_exists($path)) {
         $hash = file_get_contents($path);
         if (is_int($length) && $length > 0) {
