@@ -23,11 +23,3 @@
   	Cookies.set('rd_usr_landing_session', window.location.href.split('?')[0], { domain: 'rapiddirect.com' })
   }
 
-
-function gt_jquery_ready_custom(event) {
-	event.preventDefault();
-	jQuery('.switcher .option-2 a img').each(function() {
-		if (!jQuery(this)[0].hasAttribute('src')) jQuery(this).attr('src', jQuery(this).attr('data-gt-lazy-src'))
-	});
-	jQuery('.switcher.top-options').toggle();
-}
