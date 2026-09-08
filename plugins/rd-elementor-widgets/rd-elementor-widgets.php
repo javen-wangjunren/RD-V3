@@ -34,6 +34,11 @@ final class RD_Elementor_Widgets_Plugin {
 	const SCRIPT_HANDLE_SOLUTION_FAQ = 'rd-solution-faq';
 	const STYLE_HANDLE_SERVICE_CASE_STUDY = 'rd-service-case-study';
 	const SCRIPT_HANDLE_SERVICE_CASE_STUDY = 'rd-service-case-study';
+	const STYLE_HANDLE_TRUST_LOGO_MARQUEE = 'rd-trust-logo-marquee';
+	const SCRIPT_HANDLE_TRUST_LOGO_MARQUEE = 'rd-trust-logo-marquee';
+	const STYLE_HANDLE_SERVICE_GALLERY = 'rd-service-gallery';
+	const STYLE_HANDLE_CAPABILITY_SHOWCASE = 'rd-capability-showcase';
+	const STYLE_HANDLE_COMPLETE_PRODUCT_SHOWCASE = 'rd-complete-product-showcase';
 
 	private static function asset_version( $relative_path ) {
 		$file = plugin_dir_path( __FILE__ ) . ltrim( $relative_path, '/' );
@@ -228,6 +233,42 @@ final class RD_Elementor_Widgets_Plugin {
 			self::asset_version( 'assets/service-case-study.js' ),
 			true
 		);
+
+		wp_register_style(
+			self::STYLE_HANDLE_TRUST_LOGO_MARQUEE,
+			plugins_url( 'assets/trust-logo-marquee.css', __FILE__ ),
+			[],
+			self::asset_version( 'assets/trust-logo-marquee.css' )
+		);
+
+		wp_register_script(
+			self::SCRIPT_HANDLE_TRUST_LOGO_MARQUEE,
+			plugins_url( 'assets/trust-logo-marquee.js', __FILE__ ),
+			[ 'jquery' ],
+			self::asset_version( 'assets/trust-logo-marquee.js' ),
+			true
+		);
+
+		wp_register_style(
+			self::STYLE_HANDLE_SERVICE_GALLERY,
+			plugins_url( 'assets/service-gallery.css', __FILE__ ),
+			[],
+			self::asset_version( 'assets/service-gallery.css' )
+		);
+
+		wp_register_style(
+			self::STYLE_HANDLE_CAPABILITY_SHOWCASE,
+			plugins_url( 'assets/capability-showcase.css', __FILE__ ),
+			[],
+			self::asset_version( 'assets/capability-showcase.css' )
+		);
+
+		wp_register_style(
+			self::STYLE_HANDLE_COMPLETE_PRODUCT_SHOWCASE,
+			plugins_url( 'assets/complete-product-showcase.css', __FILE__ ),
+			[],
+			self::asset_version( 'assets/complete-product-showcase.css' )
+		);
 	}
 
 	public static function register_category( $elements_manager ) {
@@ -261,6 +302,10 @@ final class RD_Elementor_Widgets_Plugin {
 		require_once __DIR__ . '/widgets/solution-service-matrix-widget.php';
 		require_once __DIR__ . '/widgets/solution-faq-widget.php';
 		require_once __DIR__ . '/widgets/service-case-study-widget.php';
+		require_once __DIR__ . '/widgets/trust-logo-marquee-widget.php';
+		require_once __DIR__ . '/widgets/service-gallery-widget.php';
+		require_once __DIR__ . '/widgets/capability-showcase-widget.php';
+		require_once __DIR__ . '/widgets/complete-product-showcase-widget.php';
 	}
 
 	public static function register_widgets( $widgets_manager ) {
@@ -332,6 +377,22 @@ final class RD_Elementor_Widgets_Plugin {
 
 		if ( class_exists( 'RD_Service_Case_Study_Widget' ) ) {
 			$widgets_manager->register( new \RD_Service_Case_Study_Widget() );
+		}
+
+		if ( class_exists( 'RD_Trust_Logo_Marquee_Widget' ) ) {
+			$widgets_manager->register( new \RD_Trust_Logo_Marquee_Widget() );
+		}
+
+		if ( class_exists( 'RD_Service_Gallery_Widget' ) ) {
+			$widgets_manager->register( new \RD_Service_Gallery_Widget() );
+		}
+
+		if ( class_exists( 'RD_Capability_Showcase_Widget' ) ) {
+			$widgets_manager->register( new \RD_Capability_Showcase_Widget() );
+		}
+
+		if ( class_exists( 'RD_Complete_Product_Showcase_Widget' ) ) {
+			$widgets_manager->register( new \RD_Complete_Product_Showcase_Widget() );
 		}
 	}
 }

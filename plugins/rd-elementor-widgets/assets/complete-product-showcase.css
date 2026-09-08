@@ -1,0 +1,83 @@
+/* Complete Product Showcase — Elementor Widget */
+.rd-cps {
+  --rd-cps-bg: #ffffff;
+  --rd-cps-heading-color: #000000;
+  --rd-cps-text-color: rgba(0, 0, 0, 0.68);
+  --rd-cps-media-radius: 16px;
+
+  width: 100%;
+  background: var(--rd-cps-bg);
+  color: var(--rd-cps-text-color);
+  overflow: hidden;
+}
+
+.rd-cps__container {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: 96px 32px;
+}
+
+.rd-cps__header {
+  max-width: 800px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.rd-cps__heading {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.16;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--rd-cps-heading-color);
+}
+
+.rd-cps__description {
+  margin: 0.75rem 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.rd-cps__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--rd-cps-media-radius);
+  background: #f6f6f6;
+}
+
+.rd-cps__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .rd-cps__container {
+    padding: 72px 32px;
+  }
+
+  .rd-cps__heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .rd-cps__container {
+    padding: 64px 20px;
+  }
+
+  .rd-cps__heading {
+    font-size: 28px;
+  }
+
+  .rd-cps__description {
+    font-size: 16px;
+  }
+
+  .rd-cps__media {
+    border-radius: 12px;
+  }
+}

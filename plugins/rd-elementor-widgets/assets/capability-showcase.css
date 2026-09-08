@@ -1,0 +1,143 @@
+/* Capability Showcase — Elementor Widget */
+.rd-cs {
+  --rd-cs-bg: #f6f6f6;
+  --rd-cs-heading-color: #000000;
+  --rd-cs-text-color: rgba(0, 0, 0, 0.68);
+  --rd-cs-label-color: rgba(0, 0, 0, 0.48);
+  --rd-cs-accent: #ea543f;
+  --rd-cs-border: #e5e5e5;
+  --rd-cs-item-radius: 12px;
+
+  width: 100%;
+  background: var(--rd-cs-bg);
+  color: var(--rd-cs-text-color);
+  overflow: hidden;
+}
+
+.rd-cs__container {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: 96px 32px;
+}
+
+.rd-cs__header {
+  max-width: 800px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.rd-cs__heading {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.16;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--rd-cs-heading-color);
+}
+
+.rd-cs__description {
+  margin: 0.75rem 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.rd-cs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+}
+
+.rd-cs__category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rd-cs__category-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rd-cs__category-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rd-cs-accent);
+}
+
+.rd-cs__category-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.24;
+  font-weight: 600;
+  color: var(--rd-cs-heading-color);
+}
+
+.rd-cs__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.rd-cs__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--rd-cs-item-radius);
+  background: #e5e5e5;
+}
+
+.rd-cs__gallery--ratio-2-3 .rd-cs__item {
+  aspect-ratio: 2 / 3;
+}
+
+.rd-cs__gallery--ratio-4-3 .rd-cs__item {
+  aspect-ratio: 4 / 3;
+}
+
+.rd-cs__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rd-cs__item img {
+    transition: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .rd-cs__container {
+    padding: 72px 32px;
+  }
+
+  .rd-cs__grid {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .rd-cs__container {
+    padding: 64px 20px;
+  }
+
+  .rd-cs__heading {
+    font-size: 28px;
+  }
+
+  .rd-cs__description {
+    font-size: 16px;
+  }
+
+  .rd-cs__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .rd-cs__category-title {
+    font-size: 20px;
+  }
+}

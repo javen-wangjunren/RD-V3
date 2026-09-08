@@ -1,0 +1,118 @@
+/* Trust Logo Marquee — Elementor Widget */
+.rd-tlm {
+  --rd-tlm-bg: #0a0a0a;
+  --rd-tlm-heading-color: #fafafa;
+  --rd-tlm-highlight-color: #ea543f;
+  --rd-tlm-divider-color: rgba(250, 250, 250, 0.16);
+  --rd-tlm-logo-max-height: 40px;
+  --rd-tlm-logo-gap: 64px;
+  --rd-tlm-speed: 25s;
+
+  width: 100%;
+  background: var(--rd-tlm-bg);
+  overflow: hidden;
+}
+
+.rd-tlm__container {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: 56px 32px;
+  display: grid;
+  grid-template-columns: auto 1px 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.rd-tlm__heading {
+  margin: 0;
+}
+
+.rd-tlm__heading h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--rd-tlm-heading-color);
+}
+
+.rd-tlm__heading em {
+  font-style: normal;
+  color: var(--rd-tlm-highlight-color);
+}
+
+.rd-tlm__divider {
+  display: block;
+  width: 1px;
+  height: 64px;
+  background: var(--rd-tlm-divider-color);
+}
+
+.rd-tlm__marquee {
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.rd-tlm__track {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-tlm-logo-gap);
+  width: max-content;
+  animation: rd-tlm-marquee var(--rd-tlm-speed) linear infinite;
+}
+
+.rd-tlm__marquee:hover .rd-tlm__track {
+  animation-play-state: paused;
+}
+
+.rd-tlm__logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rd-tlm__logo img {
+  display: block;
+  max-width: none;
+  max-height: var(--rd-tlm-logo-max-height);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes rd-tlm-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rd-tlm__track {
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .rd-tlm__container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .rd-tlm__divider {
+    width: 64px;
+    height: 1px;
+    margin: 0 auto;
+  }
+
+  .rd-tlm__heading h2 {
+    font-size: 24px;
+  }
+}
