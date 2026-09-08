@@ -4,8 +4,8 @@
   --rd-tlm-heading-color: #111111;
   --rd-tlm-highlight-color: #ea543f;
   --rd-tlm-divider-color: rgba(0, 0, 0, 0.12);
-  --rd-tlm-logo-max-height: 40px;
-  --rd-tlm-logo-gap: 64px;
+  --rd-tlm-logo-max-height: 60px;
+  --rd-tlm-logo-gap: 48px;
   --rd-tlm-speed: 25s;
 
   width: 100%;
