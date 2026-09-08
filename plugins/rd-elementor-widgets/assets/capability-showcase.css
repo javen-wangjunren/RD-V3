@@ -1,6 +1,6 @@
 /* Capability Showcase — Elementor Widget */
 .rd-cs {
-  --rd-cs-bg: #f6f6f6;
+  --rd-cs-bg: #ffffff;
   --rd-cs-heading-color: #000000;
   --rd-cs-text-color: rgba(0, 0, 0, 0.68);
   --rd-cs-label-color: rgba(0, 0, 0, 0.48);
@@ -43,7 +43,7 @@
 
 .rd-cs__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 48px;
 }
 
