@@ -211,7 +211,7 @@ if ( ! class_exists( 'RD_Service_Gallery_Widget' ) ) {
 									<?php endif; ?>
 								</div>
 								<div class="rd-sg__card-body">
-									<h3 class="rd-sg__card-title"><?php echo esc_html( $card_title ); ?></h3>
+									<h4 class="rd-sg__card-title"><?php echo esc_html( $card_title ); ?></h4>
 									<?php if ( $card_description !== '' ) : ?>
 										<p class="rd-sg__card-desc"><?php echo esc_html( $card_description ); ?></p>
 									<?php endif; ?>
