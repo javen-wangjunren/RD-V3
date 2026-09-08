@@ -65,11 +65,11 @@ if ( ! class_exists( 'RD_Trust_Logo_Marquee_Widget' ) ) {
 					'fields'      => $repeater->get_controls(),
 					'title_field' => '{{{ alt }}}',
 					'default'     => [
-						[ 'alt' => 'Partner logo 1' ],
-						[ 'alt' => 'Partner logo 2' ],
-						[ 'alt' => 'Partner logo 3' ],
-						[ 'alt' => 'Partner logo 4' ],
-						[ 'alt' => 'Partner logo 5' ],
+						[ '_id' => 'logo1', 'alt' => 'Partner logo 1' ],
+						[ '_id' => 'logo2', 'alt' => 'Partner logo 2' ],
+						[ '_id' => 'logo3', 'alt' => 'Partner logo 3' ],
+						[ '_id' => 'logo4', 'alt' => 'Partner logo 4' ],
+						[ '_id' => 'logo5', 'alt' => 'Partner logo 5' ],
 					],
 				]
 			);
@@ -88,10 +88,6 @@ if ( ! class_exists( 'RD_Trust_Logo_Marquee_Widget' ) ) {
 				}
 			}
 
-			if ( empty( $valid_logos ) ) {
-				return;
-			}
-
 			$instance_id = 'rd-tlm-' . $this->get_id();
 			?>
 			<section class="rd-tlm" data-rd-tlm-id="<?php echo esc_attr( $instance_id ); ?>">
@@ -102,12 +98,18 @@ if ( ! class_exists( 'RD_Trust_Logo_Marquee_Widget' ) ) {
 					<span class="rd-tlm__divider" aria-hidden="true"></span>
 					<div class="rd-tlm__marquee" aria-label="Partner logos">
 						<div class="rd-tlm__track">
-							<?php foreach ( $valid_logos as $logo ) : ?>
-								<?php $this->render_logo( $logo ); ?>
-							<?php endforeach; ?>
-							<?php foreach ( $valid_logos as $logo ) : ?>
-								<?php $this->render_logo( $logo, true ); ?>
-							<?php endforeach; ?>
+							<?php if ( ! empty( $valid_logos ) ) : ?>
+								<?php foreach ( $valid_logos as $logo ) : ?>
+									<?php $this->render_logo( $logo ); ?>
+								<?php endforeach; ?>
+								<?php foreach ( $valid_logos as $logo ) : ?>
+									<?php $this->render_logo( $logo, true ); ?>
+								<?php endforeach; ?>
+							<?php else : ?>
+								<div class="rd-tlm__logo rd-tlm__logo--placeholder">
+									<span>Logo placeholder</span>
+								</div>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>

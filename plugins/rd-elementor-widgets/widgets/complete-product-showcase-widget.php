@@ -63,16 +63,6 @@ if ( ! class_exists( 'RD_Complete_Product_Showcase_Widget' ) ) {
 				]
 			);
 
-			$this->add_control(
-				'image_alt',
-				[
-					'label'       => 'Image Alt Text',
-					'type'        => \Elementor\Controls_Manager::TEXT,
-					'default'     => 'Integrated electromechanical manufacturing process from design to final product',
-					'label_block' => true,
-				]
-			);
-
 			$this->end_controls_section();
 		}
 
@@ -81,11 +71,7 @@ if ( ! class_exists( 'RD_Complete_Product_Showcase_Widget' ) ) {
 			$heading     = isset( $settings['heading'] ) ? trim( (string) $settings['heading'] ) : '';
 			$description = isset( $settings['description'] ) ? trim( (string) $settings['description'] ) : '';
 			$image       = isset( $settings['image'] ) ? $settings['image'] : [];
-			$image_alt   = isset( $settings['image_alt'] ) ? trim( (string) $settings['image_alt'] ) : '';
-
-			if ( empty( $image['url'] ) && empty( $image['id'] ) ) {
-				return;
-			}
+			$has_image   = ! empty( $image['url'] ) || ! empty( $image['id'] );
 
 			$instance_id = 'rd-cps-' . $this->get_id();
 			?>
@@ -102,7 +88,7 @@ if ( ! class_exists( 'RD_Complete_Product_Showcase_Widget' ) ) {
 						</header>
 					<?php endif; ?>
 
-					<div class="rd-cps__media">
+					<div class="rd-cps__media<?php echo $has_image ? '' : ' rd-cps__media--placeholder'; ?>">
 						<?php if ( ! empty( $image['id'] ) ) : ?>
 							<?php
 							echo wp_get_attachment_image(
@@ -110,14 +96,16 @@ if ( ! class_exists( 'RD_Complete_Product_Showcase_Widget' ) ) {
 								'large',
 								false,
 								[
-									'alt'      => esc_attr( $image_alt ),
+									'alt'      => '',
 									'loading'  => 'lazy',
 									'decoding' => 'async',
 								]
 							);
 							?>
 						<?php elseif ( ! empty( $image['url'] ) ) : ?>
-							<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image_alt ); ?>" loading="lazy" decoding="async">
+							<img src="<?php echo esc_url( $image['url'] ); ?>" alt="" loading="lazy" decoding="async">
+						<?php else : ?>
+							<span class="rd-cps__placeholder-text">Image placeholder</span>
 						<?php endif; ?>
 					</div>
 				</div>

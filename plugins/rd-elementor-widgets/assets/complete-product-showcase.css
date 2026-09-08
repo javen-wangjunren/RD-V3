@@ -54,6 +54,19 @@
   object-fit: cover;
 }
 
+.rd-cps__media--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #e5e5e5;
+  background: #fafafa;
+}
+
+.rd-cps__placeholder-text {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
 @media (max-width: 1024px) {
   .rd-cps__container {
     padding: 72px 32px;
