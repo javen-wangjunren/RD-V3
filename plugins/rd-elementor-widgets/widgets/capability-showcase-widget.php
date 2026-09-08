@@ -106,12 +106,12 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 					'label'       => 'Images',
 					'type'        => \Elementor\Controls_Manager::REPEATER,
 					'fields'      => $image_repeater->get_controls(),
-					'title_field' => 'Image #{{{ _current_item_no }}}',
+					'title_field' => 'Image',
 					'default'     => [
-						[],
-						[],
-						[],
-						[],
+						[ '_id' => 'img1' ],
+						[ '_id' => 'img2' ],
+						[ '_id' => 'img3' ],
+						[ '_id' => 'img4' ],
 					],
 				]
 			);
@@ -125,14 +125,28 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 					'title_field' => '{{{ label }}} — {{{ title }}}',
 					'default'     => [
 						[
+							'_id'           => 'cat1',
 							'label'         => 'Mechanical',
 							'title'         => 'Precision Equipment',
 							'gallery_style' => '2-3',
+							'images'        => [
+								[ '_id' => 'm1' ],
+								[ '_id' => 'm2' ],
+								[ '_id' => 'm3' ],
+								[ '_id' => 'm4' ],
+							],
 						],
 						[
+							'_id'           => 'cat2',
 							'label'         => 'Electronic',
 							'title'         => 'PCB & PCBA',
 							'gallery_style' => '4-3',
+							'images'        => [
+								[ '_id' => 'e1' ],
+								[ '_id' => 'e2' ],
+								[ '_id' => 'e3' ],
+								[ '_id' => 'e4' ],
+							],
 						],
 					],
 				]
@@ -142,10 +156,10 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 		}
 
 		protected function render() {
-			$settings   = $this->get_settings_for_display();
-			$heading    = isset( $settings['heading'] ) ? trim( (string) $settings['heading'] ) : '';
+			$settings    = $this->get_settings_for_display();
+			$heading     = isset( $settings['heading'] ) ? trim( (string) $settings['heading'] ) : '';
 			$description = isset( $settings['description'] ) ? trim( (string) $settings['description'] ) : '';
-			$categories = isset( $settings['categories'] ) && is_array( $settings['categories'] ) ? $settings['categories'] : [];
+			$categories  = isset( $settings['categories'] ) && is_array( $settings['categories'] ) ? $settings['categories'] : [];
 
 			$valid_categories = [];
 			foreach ( $categories as $category ) {
@@ -190,8 +204,8 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 					<div class="rd-cs__grid">
 						<?php foreach ( $valid_categories as $category ) : ?>
 							<?php
-							$label        = isset( $category['label'] ) ? trim( (string) $category['label'] ) : '';
-							$title        = isset( $category['title'] ) ? trim( (string) $category['title'] ) : '';
+							$label         = isset( $category['label'] ) ? trim( (string) $category['label'] ) : '';
+							$title         = isset( $category['title'] ) ? trim( (string) $category['title'] ) : '';
 							$gallery_style = isset( $category['gallery_style'] ) ? $category['gallery_style'] : '2-3';
 							$gallery_class = 'rd-cs__gallery rd-cs__gallery--ratio-' . sanitize_html_class( $gallery_style );
 							?>
