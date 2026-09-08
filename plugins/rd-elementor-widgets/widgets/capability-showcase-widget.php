@@ -168,18 +168,18 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 					continue;
 				}
 
-				$valid_images = [];
-				$images       = isset( $category['images'] ) && is_array( $category['images'] ) ? $category['images'] : [];
-				foreach ( $images as $image ) {
-					if ( ! empty( $image['image']['url'] ) || ! empty( $image['image']['id'] ) ) {
-						$valid_images[] = $image;
-					}
+				$images = isset( $category['images'] ) && is_array( $category['images'] ) ? $category['images'] : [];
+				if ( empty( $images ) ) {
+					$images = [
+						[ '_id' => 'ph1' ],
+						[ '_id' => 'ph2' ],
+						[ '_id' => 'ph3' ],
+						[ '_id' => 'ph4' ],
+					];
 				}
 
-				if ( ! empty( $valid_images ) ) {
-					$category['valid_images'] = $valid_images;
-					$valid_categories[]       = $category;
-				}
+				$category['render_images'] = $images;
+				$valid_categories[]        = $category;
 			}
 
 			if ( empty( $valid_categories ) ) {
@@ -219,8 +219,9 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 									<?php endif; ?>
 								</div>
 								<div class="<?php echo esc_attr( $gallery_class ); ?>">
-									<?php foreach ( $category['valid_images'] as $image ) : ?>
-										<div class="rd-cs__item">
+									<?php foreach ( $category['render_images'] as $image ) : ?>
+										<?php $has_image = ! empty( $image['image']['url'] ) || ! empty( $image['image']['id'] ); ?>
+										<div class="rd-cs__item<?php echo $has_image ? '' : ' rd-cs__item--placeholder'; ?>">
 											<?php if ( ! empty( $image['image']['id'] ) ) : ?>
 												<?php
 												echo wp_get_attachment_image(
