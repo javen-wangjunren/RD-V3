@@ -58,17 +58,6 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 				]
 			);
 
-			$image_repeater = new \Elementor\Repeater();
-
-			$image_repeater->add_control(
-				'image',
-				[
-					'label'   => 'Image',
-					'type'    => \Elementor\Controls_Manager::MEDIA,
-					'default' => [],
-				]
-			);
-
 			$category_repeater = new \Elementor\Repeater();
 
 			$category_repeater->add_control(
@@ -122,16 +111,9 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 			$category_repeater->add_control(
 				'images',
 				[
-					'label'       => 'Images',
-					'type'        => \Elementor\Controls_Manager::REPEATER,
-					'fields'      => $image_repeater->get_controls(),
-					'title_field' => 'Image',
-					'default'     => [
-						[ '_id' => 'img1' ],
-						[ '_id' => 'img2' ],
-						[ '_id' => 'img3' ],
-						[ '_id' => 'img4' ],
-					],
+					'label'   => 'Images',
+					'type'    => \Elementor\Controls_Manager::GALLERY,
+					'default' => [],
 				]
 			);
 
@@ -149,12 +131,7 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 							'title'         => 'Precision Equipment',
 							'gallery_style' => '2-3',
 							'cards_per_row' => '2',
-							'images'        => [
-								[ '_id' => 'm1' ],
-								[ '_id' => 'm2' ],
-								[ '_id' => 'm3' ],
-								[ '_id' => 'm4' ],
-							],
+							'images'        => [],
 						],
 						[
 							'_id'           => 'cat2',
@@ -162,12 +139,7 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 							'title'         => 'PCB & PCBA',
 							'gallery_style' => '4-3',
 							'cards_per_row' => '3',
-							'images'        => [
-								[ '_id' => 'e1' ],
-								[ '_id' => 'e2' ],
-								[ '_id' => 'e3' ],
-								[ '_id' => 'e4' ],
-							],
+							'images'        => [],
 						],
 					],
 				]
@@ -189,17 +161,7 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 					continue;
 				}
 
-				$images = isset( $category['images'] ) && is_array( $category['images'] ) ? $category['images'] : [];
-				if ( empty( $images ) ) {
-					$images = [
-						[ '_id' => 'ph1' ],
-						[ '_id' => 'ph2' ],
-						[ '_id' => 'ph3' ],
-						[ '_id' => 'ph4' ],
-					];
-				}
-
-				$category['render_images'] = $images;
+				$category['render_images'] = isset( $category['images'] ) && is_array( $category['images'] ) ? $category['images'] : [];
 				$valid_categories[]        = $category;
 			}
 
@@ -240,7 +202,7 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 									aria-controls="<?php echo esc_attr( $panel_id ); ?>"
 									data-index="<?php echo esc_attr( (string) $index ); ?>"
 								>
-									<?php echo esc_html( $label !== '' ? $label : ( $category['title'] ?? '' ) ); ?>
+									<?php echo esc_html( $label !== '' ? $label : $title ); ?>
 								</button>
 							<?php endforeach; ?>
 						</div>
@@ -275,12 +237,15 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 								</div>
 								<div class="<?php echo esc_attr( $gallery_class ); ?>">
 									<?php foreach ( $category['render_images'] as $image ) : ?>
-										<?php $has_image = ! empty( $image['image']['url'] ) || ! empty( $image['image']['id'] ); ?>
-										<div class="rd-cs__item<?php echo $has_image ? '' : ' rd-cs__item--placeholder'; ?>">
-											<?php if ( ! empty( $image['image']['id'] ) ) : ?>
+										<?php
+										$has_image = ! empty( $image['url'] ) || ! empty( $image['id'] );
+										$item_class = 'rd-cs__item' . ( $has_image ? '' : ' rd-cs__item--placeholder' );
+										?>
+										<div class="<?php echo esc_attr( $item_class ); ?>">
+											<?php if ( ! empty( $image['id'] ) ) : ?>
 												<?php
 												echo wp_get_attachment_image(
-													(int) $image['image']['id'],
+													(int) $image['id'],
 													'large',
 													false,
 													[
@@ -289,8 +254,8 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 													]
 												);
 												?>
-											<?php elseif ( ! empty( $image['image']['url'] ) ) : ?>
-												<img src="<?php echo esc_url( $image['image']['url'] ); ?>" alt="" loading="lazy" decoding="async">
+											<?php elseif ( ! empty( $image['url'] ) ) : ?>
+												<img src="<?php echo esc_url( $image['url'] ); ?>" alt="" loading="lazy" decoding="async">
 											<?php endif; ?>
 										</div>
 									<?php endforeach; ?>
