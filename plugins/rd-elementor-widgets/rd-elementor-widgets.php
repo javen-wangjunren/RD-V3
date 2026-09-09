@@ -38,6 +38,7 @@ final class RD_Elementor_Widgets_Plugin {
 	const SCRIPT_HANDLE_TRUST_LOGO_MARQUEE = 'rd-trust-logo-marquee';
 	const STYLE_HANDLE_SERVICE_GALLERY = 'rd-service-gallery';
 	const STYLE_HANDLE_CAPABILITY_SHOWCASE = 'rd-capability-showcase';
+	const SCRIPT_HANDLE_CAPABILITY_SHOWCASE = 'rd-capability-showcase';
 	const STYLE_HANDLE_COMPLETE_PRODUCT_SHOWCASE = 'rd-complete-product-showcase';
 
 	private static function asset_version( $relative_path ) {
@@ -261,6 +262,14 @@ final class RD_Elementor_Widgets_Plugin {
 			plugins_url( 'assets/capability-showcase.css', __FILE__ ),
 			[],
 			self::asset_version( 'assets/capability-showcase.css' )
+		);
+
+		wp_register_script(
+			self::SCRIPT_HANDLE_CAPABILITY_SHOWCASE,
+			plugins_url( 'assets/capability-showcase.js', __FILE__ ),
+			[],
+			self::asset_version( 'assets/capability-showcase.js' ),
+			true
 		);
 
 		wp_register_style(

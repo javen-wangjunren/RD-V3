@@ -24,6 +24,10 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 			return [ RD_Elementor_Widgets_Plugin::STYLE_HANDLE_CAPABILITY_SHOWCASE ];
 		}
 
+		public function get_script_depends() {
+			return [ RD_Elementor_Widgets_Plugin::SCRIPT_HANDLE_CAPABILITY_SHOWCASE ];
+		}
+
 		protected function register_controls() {
 			$this->start_controls_section(
 				'section_content',
@@ -101,6 +105,21 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 			);
 
 			$category_repeater->add_control(
+				'cards_per_row',
+				[
+					'label'   => 'Cards Per Row',
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'default' => '3',
+					'options' => [
+						'1' => '1',
+						'2' => '2',
+						'3' => '3',
+						'4' => '4',
+					],
+				]
+			);
+
+			$category_repeater->add_control(
 				'images',
 				[
 					'label'       => 'Images',
@@ -129,6 +148,7 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 							'label'         => 'Mechanical',
 							'title'         => 'Precision Equipment',
 							'gallery_style' => '2-3',
+							'cards_per_row' => '2',
 							'images'        => [
 								[ '_id' => 'm1' ],
 								[ '_id' => 'm2' ],
@@ -141,6 +161,7 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 							'label'         => 'Electronic',
 							'title'         => 'PCB & PCBA',
 							'gallery_style' => '4-3',
+							'cards_per_row' => '3',
 							'images'        => [
 								[ '_id' => 'e1' ],
 								[ '_id' => 'e2' ],
@@ -201,15 +222,49 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 						</header>
 					<?php endif; ?>
 
-					<div class="rd-cs__grid">
-						<?php foreach ( $valid_categories as $category ) : ?>
+					<?php if ( count( $valid_categories ) > 1 ) : ?>
+						<div class="rd-cs__tabs" role="tablist" aria-label="Capability categories">
+							<?php foreach ( $valid_categories as $index => $category ) : ?>
+								<?php
+								$label   = isset( $category['label'] ) ? trim( (string) $category['label'] ) : '';
+								$tab_id  = $instance_id . '-tab-' . $index;
+								$panel_id = $instance_id . '-panel-' . $index;
+								$active  = $index === 0 ? 'rd-cs__tab--active' : '';
+								?>
+								<button
+									class="rd-cs__tab <?php echo esc_attr( $active ); ?>"
+									id="<?php echo esc_attr( $tab_id ); ?>"
+									type="button"
+									role="tab"
+									aria-selected="<?php echo $index === 0 ? 'true' : 'false'; ?>"
+									aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+									data-index="<?php echo esc_attr( (string) $index ); ?>"
+								>
+									<?php echo esc_html( $label !== '' ? $label : ( $category['title'] ?? '' ) ); ?>
+								</button>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+
+					<div class="rd-cs__panels">
+						<?php foreach ( $valid_categories as $index => $category ) : ?>
 							<?php
 							$label         = isset( $category['label'] ) ? trim( (string) $category['label'] ) : '';
 							$title         = isset( $category['title'] ) ? trim( (string) $category['title'] ) : '';
 							$gallery_style = isset( $category['gallery_style'] ) ? $category['gallery_style'] : '2-3';
-							$gallery_class = 'rd-cs__gallery rd-cs__gallery--ratio-' . sanitize_html_class( $gallery_style );
+							$cards_per_row = isset( $category['cards_per_row'] ) ? $category['cards_per_row'] : '3';
+							$tab_id        = $instance_id . '-tab-' . $index;
+							$panel_id      = $instance_id . '-panel-' . $index;
+							$active        = $index === 0 ? 'rd-cs__panel--active' : '';
+							$gallery_class = 'rd-cs__gallery rd-cs__gallery--ratio-' . sanitize_html_class( $gallery_style ) . ' rd-cs__gallery--cols-' . sanitize_html_class( $cards_per_row );
 							?>
-							<article class="rd-cs__category">
+							<div
+								class="rd-cs__panel <?php echo esc_attr( $active ); ?>"
+								id="<?php echo esc_attr( $panel_id ); ?>"
+								role="tabpanel"
+								aria-labelledby="<?php echo esc_attr( $tab_id ); ?>"
+								data-index="<?php echo esc_attr( (string) $index ); ?>"
+							>
 								<div class="rd-cs__category-header">
 									<?php if ( $label !== '' ) : ?>
 										<span class="rd-cs__category-label"><?php echo esc_html( $label ); ?></span>
@@ -240,7 +295,7 @@ if ( ! class_exists( 'RD_Capability_Showcase_Widget' ) ) {
 										</div>
 									<?php endforeach; ?>
 								</div>
-							</article>
+							</div>
 						<?php endforeach; ?>
 					</div>
 				</div>
