@@ -65,7 +65,8 @@
   color: var(--rd-cs-accent);
 }
 
-.rd-cs__tab--active {
+.rd-cs__tab--active,
+.rd-cs__tab--active:hover {
   color: #ffffff;
   background: var(--rd-cs-accent);
   border-color: var(--rd-cs-accent);
