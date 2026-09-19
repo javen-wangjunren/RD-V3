@@ -164,9 +164,6 @@ add_filter('wp_terms_checklist_args','mml_theme_fn_taxonomy_checklist_checked_on
 add_action('wp_nav_menu_item_custom_fields', 'mml_theme_fn_custom_menu_field', 10, 4); // 输出设置框
 add_action('wp_update_nav_menu_item', 'mml_theme_fn_custom_menu_field_save', 10, 3); // 保存设置值
 add_action('wp_setup_nav_menu_item', 'mml_theme_fn_custom_menu_setup_code'); // 读取时加入属性
-add_action('phpmailer_init', 'mml_theme_on_phpmailer_init'); // 发邮件设置
-add_filter('wp_mail_from', 'mml_theme_on_wp_mail_from');
-add_filter('wp_mail_from_name', 'mml_theme_on_wp_mail_from_name');
 
 // ================================ 开发相关的代码 ================================
 
@@ -716,26 +713,6 @@ function mml_change_auto_deletion_time( $time ) {
 }
 
 /* ================================= 不要删除询盘附件 END ================================= */
-
-/* ================================= wp ses 发邮件配置 START ================================= */
-
-add_filter( 'wp_mail_from', function ($from) {
-	if ( is_plugin_active( 'wp-ses/wp-ses.php' ) ) {
-		return $_SERVER['SERVER_NAME'] . '@mmldigi.com';
-	} else {
-		return $from;
-	}
-});
-
-add_filter( 'wp_mail_from_name', function ($name)  {
-	if (empty($name) || $name === 'WordPress') {
-		return $_SERVER['SERVER_NAME'];
-	} else {
-		return $name;
-	}
-});
-
-/* ================================= wp ses 发邮件配置 END ================================= */
 
 function mml_theme_fn_back() {
     $back_info = ['link' => null, 'is_on_site' => false];

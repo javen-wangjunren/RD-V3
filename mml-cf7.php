@@ -158,14 +158,14 @@ function mml_cf7_page () {
 			<div class="form-item">
 				<label>
 					收件箱: <br />
-					<input type="text" class="input-text" name="mails" value="<?php echo $opt['mails'] ?>" />
+					<input type="text" class="input-text" name="mails" value="<?php echo esc_attr($opt['mails']) ?>" />
 					<br /><span class="tip-msg">如有多个，用英文逗号分隔</span>
 				</label>
 			</div>
 			<div class="form-item">
 				<label>
 					发送的字段: <br />
-					<input type="text" class="input-text" name="fields" value="<?php echo $opt['fields'] ?>" />
+					<input type="text" class="input-text" name="fields" value="<?php echo esc_attr($opt['fields']) ?>" />
 					<br /><span class="tip-msg">如有多个，用英文逗号分隔。如 your-message,your-country。<br />没有列出来的字段将发送字段名（例如，收到的邮件看到的就是"[your-name]"这样一个字符串，不会看到用户填写的信息）。</span>
 				</label>
 			</div>
@@ -184,100 +184,90 @@ function mml_cf7_page () {
 }
 
 function mml_cf7_save () {
-	// POST 才会调用此方法，所以不需要检查是否 POST
 	update_option('mml-cf7', [
 		'enabled' => isset($_POST['enabled']) ? '1' : '0',
-		'mails' => $_POST['mails'],
-		'fields' => $_POST['fields'],
+		'mails' => isset($_POST['mails']) ? sanitize_text_field($_POST['mails']) : '',
+		'fields' => isset($_POST['fields']) ? sanitize_text_field($_POST['fields']) : '',
 	]);
-	// echo '<div>保存成功</div>';
 }
 
 function mml_cf7_send () {
-	$host = $_SERVER['HTTP_HOST'];
 	$opt = get_option('mml-cf7');
-	$to = [];
-	$mails = explode(',', $opt['mails']);
-	foreach ($mails as $index => $mail_addr) {
-		$to[] = [ 'email' => trim($mail_addr) ];
+	if ( ! $opt || ! is_array( $opt ) ) {
+		return;
 	}
-	$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? substr( $_SERVER['HTTP_USER_AGENT'], 0, 254 ) : '';
-	$referer = isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '';
+
+	$recipients = array_filter( array_map( 'trim', explode( ',', $opt['mails'] ) ), 'is_email' );
+	if ( empty( $recipients ) ) {
+		mml_cf7_log( 'No valid recipient configured.' );
+		return;
+	}
+
 	$cf7_form = WPCF7_ContactForm::get_current();
 	$submission = WPCF7_Submission::get_instance();
-	$mail = $cf7_form->prop('mail');
+	if ( ! $cf7_form || ! $submission ) {
+		mml_cf7_log( 'Missing CF7 form or submission context.' );
+		return;
+	}
+
+	$mail = $cf7_form->prop( 'mail' );
+	if ( empty( $mail ) || empty( $mail['body'] ) || empty( $mail['subject'] ) ) {
+		mml_cf7_log( 'Missing CF7 mail configuration.' );
+		return;
+	}
+
 	$data = $submission->get_posted_data();
 	$mail_body = $mail['body'];
-	$fields = explode(',', $opt['fields']);
-	$mail_body = str_replace("[_url]", $referer, $mail_body);
-	$mail_body = str_replace("[_ip]", getenv('REMOTE_ADDR'), $mail_body);
-	$mail_body = str_replace("[_remote_ip]", mml_cf7_get_remote_ip_addr(), $mail_body);
-	$mail_body = str_replace("[_user_agent]", $ua, $mail_body);
-	$mail_body = str_replace("[tracking-info]", mml_cf7_get_tracking_info(), $mail_body);
+
+	$mail_body = str_replace(
+		'[_url]',
+		esc_html( isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '' ),
+		$mail_body
+	);
+	$mail_body = str_replace(
+		'[_ip]',
+		esc_html( getenv( 'REMOTE_ADDR' ) ?: '' ),
+		$mail_body
+	);
+	$mail_body = str_replace(
+		'[_remote_ip]',
+		esc_html( mml_cf7_get_remote_ip_addr() ),
+		$mail_body
+	);
+	$mail_body = str_replace(
+		'[_user_agent]',
+		esc_html( isset( $_SERVER['HTTP_USER_AGENT'] ) ? substr( $_SERVER['HTTP_USER_AGENT'], 0, 254 ) : '' ),
+		$mail_body
+	);
+
+	$tracking_info = mml_cf7_get_tracking_info();
+	if ( $tracking_info ) {
+		$tracking_info = nl2br( esc_html( $tracking_info ) );
+	}
+	$mail_body = str_replace( '[tracking-info]', $tracking_info, $mail_body );
+
 	if ( class_exists( 'MML_Tracking' ) ) {
 		$temp_array = MML_Tracking::before_send_mail( [ 'body' => $mail_body ], false, false );
 		$mail_body = $temp_array['body'];
 	}
-	foreach ($fields as $index => $field) {
-		$field = trim($field);
-		if ($field) {
-			if (isset($data[$field])) {
-				$mail_body = str_replace("[$field]", $data[$field], $mail_body);
-			} else {
-				$mail_body = str_replace("[$field]", '', $mail_body);
-			}
-		}
-	}
-	$body = apply_filters('the_content', $mail_body);
-	add_filter('wp_mail_from_name', 'mml_cf7_wp_mail_from_name');
-	mml_cf7_log(json_encode([
-		'result'  => wp_mail($mails, $mail['subject'], $body, 'content-type: text/html'),
-		'to' => $mails,
-		'subject' => $mail['subject'],
-		'body' => $body,
-	]));
-	remove_filter('wp_mail_from_name', 'mml_cf7_wp_mail_from_name');
-	// $request_options = array(
-	// 	'method' => 'POST',
-	// 	'timeout' => 45,
-	// 	'redirection' => 5,
-	// 	'httpversion' => '1.1',
-	// 	'blocking' => true,
-	// 	'headers' => [
-	// 		"Authorization" => "Bearer $api_key",
-	// 		'Content-Type' => 'application/json'
-	// 	],
-	// 	'body' => json_encode([
-	// 		"personalizations" => array( // 数组
-	// 			array( // 对象，数组元素
-	// 				"to" => $to,
-	// 			)
-	// 		),
-	// 		"from" => array(
-	// 			"email" => "MML@$host",
-	// 			"name" => $host
-	// 		),
-	// 		"subject" => $mail['subject'],
-	// 		"content" => array(
-	// 			array(
-	// 				"type" => "text/html",
-	// 				"value" => apply_filters('the_content', $mail_body)
-	// 			)
-	// 		)
-	// 	]),
-	// 	'cookies' => array()
-	// );
-	// mml_cf7_log(json_encode($request_options));
-	// $response = wp_remote_post( 'http://api.sendgrid.com/v3/mail/send', $request_options);
-	// $msg = '';
 
-	// if ( is_wp_error( $response ) ) {
-	// 	$error_message = $response->get_error_message();
-	// 	$msg = "Something went wrong: $error_message";
-	// } else {
-	// 	$msg = wp_remote_retrieve_body($response);
-	// }
-	// mml_cf7_log($msg);
+	$fields = array_filter( array_map( 'trim', explode( ',', $opt['fields'] ) ) );
+	foreach ( $fields as $field ) {
+		$value = isset( $data[ $field ] ) && ! is_array( $data[ $field ] ) ? $data[ $field ] : '';
+		$mail_body = str_replace( "[{$field}]", esc_html( $value ), $mail_body );
+	}
+
+	$body = wpautop( $mail_body );
+
+	add_filter( 'wp_mail_from_name', 'mml_cf7_wp_mail_from_name' );
+	$result = wp_mail( $recipients, $mail['subject'], $body, [ 'Content-Type: text/html; charset=UTF-8' ] );
+	remove_filter( 'wp_mail_from_name', 'mml_cf7_wp_mail_from_name' );
+
+	mml_cf7_log( json_encode( [
+		'result'  => $result,
+		'to' => $recipients,
+		'subject' => $mail['subject'],
+	] ) );
 }
 
 // function mml_cf7_get_tracking_info () {
@@ -377,5 +367,14 @@ function mml_cf7_wp_mail_from_name ($name)  {
 }
 
 function mml_cf7_log ($msg) {
-	file_put_contents(wp_upload_dir()['basedir'] . '/mml-cf7-' . date('Ymd') . '.log', '[' . date('Ymd-His') . '] ' . $msg . "\n", FILE_APPEND);
+	$upload_dir = wp_upload_dir();
+	if ( empty( $upload_dir['basedir'] ) || ! is_writable( $upload_dir['basedir'] ) ) {
+		error_log( '[MML-CF7] ' . $msg );
+		return;
+	}
+	file_put_contents(
+		$upload_dir['basedir'] . '/mml-cf7-' . date('Ymd') . '.log',
+		'[' . date('Ymd-His') . '] ' . $msg . "\n",
+		FILE_APPEND
+	);
 }

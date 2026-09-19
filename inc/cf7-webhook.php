@@ -54,7 +54,7 @@ class ContactForm7WebHook {
 			$data['ip'] = '';
 			$data['location'] = '';
 		}
-		wp_remote_post( $web_hook_url, array(
+		wp_remote_post( self::$web_hook_url, array(
 				'method'      => 'POST',
 				'blocking'    => false,
 				'body'        => $data,

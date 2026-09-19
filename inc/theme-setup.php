@@ -188,37 +188,6 @@ function mml_theme_fn_output_post_error_js () {
 	}
 }
 
-function mml_theme_on_phpmailer_init () {
-	global $phpmailer;
-	if ( ! is_null( $phpmailer )) {
-		$mail_settings = get_option('mml-theme-opt-mail', []);
-		if (isset($mail_settings['enable']) && $mail_settings['enable'] === 'y') {
-			$phpmailer->IsSMTP();
-			$phpmailer->SMTPAuth = true; // 启用 SMTPAuth 服务
-			$phpmailer->Port = $mail_settings['Port']; // MTP 邮件发送端口，这个和下面的 SSL 验证对应，如果这里填写 25，则下面参数为空
-			$phpmailer->SMTPSecure = isset($mail_settings['SMTPSecure']) ? $mail_settings['SMTPSecure'] : ''; // 是否验证 ssl，与 MTP 邮件发送端口对应，如果不填写，则上面的端口须为 25
-			$phpmailer->Host = $mail_settings['Host']; // 邮箱的 SMTP 服务器地址，目前 smtp.exmail.qq.com 为 QQ 邮箱和腾讯企业邮箱 SMTP
-			$phpmailer->Username = $mail_settings['Username']; // 你的邮箱地址
-			$phpmailer->Password = $mail_settings['Password']; // 你的邮箱登录密码
-		}
-	}
-}
-
-function mml_theme_on_wp_mail_from ($from) {
-	$mail_settings = $blog_settings = get_option('mml-theme-opt-mail', []);
-	if (isset($mail_settings['enable']) && $mail_settings['enable'] === 'y' && isset($mail_settings['Username'])) {
-		return $mail_settings['Username'];
-	}
-	return $from;
-}
-function mml_theme_on_wp_mail_from_name ($name) {
-	$mail_settings = $blog_settings = get_option('mml-theme-opt-mail', []);
-	if (isset($mail_settings['enable']) && $mail_settings['enable'] === 'y') {
-		return $_SERVER['SERVER_NAME'];
-	}
-	return $name;
-}
-
 /**
  * 自定义菜单，在设置页面输出文本框
  */
