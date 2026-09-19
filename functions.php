@@ -993,18 +993,6 @@ add_filter( 'elementor/frontend/print_google_fonts', '__return_false' );
 add_action('elementor/frontend/after_register_styles',function() { foreach( [ 'solid', 'regular', 'brands' ] as $style ) { wp_deregister_style( 'elementor-icons-fa-' . $style ); } }, 20 );
 add_action( 'wp_enqueue_scripts', 'disable_eicons', 11 ); function disable_eicons() { wp_dequeue_style( 'elementor-icons' ); wp_deregister_style( 'elementor-icons' ); }
 
-add_filter('wpcf7_skip_mail', 'skip_cf7_email_sending_for_specific_form', 10, 2);
-function skip_cf7_email_sending_for_specific_form($skip_mail, $contact_form) {
-    // Replace with your specific form ID or title
-    $form_id = $contact_form->id(); // Gets the form ID
-	// Only send email for form ID 93054
-    if ($form_id != 93054) {
-        return true; // Skip email sending for all other forms
-    }
-
-    return false; // Allow email for form ID 93054
-}
-
 // add_filter('wpseo_canonical', 'custom_yoast_canonical_url');
 
 // function custom_yoast_canonical_url($canonical) {
