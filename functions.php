@@ -592,6 +592,7 @@ if ( $cptui_taxonomies ) {
 require('inc/admin-post-columns.php');
 require('inc/admin-post-writer.php');
 require('inc/admin-page-category.php');
+require('inc/admin-export-csv.php');
 
 // ================================== 禁用默认全屏 Start ===================================
 
