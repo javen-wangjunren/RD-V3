@@ -419,7 +419,7 @@ if ( ! class_exists( 'RD_Material_Library_Widget' ) ) {
 								</div>
 							</div>
 						</aside>
-						<main class="rd-material-library__main">
+						<div class="rd-material-library__main">
 							<div class="rd-material-library__bar">
 								<?php if ( ! empty( $tabs ) ) : ?>
 									<div class="rd-material-library__tabs" role="group" aria-label="Material type" data-rd-ml-types>
@@ -510,7 +510,7 @@ if ( ! class_exists( 'RD_Material_Library_Widget' ) ) {
 								<button class="rd-material-library__page-btn" type="button" data-rd-ml-page-next>Next</button>
 								<div class="rd-material-library__page-info" data-rd-ml-page-info></div>
 							</div>
-						</main>
+						</div>
 					</div>
 				</div>
 			</section>

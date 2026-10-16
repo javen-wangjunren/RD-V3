@@ -1,4 +1,5 @@
 <?php get_header();?>
+<main id="main">
 <div class="help-center">
 	<div>
 		<?php include_once "partials/help-center/_search-header.php" ?>
@@ -13,4 +14,5 @@
 		<?php include_once "partials/help-center/_help.php" ?>
 	</div>
 </div>
+</main>
 <?php get_footer();?>

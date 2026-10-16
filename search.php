@@ -160,6 +160,7 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 	
 	$query = new WP_Query( $args );
 ?>
+<main id="main">
 <section class="elementor-section elementor-top-section elementor-element mt-80 max-width-100">
 	<div class="elementor-container elementor-column-gap-default align-start" style="max-width: 1280px;">
 		<form action="/" class="form-search w-100 d-flex">
@@ -352,6 +353,7 @@ $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 	</div>
 	<?php } ?>
 </section>
+</main>
 
 <?php
 	get_footer();

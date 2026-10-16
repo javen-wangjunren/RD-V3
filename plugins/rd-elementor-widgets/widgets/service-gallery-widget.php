@@ -189,7 +189,7 @@ if ( ! class_exists( 'RD_Service_Gallery_Widget' ) ) {
 							$cta_text         = isset( $card['cta_text'] ) ? trim( (string) $card['cta_text'] ) : '';
 							$cta_attrs        = $this->get_link_attributes( $card['cta_link'] ?? [] );
 							?>
-							<article class="rd-sg__card">
+							<div class="rd-sg__card">
 								<div class="rd-sg__card-media">
 									<?php if ( ! empty( $card['image']['id'] ) ) : ?>
 										<?php
@@ -225,8 +225,8 @@ if ( ! class_exists( 'RD_Service_Gallery_Widget' ) ) {
 										</a>
 									<?php endif; ?>
 								</div>
-							</article>
-						<?php endforeach; ?>
+							</div>
+							<?php endforeach; ?>
 					</div>
 				</div>
 			</section>

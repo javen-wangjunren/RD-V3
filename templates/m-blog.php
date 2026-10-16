@@ -44,6 +44,7 @@ $max_num_pages = $the_query->max_num_pages;
 
 ?>
 
+<main id="main">
 <!-- 博客模板 0 -->
 <!-- 以 tpl-blog-n 区别 -->
 <div class="mml-row mml-blog tpl-blog-<?php echo $blog_layout; ?>">
@@ -158,8 +159,9 @@ $max_num_pages = $the_query->max_num_pages;
 	<?php } ?>
 
 </div>
+</main>
 
-<?php if($max_num_pages > 1){ ?>
+	<?php if($max_num_pages > 1){ ?>
 <script src="/wp-content/themes/mml-theme/dist/js/mml-page.js"></script>
 <script>
 ;(function($){

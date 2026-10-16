@@ -189,7 +189,7 @@ if ( ! class_exists( 'RD_Solution_FAQ_Widget' ) ) {
 									$trigger_id  = $item_id . '-trigger';
 									$panel_id    = $item_id . '-panel';
 									?>
-									<article class="rd-solution-faq__item" data-rd-faq-item>
+									<div class="rd-solution-faq__item" data-rd-faq-item>
 										<h3>
 											<button
 												class="rd-solution-faq__trigger"
@@ -217,7 +217,7 @@ if ( ! class_exists( 'RD_Solution_FAQ_Widget' ) ) {
 												<div class="rd-solution-faq__answer"><?php echo wp_kses_post( $answer ); ?></div>
 											</div>
 										</div>
-									</article>
+									</div>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>

@@ -5,6 +5,7 @@
 // =============================================================================
 ?>
 <?php get_header();?>
+<main id="main">
 <div class="help-center">
 	<div>
 		<?php include_once "partials/help-center/_search-header.php" ?>
@@ -34,6 +35,7 @@
 		</div>
 	<?php } ?>
 </div>
+</main>
 <?php get_footer();?>
 <script>
 	var current_page = 0;

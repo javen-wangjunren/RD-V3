@@ -28,6 +28,7 @@ $hide_side = mtf_get_option('options', 'hide_side_recent_blog') === 'y' ? true :
 
 ?>
 
+<main id="main">
 <div class="mml-bread-brumb">
     <div class="mml-row">
 			<a href="/">Home<span>&gt;</span></a>
@@ -37,7 +38,7 @@ $hide_side = mtf_get_option('options', 'hide_side_recent_blog') === 'y' ? true :
 </div>
 
 <div class="mml-row mml-blog-detail">
-	<div class="blog-article">
+	<article class="blog-article">
 		<div class="blog-detail-colwidth">
 			<h1 class="blog-detail-title"><?php the_title(); ?></h1>
 			<div class="blog-detail-info">
@@ -57,8 +58,8 @@ $hide_side = mtf_get_option('options', 'hide_side_recent_blog') === 'y' ? true :
 		<div class="blog-detail-content blog-detail-colwidth">
 			<?php echo apply_filters('the_content', $post->post_content); ?>
 		</div>
-	</div>
-	<!-- 		<div class="blog-widget">
+		</article>
+		<!-- 		<div class="blog-widget">
 			<h2>Blog Classification</h2>
 			<ul>
 				<?php foreach ($categories as $index => $category) { ?>
@@ -139,6 +140,7 @@ $hide_side = mtf_get_option('options', 'hide_side_recent_blog') === 'y' ? true :
 		<?php } ?>
 	</ul>
 </div>
+</main>
 
 
 

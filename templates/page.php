@@ -11,7 +11,9 @@ get_header();
 
 
 
+<main id="main">
 <!-- Please write the HTML code here -->
+</main>
 
 
 
