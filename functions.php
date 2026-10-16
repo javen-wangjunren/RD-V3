@@ -1060,16 +1060,14 @@ add_filter('the_content', 'enforce_link_policies', 20);
 
 
 /**
- * 修复 Hreflang 标签污染：剥离所有查询参数
- * 适用场景：解决 ?_ga= 等追踪码导致的非规范网址报错
+ * 输出 x-default hreflang 标签
+ * 适用场景：GTranslate 只生成 9 个语言版本的 hreflang，缺少 x-default 兜底
  */
-add_filter('wp_head', function() {
-    // 获取当前不带参数的规范 URL
+add_action('wp_head', function() {
+    // 输出 x-default hreflang：指向当前页的英文版（英文在主域名根目录，无语言前缀）
+    // 不在 9 个语言列表里的访客，搜索引擎会默认引导到这个版本
     global $wp;
-    $current_clean_url = home_url( add_query_arg( array(), $wp->request ) );
-    $current_clean_url = trailingslashit($current_clean_url); // 确保末尾斜杠一致性
-
-    // 如果 GTranslate 是通过插件钩子生成的，我们需要在这里进行正则替换或干预
-    // 注意：GTranslate 免费版通常在客户端翻译，付费版在服务端生成
-    // 下面是一个通用的输出干预逻辑示例
+    $path = isset( $wp->request ) ? $wp->request : ''; // 当前页面路径，如 fr/industries
+    $path = preg_replace( '#^(fr|de|es|zh-CN|ar|hi|ja|pt)(/|$)#i', '', $path ); // 去掉语言前缀
+    echo '<link rel="alternate" hreflang="x-default" href="' . esc_url( trailingslashit( home_url( $path ) ) ) . '" />' . "\n";
 }, 1);
