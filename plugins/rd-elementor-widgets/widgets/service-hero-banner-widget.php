@@ -157,13 +157,42 @@ if ( ! class_exists( 'RD_Service_Hero_Banner_Widget' ) ) {
 			);
 
 			$this->add_control(
+				'video_poster',
+				[
+					'label'       => 'Video Poster',
+					'type'        => \Elementor\Controls_Manager::MEDIA,
+					'description' => 'Leave empty to auto-use the YouTube thumbnail.',
+					'default'     => [],
+					'condition'   => [
+						'media_type' => 'video',
+					],
+				]
+			);
+
+			$this->add_control(
+				'video_autoplay',
+				[
+					'label'        => 'Autoplay (Muted)',
+					'type'         => \Elementor\Controls_Manager::SWITCHER,
+					'label_on'     => 'Yes',
+					'label_off'    => 'No',
+					'default'      => '',
+					'description'  => 'Browsers only allow muted autoplay. When enabled, the video plays inline without the poster/play button.',
+					'condition'    => [
+						'media_type' => 'video',
+					],
+				]
+			);
+
+			$this->add_control(
 				'video_play_label',
 				[
 					'label'     => 'Play Button Label',
 					'type'      => \Elementor\Controls_Manager::TEXT,
 					'default'   => 'Play video',
 					'condition' => [
-						'media_type' => 'video',
+						'media_type'     => 'video',
+						'video_autoplay' => '',
 					],
 				]
 			);
@@ -278,6 +307,9 @@ if ( ! class_exists( 'RD_Service_Hero_Banner_Widget' ) ) {
 			$image                = isset( $settings['image'] ) ? $settings['image'] : [];
 			$video_url            = isset( $settings['video_url']['url'] ) ? trim( (string) $settings['video_url']['url'] ) : '';
 			$video_play_label     = isset( $settings['video_play_label'] ) ? $settings['video_play_label'] : 'Play video';
+			$video_autoplay       = isset( $settings['video_autoplay'] ) && $settings['video_autoplay'] === 'yes';
+			$video                = $this->parse_video_url( $video_url );
+			$video_poster_url     = $this->get_video_poster_url( $settings, $video );
 			$aspect_ratio         = isset( $settings['media_aspect_ratio'] ) ? $settings['media_aspect_ratio'] : '4-3';
 
 			$aspect_map = [
@@ -363,15 +395,80 @@ if ( ! class_exists( 'RD_Service_Hero_Banner_Widget' ) ) {
 							<?php endif; ?>
 						<?php elseif ( $media_type === 'video' ) : ?>
 							<div class="rd-shb__media-video" data-video-url="<?php echo esc_url( $video_url ); ?>">
-								<button class="rd-shb__media-play" type="button" aria-label="<?php echo esc_attr( $video_play_label ); ?>">
-									<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 6.6v10.8L18 12 9 6.6Z"/></svg>
-								</button>
+								<?php if ( $video_autoplay && $video ) : ?>
+									<?php if ( $video['type'] === 'file' ) : ?>
+										<video class="rd-shb__media-embed" src="<?php echo esc_url( $video['src'] ); ?>" autoplay muted loop playsinline></video>
+									<?php else : ?>
+										<iframe
+											class="rd-shb__media-embed"
+											src="<?php echo esc_url( $video['autoplay_src'] ); ?>"
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen
+											title="Video"
+										></iframe>
+									<?php endif; ?>
+								<?php else : ?>
+									<?php if ( $video_poster_url !== '' ) : ?>
+										<img class="rd-shb__media-poster" src="<?php echo esc_url( $video_poster_url ); ?>" alt="" loading="lazy" decoding="async">
+									<?php endif; ?>
+									<button class="rd-shb__media-play" type="button" aria-label="<?php echo esc_attr( $video_play_label ); ?>">
+										<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 6.6v10.8L18 12 9 6.6Z"/></svg>
+									</button>
+								<?php endif; ?>
 							</div>
 						<?php endif; ?>
 					</div>
 				</div>
 			</section>
 			<?php
+		}
+
+		private function parse_video_url( $url ) {
+			if ( $url === '' ) {
+				return null;
+			}
+
+			if ( preg_match( '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/', $url, $matches ) ) {
+				return [
+					'type'         => 'youtube',
+					'id'           => $matches[1],
+					'autoplay_src' => 'https://www.youtube.com/embed/' . $matches[1] . '?autoplay=1&mute=1&playsinline=1&rel=0',
+				];
+			}
+
+			if ( preg_match( '/vimeo\.com\/(\d+)/', $url, $matches ) ) {
+				return [
+					'type'         => 'vimeo',
+					'id'           => $matches[1],
+					'autoplay_src' => 'https://player.vimeo.com/video/' . $matches[1] . '?autoplay=1&muted=1',
+				];
+			}
+
+			return [
+				'type' => 'file',
+				'src'  => $url,
+			];
+		}
+
+		private function get_video_poster_url( array $settings, $video ) {
+			$poster = isset( $settings['video_poster'] ) && is_array( $settings['video_poster'] ) ? $settings['video_poster'] : [];
+
+			if ( ! empty( $poster['id'] ) ) {
+				$url = wp_get_attachment_image_url( (int) $poster['id'], 'large' );
+				if ( $url ) {
+					return $url;
+				}
+			}
+
+			if ( ! empty( $poster['url'] ) ) {
+				return (string) $poster['url'];
+			}
+
+			if ( $video && $video['type'] === 'youtube' ) {
+				return 'https://i.ytimg.com/vi/' . $video['id'] . '/hqdefault.jpg';
+			}
+
+			return '';
 		}
 
 		private function get_link_attributes( array $link ) {

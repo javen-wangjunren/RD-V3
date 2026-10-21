@@ -169,7 +169,17 @@
   justify-content: center;
 }
 
+.rd-shb__media-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .rd-shb__media-play {
+  position: relative;
+  z-index: 1;
   width: 72px;
   height: 72px;
   border-radius: 50%;
