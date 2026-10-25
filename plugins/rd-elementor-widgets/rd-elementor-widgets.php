@@ -40,6 +40,8 @@ final class RD_Elementor_Widgets_Plugin {
 	const STYLE_HANDLE_CAPABILITY_SHOWCASE = 'rd-capability-showcase';
 	const SCRIPT_HANDLE_CAPABILITY_SHOWCASE = 'rd-capability-showcase';
 	const STYLE_HANDLE_COMPLETE_PRODUCT_SHOWCASE = 'rd-complete-product-showcase';
+	const STYLE_HANDLE_SERVICE_WHY_CHOOSE_US = 'rd-service-why-choose-us';
+	const STYLE_HANDLE_PARTS_GALLERY = 'rd-parts-gallery';
 
 	private static function asset_version( $relative_path ) {
 		$file = plugin_dir_path( __FILE__ ) . ltrim( $relative_path, '/' );
@@ -278,6 +280,20 @@ final class RD_Elementor_Widgets_Plugin {
 			[],
 			self::asset_version( 'assets/complete-product-showcase.css' )
 		);
+
+		wp_register_style(
+			self::STYLE_HANDLE_SERVICE_WHY_CHOOSE_US,
+			plugins_url( 'assets/service-why-choose-us.css', __FILE__ ),
+			[],
+			self::asset_version( 'assets/service-why-choose-us.css' )
+		);
+
+		wp_register_style(
+			self::STYLE_HANDLE_PARTS_GALLERY,
+			plugins_url( 'assets/parts-gallery.css', __FILE__ ),
+			[],
+			self::asset_version( 'assets/parts-gallery.css' )
+		);
 	}
 
 	public static function register_category( $elements_manager ) {
@@ -315,6 +331,8 @@ final class RD_Elementor_Widgets_Plugin {
 		require_once __DIR__ . '/widgets/service-gallery-widget.php';
 		require_once __DIR__ . '/widgets/capability-showcase-widget.php';
 		require_once __DIR__ . '/widgets/complete-product-showcase-widget.php';
+		require_once __DIR__ . '/widgets/service-why-choose-us-widget.php';
+		require_once __DIR__ . '/widgets/parts-gallery-widget.php';
 	}
 
 	public static function register_widgets( $widgets_manager ) {
@@ -402,6 +420,14 @@ final class RD_Elementor_Widgets_Plugin {
 
 		if ( class_exists( 'RD_Complete_Product_Showcase_Widget' ) ) {
 			$widgets_manager->register( new \RD_Complete_Product_Showcase_Widget() );
+		}
+
+		if ( class_exists( 'RD_Service_Why_Choose_Us_Widget' ) ) {
+			$widgets_manager->register( new \RD_Service_Why_Choose_Us_Widget() );
+		}
+
+		if ( class_exists( 'RD_Parts_Gallery_Widget' ) ) {
+			$widgets_manager->register( new \RD_Parts_Gallery_Widget() );
 		}
 	}
 }
