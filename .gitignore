@@ -17,3 +17,9 @@ node_modules/
 
 # macOS
 .DS_Store
+
+# 无关的文件
+.codex-work/
+docs/
+output/
+images/
