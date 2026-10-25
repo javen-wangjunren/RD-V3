@@ -1,0 +1,145 @@
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+/*! js-cookie v3.0.0-rc.4 | MIT */
+!function (e, t) {
+  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define(t) : (e = e || self, function () {
+    var n = e.Cookies,
+        r = e.Cookies = t();
+
+    r.noConflict = function () {
+      return e.Cookies = n, r;
+    };
+  }());
+}(void 0, function () {
+  "use strict";
+
+  function e(e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var n = arguments[t];
+
+      for (var r in n) {
+        e[r] = n[r];
+      }
+    }
+
+    return e;
+  }
+
+  var t = {
+    read: function read(e) {
+      return e.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
+    },
+    write: function write(e) {
+      return encodeURIComponent(e).replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent);
+    }
+  };
+  return function n(r, o) {
+    function i(t, n, i) {
+      if ("undefined" != typeof document) {
+        "number" == typeof (i = e({}, o, i)).expires && (i.expires = new Date(Date.now() + 864e5 * i.expires)), i.expires && (i.expires = i.expires.toUTCString()), t = encodeURIComponent(t).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape), n = r.write(n, t);
+        var c = "";
+
+        for (var u in i) {
+          i[u] && (c += "; " + u, !0 !== i[u] && (c += "=" + i[u].split(";")[0]));
+        }
+
+        return document.cookie = t + "=" + n + c;
+      }
+    }
+
+    return Object.create({
+      set: i,
+      get: function get(e) {
+        if ("undefined" != typeof document && (!arguments.length || e)) {
+          for (var n = document.cookie ? document.cookie.split("; ") : [], o = {}, i = 0; i < n.length; i++) {
+            var c = n[i].split("="),
+                u = c.slice(1).join("=");
+            '"' === u[0] && (u = u.slice(1, -1));
+
+            try {
+              var f = t.read(c[0]);
+              if (o[f] = r.read(u, f), e === f) break;
+            } catch (e) {}
+          }
+
+          return e ? o[e] : o;
+        }
+      },
+      remove: function remove(t, n) {
+        i(t, "", e({}, n, {
+          expires: -1
+        }));
+      },
+      withAttributes: function withAttributes(t) {
+        return n(this.converter, e({}, this.attributes, t));
+      },
+      withConverter: function withConverter(t) {
+        return n(e({}, this.converter, t), this.attributes);
+      }
+    }, {
+      attributes: {
+        value: Object.freeze(o)
+      },
+      converter: {
+        value: Object.freeze(r)
+      }
+    });
+  }(t, {
+    path: "/"
+  });
+});
+var pageGet = window.location.search.substr(1);
+
+if (pageGet.includes('rdtm')) {
+  Cookies.set('rd_GAB', pageGet, {
+    domain: 'rapiddirect.com',
+    expires: 30
+  });
+  var now = new Date();
+  Cookies.set('rd_GAB_created', now.toISOString(), {
+    domain: 'rapiddirect.com',
+    expires: 30
+  });
+}
+
+if (pageGet.includes('salesrep')) {
+  var searchParams = new URLSearchParams(window.location.search.substr(1));
+  Cookies.set('rd_salesrep', searchParams.get("salesrep"), {
+    domain: 'rapiddirect.com',
+    expires: 30
+  });
+}
+
+(function () {
+  if (!Cookies.get('rd_usr_landing')) {
+    Cookies.set('rd_usr_landing', window.location.href.split('?')[0], {
+      domain: 'rapiddirect.com',
+      expires: 3
+    });
+    Cookies.set('rd_usr_landing_full_url', window.location.href, {
+      domain: 'rapiddirect.com',
+      expires: 3
+    });
+  }
+})();
+
+Cookies.set('rd_last_page_visit', window.location, {
+  domain: 'rapiddirect.com',
+  expires: 30
+});
+
+if (!Cookies.get('rd_usr_landing_session')) {
+  Cookies.set('rd_usr_landing_session', window.location.href.split('?')[0], {
+    domain: 'rapiddirect.com'
+  });
+}
+
+function gt_jquery_ready_custom(event) {
+  event.preventDefault();
+  jQuery('.switcher .option-2 a img').each(function () {
+    if (!jQuery(this)[0].hasAttribute('src')) jQuery(this).attr('src', jQuery(this).attr('data-gt-lazy-src'));
+  });
+  jQuery('.switcher.top-options').toggle();
+}
