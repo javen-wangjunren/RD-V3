@@ -197,6 +197,27 @@ if ( ! class_exists( 'RD_Service_Hero_Banner_Widget' ) ) {
 				]
 			);
 
+			$this->add_control(
+				'section_trustpilot_heading',
+				[
+					'label'     => 'Trustpilot',
+					'type'      => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+				]
+			);
+
+			$this->add_control(
+				'show_trustpilot',
+				[
+					'label'       => 'Show Trustpilot Micro Score',
+					'type'        => \Elementor\Controls_Manager::SWITCHER,
+					'label_on'    => 'Show',
+					'label_off'   => 'Hide',
+					'default'     => '',
+					'description' => 'Displays a Trustpilot Micro TrustScore badge above the H1 heading.',
+				]
+			);
+
 			$this->end_controls_section();
 
 			$this->start_controls_section(
@@ -308,6 +329,7 @@ if ( ! class_exists( 'RD_Service_Hero_Banner_Widget' ) ) {
 			$video_url            = isset( $settings['video_url']['url'] ) ? trim( (string) $settings['video_url']['url'] ) : '';
 			$video_play_label     = isset( $settings['video_play_label'] ) ? $settings['video_play_label'] : 'Play video';
 			$video_autoplay       = isset( $settings['video_autoplay'] ) && $settings['video_autoplay'] === 'yes';
+			$show_trustpilot      = isset( $settings['show_trustpilot'] ) && $settings['show_trustpilot'] === 'yes';
 			$video                = $this->parse_video_url( $video_url );
 			$video_poster_url     = $this->get_video_poster_url( $settings, $video );
 			$aspect_ratio         = isset( $settings['media_aspect_ratio'] ) ? $settings['media_aspect_ratio'] : '4-3';
@@ -327,6 +349,16 @@ if ( ! class_exists( 'RD_Service_Hero_Banner_Widget' ) ) {
 			<section class="rd-shb" data-rd-shb-id="<?php echo esc_attr( $instance_id ); ?>" aria-labelledby="<?php echo esc_attr( $instance_id . '-title' ); ?>">
 				<div class="rd-shb__container">
 					<div class="rd-shb__content">
+						<?php if ( $show_trustpilot ) : ?>
+							<div class="rd-shb__trustpilot">
+								<!-- TrustBox widget - Micro TrustScore -->
+								<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b637fa0340045cd0c936" data-businessunit-id="63db9493b58268dde80afc96" data-style-height="20px" data-style-width="100%">
+									<a href="<?php echo esc_url( 'https://www.trustpilot.com/review/rapiddirect.com' ); ?>" target="_blank" rel="noopener">Trustpilot</a>
+								</div>
+								<!-- End TrustBox widget -->
+							</div>
+						<?php endif; ?>
+
 						<?php if ( $heading !== '' ) : ?>
 							<h1 class="rd-shb__heading" id="<?php echo esc_attr( $instance_id . '-title' ); ?>">
 								<?php echo esc_html( $heading ); ?>

@@ -30,6 +30,10 @@
   min-width: 0;
 }
 
+.rd-shb__trustpilot {
+  line-height: 1;
+}
+
 .rd-shb__heading {
   margin: 0;
   font-size: 48px;
