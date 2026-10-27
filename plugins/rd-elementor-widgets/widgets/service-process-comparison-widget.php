@@ -195,6 +195,28 @@ if ( ! class_exists( 'RD_Service_Process_Comparison_Widget' ) ) {
 			);
 
 			$this->end_controls_section();
+
+			$this->start_controls_section(
+				'section_style',
+				[
+					'label' => 'Style',
+					'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				]
+			);
+
+			$this->add_control(
+				'bg_color',
+				[
+					'label'     => 'Section Background',
+					'type'      => \Elementor\Controls_Manager::COLOR,
+					'default'   => '#ffffff',
+					'selectors' => [
+						'{{WRAPPER}} .rd-pc' => 'background: {{VALUE}};',
+					],
+				]
+			);
+
+			$this->end_controls_section();
 		}
 
 		protected function render() {
