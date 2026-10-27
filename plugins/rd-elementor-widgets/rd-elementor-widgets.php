@@ -43,6 +43,7 @@ final class RD_Elementor_Widgets_Plugin {
 	const STYLE_HANDLE_SERVICE_WHY_CHOOSE_US = 'rd-service-why-choose-us';
 	const STYLE_HANDLE_PARTS_GALLERY = 'rd-parts-gallery';
 	const STYLE_HANDLE_SERVICE_PROTOTYPE_PRODUCTION = 'rd-service-prototype-production';
+	const STYLE_HANDLE_SERVICE_PROCESS_COMPARISON = 'rd-service-process-comparison';
 
 	private static function asset_version( $relative_path ) {
 		$file = plugin_dir_path( __FILE__ ) . ltrim( $relative_path, '/' );
@@ -302,6 +303,13 @@ final class RD_Elementor_Widgets_Plugin {
 			[],
 			self::asset_version( 'assets/service-prototype-production.css' )
 		);
+
+		wp_register_style(
+			self::STYLE_HANDLE_SERVICE_PROCESS_COMPARISON,
+			plugins_url( 'assets/service-process-comparison.css', __FILE__ ),
+			[],
+			self::asset_version( 'assets/service-process-comparison.css' )
+		);
 	}
 
 	public static function register_category( $elements_manager ) {
@@ -342,6 +350,7 @@ final class RD_Elementor_Widgets_Plugin {
 		require_once __DIR__ . '/widgets/service-why-choose-us-widget.php';
 		require_once __DIR__ . '/widgets/parts-gallery-widget.php';
 		require_once __DIR__ . '/widgets/service-prototype-production-widget.php';
+		require_once __DIR__ . '/widgets/service-process-comparison-widget.php';
 	}
 
 	public static function register_widgets( $widgets_manager ) {
@@ -441,6 +450,10 @@ final class RD_Elementor_Widgets_Plugin {
 
 		if ( class_exists( 'RD_Service_Prototype_Production_Widget' ) ) {
 			$widgets_manager->register( new \RD_Service_Prototype_Production_Widget() );
+		}
+
+		if ( class_exists( 'RD_Service_Process_Comparison_Widget' ) ) {
+			$widgets_manager->register( new \RD_Service_Process_Comparison_Widget() );
 		}
 	}
 }
