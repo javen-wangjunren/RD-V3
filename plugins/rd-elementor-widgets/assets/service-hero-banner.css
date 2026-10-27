@@ -30,8 +30,14 @@
   min-width: 0;
 }
 
-.rd-shb__trustpilot {
+.rd-shb__trustpilot,
+.rd-shb__trustpilot .trustpilot-widget,
+.rd-shb__trustpilot .trustpilot-widget iframe {
   line-height: 1;
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  display: block !important;
 }
 
 .rd-shb__heading {
