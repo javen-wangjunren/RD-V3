@@ -196,92 +196,89 @@ if ( ! class_exists( 'RD_Service_Prototype_Production_Widget' ) ) {
 			?>
 			<section class="rd-spp" data-rd-spp-id="<?php echo esc_attr( $instance_id ); ?>" aria-labelledby="<?php echo esc_attr( $instance_id . '-title' ); ?>">
 				<div class="rd-spp__container">
-					<div class="rd-spp__card">
-						<div class="rd-spp__top">
 
-							<!-- 左栏文案 -->
-							<div class="rd-spp__copy">
-								<h2 class="rd-spp__title" id="<?php echo esc_attr( $instance_id . '-title' ); ?>">
-									<?php if ( $heading_primary !== '' ) : ?>
-										<?php echo esc_html( $heading_primary ); ?>
-									<?php endif; ?>
-									<?php if ( $heading_secondary !== '' ) : ?>
-										<span><?php echo esc_html( $heading_secondary ); ?></span>
-									<?php endif; ?>
-								</h2>
-								<?php if ( $intro !== '' ) : ?>
-									<p class="rd-spp__intro"><?php echo esc_html( $intro ); ?></p>
+					<!-- 头部 -->
+					<?php if ( $heading_primary !== '' || $intro !== '' ) : ?>
+						<div class="rd-spp__header">
+							<h2 class="rd-spp__title" id="<?php echo esc_attr( $instance_id . '-title' ); ?>">
+								<?php echo esc_html( $heading_primary ); ?>
+								<?php if ( $heading_secondary !== '' ) : ?>
+									<span><?php echo esc_html( $heading_secondary ); ?></span>
+								<?php endif; ?>
+							</h2>
+							<?php if ( $intro !== '' ) : ?>
+								<p class="rd-spp__intro"><?php echo esc_html( $intro ); ?></p>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+
+					<!-- stage 卡片横排 -->
+					<div class="rd-spp__stages">
+
+						<article class="rd-spp__stage">
+							<div class="rd-spp__stage-img">
+								<?php if ( $p_img !== '' ) : ?>
+									<img src="<?php echo esc_url( $p_img ); ?>" alt="<?php echo esc_attr( $prototyping_title ); ?>" loading="lazy">
 								<?php endif; ?>
 							</div>
-
-							<!-- 右栏两 stage 图片卡 -->
-							<div class="rd-spp__stages">
-
-								<article class="rd-spp__stage">
-									<div class="rd-spp__stage-img">
-										<?php if ( $p_img !== '' ) : ?>
-											<img src="<?php echo esc_url( $p_img ); ?>" alt="<?php echo esc_attr( $prototyping_title ); ?>" loading="lazy">
-										<?php endif; ?>
+							<div class="rd-spp__stage-body">
+								<?php if ( $prototyping_title !== '' ) : ?>
+									<h3><?php echo esc_html( $prototyping_title ); ?></h3>
+								<?php endif; ?>
+								<?php if ( ! empty( $prototyping_tags ) ) : ?>
+									<div class="rd-spp__tags">
+										<?php foreach ( $prototyping_tags as $tag ) : ?>
+											<?php $tag_text = trim( (string) ( $tag['text'] ?? '' ) ); ?>
+											<?php if ( $tag_text !== '' ) : ?>
+												<span><?php echo esc_html( $tag_text ); ?></span>
+											<?php endif; ?>
+										<?php endforeach; ?>
 									</div>
-									<div class="rd-spp__stage-body">
-										<?php if ( $prototyping_title !== '' ) : ?>
-											<h3><?php echo esc_html( $prototyping_title ); ?></h3>
-										<?php endif; ?>
-										<?php if ( ! empty( $prototyping_tags ) ) : ?>
-											<div class="rd-spp__tags">
-												<?php foreach ( $prototyping_tags as $tag ) : ?>
-													<?php $tag_text = trim( (string) ( $tag['text'] ?? '' ) ); ?>
-													<?php if ( $tag_text !== '' ) : ?>
-														<span><?php echo esc_html( $tag_text ); ?></span>
-													<?php endif; ?>
-												<?php endforeach; ?>
-											</div>
-										<?php endif; ?>
-									</div>
-								</article>
-
-								<article class="rd-spp__stage">
-									<div class="rd-spp__stage-img">
-										<?php if ( $x_img !== '' ) : ?>
-											<img src="<?php echo esc_url( $x_img ); ?>" alt="<?php echo esc_attr( $production_title ); ?>" loading="lazy">
-										<?php endif; ?>
-									</div>
-									<div class="rd-spp__stage-body">
-										<?php if ( $production_title !== '' ) : ?>
-											<h3><?php echo esc_html( $production_title ); ?></h3>
-										<?php endif; ?>
-										<?php if ( ! empty( $production_tags ) ) : ?>
-											<div class="rd-spp__tags">
-												<?php foreach ( $production_tags as $tag ) : ?>
-													<?php $tag_text = trim( (string) ( $tag['text'] ?? '' ) ); ?>
-													<?php if ( $tag_text !== '' ) : ?>
-														<span><?php echo esc_html( $tag_text ); ?></span>
-													<?php endif; ?>
-												<?php endforeach; ?>
-											</div>
-										<?php endif; ?>
-									</div>
-								</article>
-
+								<?php endif; ?>
 							</div>
-						</div>
+						</article>
 
-						<!-- 底部 CTA 横幅 -->
-						<div class="rd-spp__footer">
-							<p class="rd-spp__footer-text">
-								<?php if ( $footer_strong !== '' ) : ?>
-									<strong><?php echo esc_html( $footer_strong ); ?></strong>
+						<article class="rd-spp__stage">
+							<div class="rd-spp__stage-img">
+								<?php if ( $x_img !== '' ) : ?>
+									<img src="<?php echo esc_url( $x_img ); ?>" alt="<?php echo esc_attr( $production_title ); ?>" loading="lazy">
 								<?php endif; ?>
-								<?php if ( $footer_secondary !== '' ) : ?>
-									<?php echo esc_html( $footer_secondary ); ?>
+							</div>
+							<div class="rd-spp__stage-body">
+								<?php if ( $production_title !== '' ) : ?>
+									<h3><?php echo esc_html( $production_title ); ?></h3>
 								<?php endif; ?>
-							</p>
-							<a class="rd-spp__cta" href="https://app.rapiddirect.com/" target="_blank" rel="noopener">
-								Get Instant Quote
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-							</a>
-						</div>
+								<?php if ( ! empty( $production_tags ) ) : ?>
+									<div class="rd-spp__tags">
+										<?php foreach ( $production_tags as $tag ) : ?>
+											<?php $tag_text = trim( (string) ( $tag['text'] ?? '' ) ); ?>
+											<?php if ( $tag_text !== '' ) : ?>
+												<span><?php echo esc_html( $tag_text ); ?></span>
+											<?php endif; ?>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+							</div>
+						</article>
+
 					</div>
+
+					<!-- 底部 CTA 横幅 -->
+					<div class="rd-spp__footer">
+						<p class="rd-spp__footer-text">
+							<?php if ( $footer_strong !== '' ) : ?>
+								<strong><?php echo esc_html( $footer_strong ); ?></strong>
+							<?php endif; ?>
+							<?php if ( $footer_secondary !== '' ) : ?>
+								<?php echo esc_html( $footer_secondary ); ?>
+							<?php endif; ?>
+						</p>
+						<a class="rd-spp__cta" href="https://app.rapiddirect.com/" target="_blank" rel="noopener">
+							Get Instant Quote
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+						</a>
+					</div>
+
 				</div>
 			</section>
 			<?php
