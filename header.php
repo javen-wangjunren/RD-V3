@@ -16,7 +16,7 @@
 <body <?php body_class(); ?> data-test="test-all" data-lol="lot-test">
 <?php wp_body_open(); ?>
 <div class="global-wrap">
-	<header class="rd-header" data-rd-header>
+	<header>
 		<?php mml_theme_fn_render_site_header(); ?>
 	</header>
 

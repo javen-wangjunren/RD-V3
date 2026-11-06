@@ -18,7 +18,7 @@
 		var navList = root.querySelector('.rd-header__nav');
 		var items = Array.prototype.slice.call(root.querySelectorAll('.rd-header__item'));
 
-		function closeAll() {
+		function closeMegas() {
 			items.forEach(function (item) {
 				item.classList.remove('is-open');
 				var mega = item.querySelector('.rd-header__mega');
@@ -30,12 +30,21 @@
 					label.setAttribute('aria-expanded', 'false');
 				}
 			});
-			if (navList && navList.classList.contains('is-active')) {
+		}
+
+		function closeDrawer() {
+			if (navList) {
 				navList.classList.remove('is-active');
-				if (toggle) {
-					toggle.setAttribute('aria-expanded', 'false');
-				}
 			}
+			if (toggle) {
+				toggle.setAttribute('aria-expanded', 'false');
+			}
+			document.body.classList.remove('rd-header-lock');
+		}
+
+		function closeAll() {
+			closeMegas();
+			closeDrawer();
 		}
 
 		// 桌面：点击 label 展开/收起 Mega（点击其它菜单时互斥）
@@ -52,7 +61,7 @@
 				e.preventDefault();
 
 				var wasOpen = item.classList.contains('is-open');
-				closeAll();
+				closeMegas();
 				if (!wasOpen) {
 					item.classList.add('is-open');
 					mega.classList.add('is-open');
@@ -81,8 +90,16 @@
 				e.stopPropagation();
 				var isActive = navList.classList.toggle('is-active');
 				toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+				document.body.classList.toggle('rd-header-lock', isActive);
 			});
 		}
+
+		// 视口回到桌面宽度时，收起抽屉并解除滚动锁
+		window.addEventListener('resize', function () {
+			if (window.innerWidth > 1150) {
+				closeDrawer();
+			}
+		});
 
 		// ---------- Capabilities tab ----------
 		var capTabs = Array.prototype.slice.call(root.querySelectorAll('.cap-tab[data-cap-tab]'));
