@@ -24,6 +24,7 @@
 				var mega = item.querySelector('.rd-header__mega');
 				if (mega) {
 					mega.classList.remove('is-open');
+					resetDrilldown(mega);
 				}
 				var label = item.querySelector('.rd-header__label');
 				if (label) {
@@ -46,6 +47,31 @@
 			closeMegas();
 			closeDrawer();
 		}
+
+		// 移动端二级视图：返回分类列表，清空当前分类内容
+		function resetDrilldown(mega) {
+			if (!mega) {
+				return;
+			}
+			var head = mega.querySelector('.rd-drill-head');
+			if (head) {
+				head.classList.remove('is-active');
+			}
+			var title = mega.querySelector('.rd-drill-title');
+			if (title) {
+				title.textContent = '';
+			}
+			Array.prototype.slice.call(mega.querySelectorAll('.cap-tab.is-open, .sol-tab.is-open, .cap-panel.is-mobile-open, .sol-panel.is-mobile-open')).forEach(function (el) {
+				el.classList.remove('is-open');
+				el.classList.remove('is-mobile-open');
+			});
+		}
+
+		Array.prototype.slice.call(root.querySelectorAll('.rd-drill-back')).forEach(function (back) {
+			back.addEventListener('click', function () {
+				resetDrilldown(back.closest('.rd-header__mega'));
+			});
+		});
 
 		// 桌面：点击 label 展开/收起 Mega（点击其它菜单时互斥）
 		items.forEach(function (item) {
@@ -98,6 +124,9 @@
 		window.addEventListener('resize', function () {
 			if (window.innerWidth > 1150) {
 				closeDrawer();
+				items.forEach(function (item) {
+					resetDrilldown(item.querySelector('.rd-header__mega'));
+				});
 			}
 		});
 
@@ -129,17 +158,24 @@
 			});
 			tab.addEventListener('click', function (e) {
 				if (window.innerWidth <= 1150) {
-					// 移动端手风琴：点击展开/折叠对应面板
+					// 移动端二级视图：点分类后原地展示对应服务卡片
 					e.preventDefault();
 					var key = tab.getAttribute('data-cap-tab');
 					var panel = root.querySelector('.cap-panel[data-cap-panel="' + key + '"]');
-					var isOpen = tab.classList.contains('is-open');
+					var head = root.querySelector('.menu-body-capabilities .rd-drill-head');
+					if (!panel || !head) {
+						return;
+					}
 					capTabs.forEach(function (t) { t.classList.remove('is-open'); });
 					capPanels.forEach(function (p) { p.classList.remove('is-mobile-open'); });
-					if (!isOpen && panel) {
-						tab.classList.add('is-open');
-						panel.classList.add('is-mobile-open');
+					tab.classList.add('is-open');
+					panel.classList.add('is-mobile-open');
+					head.classList.add('is-active');
+					var title = head.querySelector('.rd-drill-title');
+					if (title) {
+						title.textContent = tab.textContent.trim();
 					}
+					head.scrollIntoView({ block: 'start' });
 					return;
 				}
 				activateCapTab(tab.getAttribute('data-cap-tab'));
@@ -174,17 +210,24 @@
 			});
 			tab.addEventListener('click', function (e) {
 				if (window.innerWidth <= 1150) {
-					// 移动端手风琴：点击展开/折叠对应面板
+					// 移动端二级视图：点分类后原地展示对应服务卡片
 					e.preventDefault();
 					var key = tab.getAttribute('data-sol-tab');
 					var panel = root.querySelector('.sol-panel[data-sol-panel="' + key + '"]');
-					var isOpen = tab.classList.contains('is-open');
+					var head = root.querySelector('.menu-body-solutions .rd-drill-head');
+					if (!panel || !head) {
+						return;
+					}
 					solTabs.forEach(function (t) { t.classList.remove('is-open'); });
 					solPanels.forEach(function (p) { p.classList.remove('is-mobile-open'); });
-					if (!isOpen && panel) {
-						tab.classList.add('is-open');
-						panel.classList.add('is-mobile-open');
+					tab.classList.add('is-open');
+					panel.classList.add('is-mobile-open');
+					head.classList.add('is-active');
+					var title = head.querySelector('.rd-drill-title');
+					if (title) {
+						title.textContent = tab.textContent.trim();
 					}
+					head.scrollIntoView({ block: 'start' });
 					return;
 				}
 				activateSolTab(tab.getAttribute('data-sol-tab'));

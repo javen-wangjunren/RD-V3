@@ -92,6 +92,11 @@
 	cursor: pointer;
 }
 
+/* 移动端二级菜单返回条，桌面不显示 */
+.rd-drill-head {
+	display: none;
+}
+
 .rd-header__actions {
 	display: flex;
 	align-items: center;
@@ -1134,11 +1139,47 @@
 		grid-template-columns: 1fr;
 		gap: 16px;
 		padding: 20px 16px;
+		box-sizing: border-box;
 	}
 
 	.rd-header .cap-footer-actions {
 		flex-wrap: wrap;
 		gap: 12px;
+	}
+
+	/* 二级视图：点分类后隐藏分类列表，原地展示该分类的服务卡片 */
+	.rd-drill-head {
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 10px;
+		padding-bottom: 14px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.rd-drill-head.is-active {
+		display: flex;
+	}
+
+	.rd-drill-back {
+		padding: 0;
+		border: 0;
+		background: none;
+		color: #ffffff;
+		font-size: 14px;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.rd-drill-title {
+		color: #ea543f;
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	.rd-drill-head.is-active ~ .cap-nav,
+	.rd-drill-head.is-active ~ .sol-nav {
+		display: none;
 	}
 
 	.rd-header .cap-nav,

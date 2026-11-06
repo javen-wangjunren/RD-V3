@@ -792,6 +792,10 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 			$first_key = isset( $all_tabs[0]['key'] ) ? $all_tabs[0]['key'] : '';
 			?>
 			<div class="menu-body menu-body-capabilities">
+				<div class="rd-drill-head">
+					<button type="button" class="rd-drill-back" aria-label="Back to all capabilities">← Capabilities</button>
+					<span class="rd-drill-title" aria-live="polite"></span>
+				</div>
 				<div class="cap-nav" role="tablist" aria-label="Capabilities services">
 					<?php foreach ( $sections as $s_idx => $section ) : ?>
 						<div class="cap-nav-section">
@@ -860,6 +864,10 @@ if ( ! class_exists( 'RD_Site_Header' ) ) {
 			$tabs = $item['tabs'];
 			?>
 			<div class="menu-body menu-body-solutions">
+				<div class="rd-drill-head">
+					<button type="button" class="rd-drill-back" aria-label="Back to all solutions">← Solutions</button>
+					<span class="rd-drill-title" aria-live="polite"></span>
+				</div>
 				<div class="sol-nav" role="tablist" aria-label="Solutions categories">
 					<div class="sol-tabs">
 						<?php foreach ( $tabs as $t_idx => $tab ) : ?>
