@@ -1004,6 +1004,11 @@
 		display: none;
 	}
 
+	/* 登录已放进抽屉底部，顶部不再重复，避免文字换行 */
+	.rd-header .rd-header__top-utils .rd-header__top-login {
+		display: none;
+	}
+
 	/* 抽屉底部固定报价和登录，菜单再长也看得到 */
 	.rd-header__mobile-actions {
 		position: sticky;
@@ -1051,15 +1056,16 @@
 		right: 0;
 		flex-direction: column;
 		align-items: stretch;
-		max-height: calc(100vh - 64px);
-		max-height: calc(100dvh - 64px);
+		box-sizing: border-box;
+		max-height: calc(100vh - 98px);
+		max-height: calc(100dvh - 98px);
 		overflow-y: auto;
 		padding: 8px 0 0;
 		background: #1c1c1c;
 		box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16);
 	}
 
-	/* 移动端：公告文字单行截断，CTA/语言/登录保留 */
+	/* 移动端：公告文字单行截断，CTA/语言保留 */
 	.rd-header__top-banner { padding: 8px 16px; gap: 10px; }
 	.rd-header__top-spacer { display: none; }
 	.rd-header__top-text {
@@ -1100,6 +1106,8 @@
 	.rd-header__mega {
 		position: static;
 		display: none;
+		left: auto;
+		transform: none;
 		width: 100%;
 		min-width: 0;
 		max-width: none;
